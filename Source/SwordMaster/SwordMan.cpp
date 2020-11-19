@@ -5,7 +5,7 @@
 
 ASwordMan::ASwordMan()
 {
-	PC = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("FlipBook"));
+	//PC = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("FlipBook"));
 	PrimaryActorTick.bCanEverTick = true;
 	// where I would initliaize my component so that it's not null so that I can start calling methods on it
 }
@@ -66,7 +66,7 @@ void ASwordMan::LeftRight(float Axis)
 void ASwordMan::setFlip(float f1, float f2)
 {
 	//This conditional immediately returns if PC, my PaperFlipBookComponent, is null to avoid crashing UE4 directly.
-	if (!PC) {
+	if (!GetSprite()) {
 		return;
 	}
 	else
@@ -74,8 +74,8 @@ void ASwordMan::setFlip(float f1, float f2)
 		//consoleLog();
 	}
 
-	float Vertical = f1;
-	float Horizontal = f2;
+	Vertical = f1;
+	Horizontal = f2;
 	MoveDirection move;
 
 	if (Vertical != 0.0f || Horizontal != 0.0f)
@@ -84,23 +84,24 @@ void ASwordMan::setFlip(float f1, float f2)
 		if (Vertical > 0.0f && Horizontal == 0.0f)
 		{
 			move = Up;
-
-			//PC->SetFlipbook(UPaperFlipbook* MoveUp);
-			//UE_LOG(LogTemp, Warning, TEXT("up"));
+			GetSprite()->SetFlipbook(MoveUp);
 		}
 		else if (Vertical == 0.0f && Horizontal > 0.0f)
 		{
 			move = Right;
+			GetSprite()->SetFlipbook(MoveRight);
 		}
 		else if (Vertical == 0.0f && Horizontal < 0.0f)
 		{
 			move = Left;
 			UE_LOG(LogTemp, Warning, TEXT("setting flipbook left"));
-			PC->SetFlipbook(MoveLeft);
+			GetSprite()->SetFlipbook(MoveLeft);
+
 		}
 		else if (Vertical < 0.0f && Horizontal == 0.0f)
 		{
 			move = Down;
+			GetSprite()->SetFlipbook(MoveDown);
 		}
 	}
 	else
