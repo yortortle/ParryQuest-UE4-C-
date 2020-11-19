@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\SwordMaster.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{C8FDCDDF-BD9A-4108-8CC5-078590B44504}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SwordMaster.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SwordMasterEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{F594F5FC-A9BC-41E7-98FE-FC7DB5551857}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\SwordMaster">
+      <UniqueIdentifier>{81B78A6B-E2D4-4EB5-95E8-B5A691E7E3AF}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SwordMaster\SwordMan.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\SwordMan.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\SwordMaster\SwordMaster.Build.cs">
+      <Filter>Source\SwordMaster</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SwordMaster\SwordMaster.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\SwordMaster.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\SwordMasterGameModeBase.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\SwordMasterGameModeBase.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

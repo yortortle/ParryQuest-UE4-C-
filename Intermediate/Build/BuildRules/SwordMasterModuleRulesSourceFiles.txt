@@ -1,0 +1,3 @@
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster\SwordMaster.Build.cs
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster.Target.cs
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMasterEditor.Target.cs
