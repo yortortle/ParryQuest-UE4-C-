@@ -33,7 +33,7 @@ protected:
 public:
 
     //UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-    enum MoveDirection { Up, Down, Left, Right };
+    enum MoveDirection { Up, Down, Left, Righ };
     //consider diagonal angles
 
    
@@ -43,6 +43,7 @@ public:
 
 
     //Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.
+    //First set is for movement animations
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* MoveLeft;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
@@ -52,8 +53,30 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* MoveUp;
 
+    //Second set is for IDLE animations
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* IdleLeft;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* IdleRight;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* IdleDown;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* IdleUp;
+
+    //Third set is for sword swing and parry animations
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* SwingLeft;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* SwingRight;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* SwingUp;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        UPaperFlipbook* SwingDown;
+
+
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
+    int lastMove = 0;
 
 
     UFUNCTION(blueprintcallable)

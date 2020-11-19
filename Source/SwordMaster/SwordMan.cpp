@@ -76,36 +76,46 @@ void ASwordMan::setFlip(float f1, float f2)
 
 	Vertical = f1;
 	Horizontal = f2;
-	MoveDirection move;
+	//MoveDirection move;
 
 	if (Vertical != 0.0f || Horizontal != 0.0f)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("%f, %f"), Vertical, Horizontal);
+
 		if (Vertical > 0.0f && Horizontal == 0.0f)
 		{
-			move = Up;
+			lastMove = 1;
 			GetSprite()->SetFlipbook(MoveUp);
 		}
 		else if (Vertical == 0.0f && Horizontal > 0.0f)
 		{
-			move = Right;
+			lastMove = 2;
 			GetSprite()->SetFlipbook(MoveRight);
 		}
 		else if (Vertical == 0.0f && Horizontal < 0.0f)
 		{
-			move = Left;
+			lastMove = 3;
 			UE_LOG(LogTemp, Warning, TEXT("setting flipbook left"));
 			GetSprite()->SetFlipbook(MoveLeft);
-
 		}
 		else if (Vertical < 0.0f && Horizontal == 0.0f)
 		{
-			move = Down;
+			lastMove = 4;
 			GetSprite()->SetFlipbook(MoveDown);
 		}
 	}
 	else
 	{
+		switch (lastMove) {
+		case 1: GetSprite()->SetFlipbook(IdleUp);
+			break;
+		case 2: GetSprite()->SetFlipbook(IdleRight);
+			break;
+		case 3: GetSprite()->SetFlipbook(IdleLeft);
+			break;
+		case 4: GetSprite()->SetFlipbook(IdleDown);
+			break;
+		}
 	}
 
 	return;
@@ -113,5 +123,5 @@ void ASwordMan::setFlip(float f1, float f2)
 
 void ASwordMan::consoleLog()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Log Test"));
+	UE_LOG(LogTemp, Warning, TEXT("log test"));
 }

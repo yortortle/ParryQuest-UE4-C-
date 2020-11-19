@@ -76,6 +76,38 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwingDown_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SwingDown;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwingUp_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SwingUp;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwingRight_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SwingRight;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwingLeft_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SwingLeft;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleUp_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_IdleUp;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleDown_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_IdleDown;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleRight_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_IdleRight;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IdleLeft_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_IdleLeft;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveUp_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveUp;
@@ -110,6 +142,64 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingDown_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingDown = { "SwingDown", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, SwingDown), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingDown_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingDown_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingUp_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingUp = { "SwingUp", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, SwingUp), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingUp_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingUp_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingRight_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingRight = { "SwingRight", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, SwingRight), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingRight_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingRight_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingLeft_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+		{ "ToolTip", "Third set is for sword swing and parry animations" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingLeft = { "SwingLeft", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, SwingLeft), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingLeft_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingLeft_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleUp_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleUp = { "IdleUp", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, IdleUp), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleUp_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleUp_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleDown_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleDown = { "IdleDown", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, IdleDown), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleDown_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleDown_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleRight_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleRight = { "IdleRight", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, IdleRight), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleRight_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleRight_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleLeft_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+		{ "ToolTip", "Second set is for IDLE animations" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleLeft = { "IdleLeft", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, IdleLeft), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleLeft_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleLeft_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveUp_MetaData[] = {
 		{ "Category", "SwordMan" },
 		{ "ModuleRelativePath", "SwordMan.h" },
@@ -134,11 +224,19 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData[] = {
 		{ "Category", "SwordMan" },
 		{ "ModuleRelativePath", "SwordMan.h" },
-		{ "ToolTip", "Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function." },
+		{ "ToolTip", "Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.\nFirst set is for movement animations" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft = { "MoveLeft", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, MoveLeft), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASwordMan_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingDown,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingUp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingRight,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_SwingLeft,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleUp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleDown,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleRight,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_IdleLeft,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveUp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveDown,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveRight,
@@ -171,7 +269,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASwordMan, 3000091759);
+	IMPLEMENT_CLASS(ASwordMan, 691309565);
 	template<> SWORDMASTER_API UClass* StaticClass<ASwordMan>()
 	{
 		return ASwordMan::StaticClass();
