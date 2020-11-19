@@ -14,12 +14,19 @@ ASwordMan::ASwordMan()
 void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
+	//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
 }
 
 void ASwordMan::Tick(float DeltaTime)
 {
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
+
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
+		return;
+	}
 
 	setFlip(Vertical, Horizontal);
 }
@@ -36,6 +43,13 @@ void ASwordMan::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ASwordMan::UpDown(float Axis)
 {
+
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
+		return;
+	}
+
 	float movementValue = InputComponent->GetAxisValue(TEXT("LeftRight"));
 	if (movementValue > 0.0f || movementValue < 0.0f)
 	{
@@ -50,6 +64,13 @@ void ASwordMan::UpDown(float Axis)
 
 void ASwordMan::LeftRight(float Axis)
 {
+
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
+		return;
+	}
+
 	float movementValue = InputComponent->GetAxisValue(TEXT("UpDown"));
 	if (movementValue > 0.0f || movementValue < 0.0f)
 	{
@@ -91,15 +112,53 @@ void ASwordMan::consoleLog()
 void ASwordMan::Swing()
 {
 	UE_LOG(LogTemp, Warning, TEXT("swinging"));
-	UE_LOG(LogTemp, Warning, TEXT("%f"), lastMove);
+	//UE_LOG(LogTemp, Warning, TEXT("%f"), lastMove);
 	//CurrentSwing = "Swung";
 	if (GetSprite()->GetFlipbook()->GetFName() == "MoveUp")
 	{
+
 		GetSprite()->SetFlipbook(SwingUp);
-		UE_LOG(LogTemp, Warning, TEXT("asdf"));
+		GetSprite()->SetLooping(0);
+		
+		/*while (GetSprite()->GetPlaybackPositionInFrames() < GetSprite()->GetFlipbookLengthInFrames())
+		{
+			GetSprite()->SetPlaybackPositionInFrames(GetSprite()->GetPlaybackPositionInFrames() + 1, 1);
+			UE_LOG(LogTemp, Warning, TEXT("%asdf"));
+		}*/
+
+		/*for (int i = 0; i < GetSprite()->GetFlipbookLengthInFrames(); i++)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("%f"), i);
+		}*/
+		//UE_LOG(LogTemp, Warning, TEXT("asdf"));
+
+		/*if (GetOwner()->GetWorldTimerManager())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("asdf"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("wat"));
+		}*/
+		
+		//GetOwner()->GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
+		//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, GetSprite()->GetFlipbookLength(), false);
+		/*while (GetWorldTimerManager().IsTimerActive(Clock))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
+		}*/
+		//GetWorldTimerManager().IsTimerActive(Clock);
+		GetSprite()->SetLooping(1);
 	}
 
 }
+
+void ASwordMan::SwingAnimation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("asdf"));
+}
+
 
 
 void ASwordMan::MovementAnimations()

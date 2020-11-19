@@ -2,10 +2,12 @@
 
 #pragma once
 
+#include "GameFramework//Actor.h"
+#include "Components/ActorComponent.h"
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "Engine/EngineTypes.h"
-
+#include "TimerManager.h"
 
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
@@ -75,7 +77,6 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* SwingDown;
 
-
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
     int lastMove = 0;
@@ -86,8 +87,13 @@ public:
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
+    void SwingAnimation();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private:
+    FTimerHandle Clock;
+
 	
 };
