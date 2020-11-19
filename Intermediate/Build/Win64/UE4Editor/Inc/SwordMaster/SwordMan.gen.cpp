@@ -17,50 +17,36 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 	SWORDMASTER_API UClass* Z_Construct_UClass_ASwordMan();
 	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter();
 	UPackage* Z_Construct_UPackage__Script_SwordMaster();
-	SWORDMASTER_API UFunction* Z_Construct_UFunction_ASwordMan_setFlip();
+	SWORDMASTER_API UFunction* Z_Construct_UFunction_ASwordMan_MovementAnimations();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 // End Cross Module References
 	void ASwordMan::StaticRegisterNativesASwordMan()
 	{
 		UClass* Class = ASwordMan::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "setFlip", &ASwordMan::execsetFlip },
+			{ "MovementAnimations", &ASwordMan::execMovementAnimations },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
-	struct Z_Construct_UFunction_ASwordMan_setFlip_Statics
+	struct Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics
 	{
-		struct SwordMan_eventsetFlip_Parms
-		{
-			float f1;
-			float f2;
-		};
-		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_f2;
-		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_f1;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ASwordMan_setFlip_Statics::NewProp_f2 = { "f2", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SwordMan_eventsetFlip_Parms, f2), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ASwordMan_setFlip_Statics::NewProp_f1 = { "f1", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(SwordMan_eventsetFlip_Parms, f1), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ASwordMan_setFlip_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASwordMan_setFlip_Statics::NewProp_f2,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASwordMan_setFlip_Statics::NewProp_f1,
-	};
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASwordMan_setFlip_Statics::Function_MetaDataParams[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "SwordMan.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ASwordMan_setFlip_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASwordMan, nullptr, "setFlip", sizeof(SwordMan_eventsetFlip_Parms), Z_Construct_UFunction_ASwordMan_setFlip_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_ASwordMan_setFlip_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ASwordMan_setFlip_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ASwordMan_setFlip_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_ASwordMan_setFlip()
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASwordMan, nullptr, "MovementAnimations", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ASwordMan_MovementAnimations()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ASwordMan_setFlip_Statics::FuncParams);
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ASwordMan_MovementAnimations_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -132,7 +118,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SwordMaster,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_ASwordMan_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_ASwordMan_setFlip, "setFlip" }, // 3468551618
+		{ &Z_Construct_UFunction_ASwordMan_MovementAnimations, "MovementAnimations" }, // 612322754
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::Class_MetaDataParams[] = {
@@ -269,7 +255,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASwordMan, 691309565);
+	IMPLEMENT_CLASS(ASwordMan, 1337427329);
 	template<> SWORDMASTER_API UClass* StaticClass<ASwordMan>()
 	{
 		return ASwordMan::StaticClass();

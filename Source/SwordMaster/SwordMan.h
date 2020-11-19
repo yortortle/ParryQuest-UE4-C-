@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
+#include "Engine/EngineTypes.h"
+
 
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
@@ -77,11 +79,13 @@ public:
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
     int lastMove = 0;
-
+    FString CurrentSwing = "";
 
     UFUNCTION(blueprintcallable)
+    void MovementAnimations();
     void setFlip(float f1, float f2);
     void consoleLog();
+    void Swing();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
