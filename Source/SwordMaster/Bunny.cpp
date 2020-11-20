@@ -10,7 +10,7 @@ void ABunny::BeginPlay()
 
 	Direction = FVector(150, 0, 0);
 
-	AddMovementInput(Direction, 20000);
+	AddMovementInput(Direction, 1);
 }
 
 void ABunny::Tick(float DeltaTime)
