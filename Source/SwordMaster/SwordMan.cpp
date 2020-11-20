@@ -54,7 +54,12 @@ void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
 
-	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+
+	//HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	//HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	//HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	//HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 }
 
 void ASwordMan::Tick(float DeltaTime)
@@ -62,7 +67,13 @@ void ASwordMan::Tick(float DeltaTime)
 	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
-	DrawDebugSphere(GetWorld(), GetActorLocation(), SphereRadius, 20, FColor::Purple, false, -1, 0, 1);
+	//DrawDebugSphere(GetWorld(), GetActorLocation(), SphereRadius, 5, FColor::Purple, false, -1, 0, 1);
+
+	/*if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
+	{
+		HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	}
+	*/
 
 	//Every tick it checks if FTimerHandle clock is actively on a timer or not. If it active, then it will return before running the setflip function to avoid movement conflicts while attempting to execute swing animation
 	if (GetWorldTimerManager().IsTimerActive(Clock))
@@ -147,10 +158,17 @@ void ASwordMan::Swing()
 	
 	//Main logic behind attacking with the sword. A series of conditionals which get the FName of the specific flipbook that is currently
 	//attached to my Paper Character. If that FName is equal to certain strings, it will change the flipbook to the corresponding attack animation flipbook.
-	FName CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
 	{
 		GetSprite()->SetFlipbook(SwingUp);
+
+		if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
+		{
+			HitUp1->SetCollisionProfileName("OverlapAllDynamic");
+			//HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+			HitUp1->SetCollisionProfileName("NoCollision");
+		}
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
@@ -168,6 +186,7 @@ void ASwordMan::Swing()
 		GetSprite()->SetFlipbook(SwingLeft);
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
+	//CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 
 }
 
@@ -180,10 +199,11 @@ void ASwordMan::SwingTimer()
 
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("overlap check"));
+	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("overlap"));
+
 	}
 }
 

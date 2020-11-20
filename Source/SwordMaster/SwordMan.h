@@ -109,6 +109,7 @@ public:
     float Horizontal = 0.0f;
     int lastMove = 0;
     FString CurrentSwing = "";
+    FName CurrentFlipbook;
 
     UFUNCTION(blueprintcallable)
     void MovementAnimations();
