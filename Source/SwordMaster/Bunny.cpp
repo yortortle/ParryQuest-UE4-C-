@@ -31,8 +31,6 @@ void ABunny::TimedMovement()
 		GetSprite()->SetFlipbook(MoveUp);
 		Direction = FVector(0, 0, 2000);
 		AddMovementInput(Direction, 3.0F);
-
-		UE_LOG(LogTemp, Warning, TEXT("log test"));
 	}
 	else if (Direction.Equals(FVector(0, 0, 2000)))
 	{
