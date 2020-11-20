@@ -12,6 +12,7 @@
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/BoxComponent.h"
 
 #include "GameFramework/Controller.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -76,6 +77,19 @@ public:
         UPaperFlipbook* SwingUp;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* SwingDown;
+
+
+
+    //Collision box components for swing animation collisions.
+    // UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+    //UPROPERTY(EditAnywhere)
+       // UBoxComponent* HitUp;
+    /*UPROPERTY(EditAnywhere)
+        UBoxComponent* HitDown;
+    UPROPERTY(EditAnywhere)
+        UBoxComponent* HitLeft;
+    UPROPERTY(EditAnywhere)
+        UBoxComponent* HitRight;*/
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;

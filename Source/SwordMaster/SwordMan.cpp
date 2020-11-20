@@ -6,6 +6,13 @@
 ASwordMan::ASwordMan()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	//HitUp = CreateDefaultSubobject<UBoxComponent>(TEXT("HitUp"));
+	//RootComponent = BodyComponent;
+
+	//CannonComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CannonComponent"));
+	//CannonComponent->AttachTo(BodyComponent);
+
 }
 
 void ASwordMan::BeginPlay()
