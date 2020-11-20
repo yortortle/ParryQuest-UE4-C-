@@ -5,29 +5,27 @@
 
 ASwordMan::ASwordMan()
 {
-	//PC = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("FlipBook"));
 	PrimaryActorTick.bCanEverTick = true;
-	//GetSprite()->SetLooping(0);
-	// where I would initliaize my component so that it's not null so that I can start calling methods on it
 }
 
 void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
-	//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
 }
 
 void ASwordMan::Tick(float DeltaTime)
 {
+	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
 
+	//Every tick it checks if FTimerHandle clock is actively on a timer or not. If it active, then it will return before running the setflip function to avoid movement conflicts while attempting to execute swing animation
 	if (GetWorldTimerManager().IsTimerActive(Clock))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
 		return;
 	}
 
+	//Every tick setflip is run, which holds most of the logic to determining which flipbook to apply to my paper character.
 	setFlip(Vertical, Horizontal);
 }
 
@@ -37,25 +35,27 @@ void ASwordMan::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis("UpDown", this, &ASwordMan::UpDown);
 	PlayerInputComponent->BindAxis("LeftRight", this, &ASwordMan::LeftRight);
-
 	PlayerInputComponent->BindAction("LeftMouse", IE_Pressed, this, &ASwordMan::Swing);
 }
 
+//Function used in my PlayerInputComponent for when Up and Down axis values are pressed.
 void ASwordMan::UpDown(float Axis)
 {
-
+	//Checks to see if the Clock timer is active, if it is it returns to avoid movement conflicts with the swing.
 	if (GetWorldTimerManager().IsTimerActive(Clock))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
 		return;
 	}
 
+	//Another check to determine whether the axis value is influenced for left or right. If there is any conflict here, it will immediately return.
+	//This is how I removed diagonal movement, as if two conflicting axis values are present it will stop you. 
 	float movementValue = InputComponent->GetAxisValue(TEXT("LeftRight"));
 	if (movementValue > 0.0f || movementValue < 0.0f)
 	{
 		return;
 	}
 
+	//Logic for actual movement input, provided it makes it here.
 	FRotator Rotation = Controller->GetControlRotation();
 	FRotator YawRotation(0.0f, Rotation.Yaw, 0.0f);
 	FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Z);
@@ -64,10 +64,9 @@ void ASwordMan::UpDown(float Axis)
 
 void ASwordMan::LeftRight(float Axis)
 {
-
+	
 	if (GetWorldTimerManager().IsTimerActive(Clock))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
 		return;
 	}
 
@@ -85,80 +84,53 @@ void ASwordMan::LeftRight(float Axis)
 
 void ASwordMan::setFlip(float f1, float f2)
 {
-	//This conditional immediately returns if my Sprite is null to avoid crashing UE4 directly.
+	//Insurance that returns if Sprite is null.
 	if (!GetSprite()) {
 		return;
 	}
-	else
-	{
-		//consoleLog();
-	}
 
-	Vertical = f1;
-	Horizontal = f2;
-	//MoveDirection move;
-
-	//Calling the MovementAnimations function, which contains most of the essential logic for switching between different run and idle flipbook states.
+	//Calling the MovementAnimations function, which contains the essential logic for switching between different run and idle flipbook states.
 	MovementAnimations();
 
 	return;
 }
 
-void ASwordMan::consoleLog()
-{
-	UE_LOG(LogTemp, Warning, TEXT("log test"));
-}
-
+//Main swing function, it is executed every time you click with your character.
 void ASwordMan::Swing()
 {
 	UE_LOG(LogTemp, Warning, TEXT("swinging"));
-	//UE_LOG(LogTemp, Warning, TEXT("%f"), lastMove);
-	//CurrentSwing = "Swung";
-	if (GetSprite()->GetFlipbook()->GetFName() == "MoveUp")
+	
+	//Main logic behind attacking with the sword. A series of conditionals which get the FName of the specific flipbook that is currently
+	//attached to my Paper Character. If that FName is equal to certain strings, it will change the flipbook to the corresponding attack animation flipbook.
+	FName CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
 	{
-
 		GetSprite()->SetFlipbook(SwingUp);
-		GetSprite()->SetLooping(0);
-		
-		/*while (GetSprite()->GetPlaybackPositionInFrames() < GetSprite()->GetFlipbookLengthInFrames())
-		{
-			GetSprite()->SetPlaybackPositionInFrames(GetSprite()->GetPlaybackPositionInFrames() + 1, 1);
-			UE_LOG(LogTemp, Warning, TEXT("%asdf"));
-		}*/
-
-		/*for (int i = 0; i < GetSprite()->GetFlipbookLengthInFrames(); i++)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("%f"), i);
-		}*/
-		//UE_LOG(LogTemp, Warning, TEXT("asdf"));
-
-		/*if (GetOwner()->GetWorldTimerManager())
-		{
-			UE_LOG(LogTemp, Warning, TEXT("asdf"));
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("wat"));
-		}*/
-		
-		//GetOwner()->GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
-		//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, 2.f, false);
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingAnimation, GetSprite()->GetFlipbookLength(), false);
-		/*while (GetWorldTimerManager().IsTimerActive(Clock))
-		{
-			UE_LOG(LogTemp, Warning, TEXT("asdfasdfasdfasdf"));
-		}*/
-		//GetWorldTimerManager().IsTimerActive(Clock);
-		GetSprite()->SetLooping(1);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+	}
+	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
+	{
+		GetSprite()->SetFlipbook(SwingDown);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+	}
+	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
+	{
+		GetSprite()->SetFlipbook(SwingRight);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+	}
+	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
+	{
+		GetSprite()->SetFlipbook(SwingLeft);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 
 }
 
-void ASwordMan::SwingAnimation()
+//A simple function to put into my worldtimemanager and record the amount of time before the timer is over. Helps me see how accurate it is with the animation to some degree.
+void ASwordMan::SwingTimer()
 {
-	UE_LOG(LogTemp, Warning, TEXT("asdf"));
+	UE_LOG(LogTemp, Warning, TEXT("Swing Is Complete"));
 }
-
 
 
 void ASwordMan::MovementAnimations()
@@ -166,25 +138,10 @@ void ASwordMan::MovementAnimations()
 	//condition to determine if we're at a standstill or moving
 	if (Vertical != 0.0f || Horizontal != 0.0f)
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("%f, %f"), Vertical, Horizontal);
-
-		//A set of conditions to determine whether the movement input is direct left, right, down, or up. If a condition is met it will set the sprite flipbook to the appropriate animation.
+		//Conditionals to determine whether the movement axis input is left, right, down, or up. If a condition is met it will set the sprite flipbook to the appropriate animation for that direction. It will also update
+		//the int lastMove which will later be used in assigning whichever idle flipbook is necessary.
 		if (Vertical > 0.0f && Horizontal == 0.0f)
 		{
-
-			/*
-			if (CurrentSwing != "")
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Swinging up"));
-				GetSprite()->SetFlipbook(SwingUp);
-				//GetSprite()->
-				CurrentSwing = "";
-				return;
-			}
-			*/
-			//The lastMove integer is what I am using to record the last registered movement state, this is what I use to set idle states, as it reads from the current value of lastMove.
-
-
 			lastMove = 1;
 			GetSprite()->SetFlipbook(MoveUp);
 		}
@@ -204,10 +161,11 @@ void ASwordMan::MovementAnimations()
 			GetSprite()->SetFlipbook(MoveDown);
 		}
 	}
+	//If there is no movement direction on either axis, this else statement will run.
 	else
 	{
 		//If there is a tick that is read without any axis movement direction this switch statement is called. It compares the 4 different cases for the lastMove int, each corresponding to various movement inputs, and then
-		//sets the flipbook to whatever idle animation is appropriate for that corresponding lastMove value.
+		//sets the flipbook to whatever idle animation is appropriate for that corresponding lastMove value. For example, if lastMove is currently set to 3 it will set the flipbook to IdleLeft.
 		switch (lastMove) {
 		case 1: GetSprite()->SetFlipbook(IdleUp);
 			break;
@@ -219,4 +177,9 @@ void ASwordMan::MovementAnimations()
 			break;
 		}
 	}
+}
+
+void ASwordMan::consoleLog()
+{
+	UE_LOG(LogTemp, Warning, TEXT("log test"));
 }

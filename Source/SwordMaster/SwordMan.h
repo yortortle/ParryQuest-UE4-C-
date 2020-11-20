@@ -87,7 +87,7 @@ public:
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
-    void SwingAnimation();
+    void SwingTimer();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
