@@ -8,46 +8,21 @@ ASwordMan::ASwordMan()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	SphereRadius = 100.0f;
-
-	//MyCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("My Sphere"));
-	//MyCollisionSphere->InitSphereRadius(SphereRadius);
-	//MyCollisionSphere->SetCollisionProfileName("Trigger");
-	//RootComponent = MyCollisionSphere;
-
-	//MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
-	//MeshComp->SetupAttachment(RootComponent);
-
-	//MyCollisionSphere->OnComponentBeginOverlap.AddDynamic
-	//HitUp = CreateDefaultSubobject<UBoxComponent>(TEXT("HitUp"));
-
-	//RootComponent = HitUp;
-	//HitUp->SetCollisionProfileName("Pawn");
-	//HitUp->AttachTo(GetSprite());
-	//HitUp->SetBoxExtent(FVector(5, 5, 5), true);
-	//RootComponent = BodyComponent;
-
 	HitDown1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Down Swing"));
 	HitDown1->SetCollisionProfileName("Pawn");
-	//HitDown1->SetBoxExtent(FVector(50, 50, 50), true);
 	HitDown1->AttachTo(RootComponent);
 
 	HitUp1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Up Swing"));
 	HitUp1->SetCollisionProfileName("Pawn");
-	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
 	HitUp1->AttachTo(RootComponent);
 
 	HitRight1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Right Swing"));
 	HitRight1->SetCollisionProfileName("Pawn");
-	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
 	HitRight1->AttachTo(RootComponent);
 
 	HitLeft1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Left Swing"));
 	HitLeft1->SetCollisionProfileName("Pawn");
-	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
 	HitLeft1->AttachTo(RootComponent);
-	
-	//HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 }
 
 void ASwordMan::BeginPlay()
@@ -214,6 +189,7 @@ void ASwordMan::Swing()
 void ASwordMan::SwingTimer()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Swing Is Complete"));
+	GetSprite()->SetSpriteColor(FColor::White);
 }
 
 
@@ -223,6 +199,7 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
+		GetSprite()->SetSpriteColor(FColor::Cyan);
 		OtherActor->Destroy();
 	}
 }
