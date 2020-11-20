@@ -55,11 +55,9 @@ void ASwordMan::BeginPlay()
 	Super::BeginPlay();
 
 	HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
-
-	//HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
-	//HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
-	//HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
-	//HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 }
 
 void ASwordMan::Tick(float DeltaTime)
@@ -165,25 +163,47 @@ void ASwordMan::Swing()
 
 		if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
 		{
-			HitUp1->SetCollisionProfileName("OverlapAllDynamic");
-			//HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+			HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 			HitUp1->SetCollisionProfileName("NoCollision");
 		}
+
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
 	{
 		GetSprite()->SetFlipbook(SwingDown);
+
+		if (GetSprite()->GetFlipbook()->GetFName() == "SwingDown")
+		{
+			HitDown1->SetCollisionProfileName("OverlapOnlyPawn");
+			HitDown1->SetCollisionProfileName("NoCollision");
+		}
+
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
 	{
 		GetSprite()->SetFlipbook(SwingRight);
+
+		if (GetSprite()->GetFlipbook()->GetFName() == "SwingRight")
+		{
+			HitLeft1->SetCollisionProfileName("OverlapOnlyPawn");
+			consoleLog();
+			HitLeft1->SetCollisionProfileName("NoCollision");
+		}
+
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
 	{
 		GetSprite()->SetFlipbook(SwingLeft);
+
+		if (GetSprite()->GetFlipbook()->GetFName() == "SwingLeft")
+		{
+			HitRight1->SetCollisionProfileName("OverlapOnlyPawn");
+			HitRight1->SetCollisionProfileName("NoCollision");
+		}
+
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	//CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
@@ -202,8 +222,8 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("overlap"));
-
+		UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
+		OtherActor->Destroy();
 	}
 }
 
