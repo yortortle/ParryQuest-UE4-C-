@@ -2,22 +2,59 @@
 
 
 #include "SwordMan.h"
+#include "DrawDebugHelpers.h"
 
 ASwordMan::ASwordMan()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	SphereRadius = 100.0f;
+
+	//MyCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("My Sphere"));
+	//MyCollisionSphere->InitSphereRadius(SphereRadius);
+	//MyCollisionSphere->SetCollisionProfileName("Trigger");
+	//RootComponent = MyCollisionSphere;
+
+	//MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
+	//MeshComp->SetupAttachment(RootComponent);
+
+	//MyCollisionSphere->OnComponentBeginOverlap.AddDynamic
 	//HitUp = CreateDefaultSubobject<UBoxComponent>(TEXT("HitUp"));
+
+	//RootComponent = HitUp;
+	//HitUp->SetCollisionProfileName("Pawn");
+	//HitUp->AttachTo(GetSprite());
+	//HitUp->SetBoxExtent(FVector(5, 5, 5), true);
 	//RootComponent = BodyComponent;
 
-	//CannonComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CannonComponent"));
-	//CannonComponent->AttachTo(BodyComponent);
+	HitDown1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Down Swing"));
+	HitDown1->SetCollisionProfileName("Pawn");
+	//HitDown1->SetBoxExtent(FVector(50, 50, 50), true);
+	HitDown1->AttachTo(RootComponent);
 
+	HitUp1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Up Swing"));
+	HitUp1->SetCollisionProfileName("Pawn");
+	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
+	HitUp1->AttachTo(RootComponent);
+
+	HitRight1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Right Swing"));
+	HitRight1->SetCollisionProfileName("Pawn");
+	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
+	HitRight1->AttachTo(RootComponent);
+
+	HitLeft1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Left Swing"));
+	HitLeft1->SetCollisionProfileName("Pawn");
+	//HitDown->SetBoxExtent(FVector(50, 50, 50), true);
+	HitLeft1->AttachTo(RootComponent);
+	
+	//HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 }
 
 void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
+
+	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 }
 
 void ASwordMan::Tick(float DeltaTime)
@@ -25,6 +62,7 @@ void ASwordMan::Tick(float DeltaTime)
 	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
+	DrawDebugSphere(GetWorld(), GetActorLocation(), SphereRadius, 20, FColor::Purple, false, -1, 0, 1);
 
 	//Every tick it checks if FTimerHandle clock is actively on a timer or not. If it active, then it will return before running the setflip function to avoid movement conflicts while attempting to execute swing animation
 	if (GetWorldTimerManager().IsTimerActive(Clock))
@@ -139,6 +177,15 @@ void ASwordMan::SwingTimer()
 	UE_LOG(LogTemp, Warning, TEXT("Swing Is Complete"));
 }
 
+
+void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	UE_LOG(LogTemp, Warning, TEXT("overlap check"));
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("overlap"));
+	}
+}
 
 void ASwordMan::MovementAnimations()
 {

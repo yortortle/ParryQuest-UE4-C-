@@ -8,12 +8,15 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FHitResult;
 #ifdef SWORDMASTER_SwordMan_generated_h
 #error "SwordMan.generated.h already included, missing '#pragma once' in SwordMan.h"
 #endif
 #define SWORDMASTER_SwordMan_generated_h
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_RPC_WRAPPERS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execMovementAnimations) \
 	{ \
@@ -21,10 +24,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_BEGIN; \
 		P_THIS->MovementAnimations(); \
 		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnOverLapBegin) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_GET_UBOOL(Z_Param_bFromSweep); \
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnOverLapBegin(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult); \
+		P_NATIVE_END; \
 	}
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execMovementAnimations) \
 	{ \
@@ -32,10 +49,24 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_BEGIN; \
 		P_THIS->MovementAnimations(); \
 		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnOverLapBegin) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_OtherBodyIndex); \
+		P_GET_UBOOL(Z_Param_bFromSweep); \
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnOverLapBegin(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult); \
+		P_NATIVE_END; \
 	}
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_INCLASS_NO_PURE_DECLS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASwordMan(); \
 	friend struct Z_Construct_UClass_ASwordMan_Statics; \
@@ -44,7 +75,7 @@ public: \
 	DECLARE_SERIALIZER(ASwordMan)
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_INCLASS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_INCLASS \
 private: \
 	static void StaticRegisterNativesASwordMan(); \
 	friend struct Z_Construct_UClass_ASwordMan_Statics; \
@@ -53,7 +84,7 @@ public: \
 	DECLARE_SERIALIZER(ASwordMan)
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_STANDARD_CONSTRUCTORS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ASwordMan(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ASwordMan) \
@@ -66,7 +97,7 @@ private: \
 public:
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_ENHANCED_CONSTRUCTORS \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ASwordMan(ASwordMan&&); \
@@ -77,26 +108,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ASwordMan); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ASwordMan)
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_PRIVATE_PROPERTY_OFFSET
-#define SwordMaster_Source_SwordMaster_SwordMan_h_25_PROLOG
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_GENERATED_BODY_LEGACY \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_PRIVATE_PROPERTY_OFFSET
+#define SwordMaster_Source_SwordMaster_SwordMan_h_27_PROLOG
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_RPC_WRAPPERS \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_INCLASS \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_STANDARD_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_RPC_WRAPPERS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_INCLASS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SwordMaster_Source_SwordMaster_SwordMan_h_28_GENERATED_BODY \
+#define SwordMaster_Source_SwordMaster_SwordMan_h_30_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_INCLASS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_SwordMan_h_28_ENHANCED_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_RPC_WRAPPERS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_INCLASS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_SwordMan_h_30_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

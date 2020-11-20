@@ -8,6 +8,8 @@
 #include "PaperCharacter.h"
 #include "Engine/EngineTypes.h"
 #include "TimerManager.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/SphereComponent.h"
 
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
@@ -80,16 +82,28 @@ public:
 
 
 
-    //Collision box components for swing animation collisions.
-    // UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-    //UPROPERTY(EditAnywhere)
-       // UBoxComponent* HitUp;
-    /*UPROPERTY(EditAnywhere)
-        UBoxComponent* HitDown;
+   // Collision box components for swing animation collisions.
+    UPROPERTY(VisibleAnywhere)
+        UBoxComponent* HitUp1;
+    UPROPERTY(VisibleAnywhere)
+        UBoxComponent* HitDown1;
+    UPROPERTY(VisibleAnywhere)
+        UBoxComponent* HitLeft1;
+    UPROPERTY(VisibleAnywhere)
+        UBoxComponent* HitRight1;
+
+
     UPROPERTY(EditAnywhere)
-        UBoxComponent* HitLeft;
-    UPROPERTY(EditAnywhere)
-        UBoxComponent* HitRight;*/
+        UStaticMeshComponent* MeshComp;
+
+    UPROPERTY(VisibleAnywhere)
+        USphereComponent* MyCollisionSphere;
+
+    UFUNCTION()
+        void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+    float SphereRadius;
+
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
@@ -98,6 +112,7 @@ public:
 
     UFUNCTION(blueprintcallable)
     void MovementAnimations();
+
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
