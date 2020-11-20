@@ -51,4 +51,14 @@
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\SwordMaster\Bunny.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
