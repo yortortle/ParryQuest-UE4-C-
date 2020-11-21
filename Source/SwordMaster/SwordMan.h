@@ -144,6 +144,7 @@ private:
     FTimerHandle BlinkFTimer;
     FTimerHandle ParryTimer;
     FTimerHandle BlinkCDFTimer;
+    FTimerHandle BlinkClock;
 
 	
 };

@@ -53,6 +53,12 @@ void ASwordMan::Tick(float DeltaTime)
 		return;
 	}
 
+	if (GetWorldTimerManager().IsTimerActive(BlinkClock))
+	{
+		return;
+	}
+
+
 	//Every tick setflip is run, which holds most of the logic to determining which flipbook to apply to my paper character.
 	setFlip(Vertical, Horizontal);
 }
@@ -71,7 +77,7 @@ void ASwordMan::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ASwordMan::UpDown(float Axis)
 {
 	//Checks to see if the Clock timer is active, if it is it returns to avoid movement conflicts with the swing.
-	if (GetWorldTimerManager().IsTimerActive(Clock))
+	if ((GetWorldTimerManager().IsTimerActive(Clock)) || (GetWorldTimerManager().IsTimerActive(BlinkClock)))
 	{
 		return;
 	}
@@ -94,7 +100,7 @@ void ASwordMan::UpDown(float Axis)
 void ASwordMan::LeftRight(float Axis)
 {
 	
-	if (GetWorldTimerManager().IsTimerActive(Clock))
+	if ((GetWorldTimerManager().IsTimerActive(Clock)) || (GetWorldTimerManager().IsTimerActive(BlinkClock)))
 	{
 		return;
 	}
@@ -120,15 +126,22 @@ void ASwordMan::setFlip(float f1, float f2)
 
 	//Calling the MovementAnimations function, which contains the essential logic for switching between different run and idle flipbook states.
 	MovementAnimations();
-
 	return;
 }
 
 //Main swing function, it is executed every time you click with your character.
 void ASwordMan::Swing()
 {
-	UE_LOG(LogTemp, Warning, TEXT("swinging"));
 	
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		return;
+	}
+
+	//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+
+	consoleLog();
+
 	//Main logic behind attacking with the sword. A series of conditionals which get the FName of the specific flipbook that is currently
 	//attached to my Paper Character. If that FName is equal to certain strings, it will change the flipbook to the corresponding attack animation flipbook.
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
@@ -155,6 +168,7 @@ void ASwordMan::Swing()
 	}
 	//Sets a timer that will return on any other input so that the swing will remain out and not get interrupted by other conflicting flipbooks
 	GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+
 }
 
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -262,7 +276,7 @@ void ASwordMan::Blink()
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight" || CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown" || CurrentFlipbook == "MoveLeft" || "IdleLeft")
 	{
 		//This sets a timer which will execute the BlinkTimer in .15 seconds. This function maintains most of the blink mechanic main functionality.
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.15f, false);
+		GetWorldTimerManager().SetTimer(BlinkClock, this, &ASwordMan::BlinkTimer, 0.15f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 	}
 }
@@ -321,7 +335,7 @@ void ASwordMan::ReverseSword()
 
 void ASwordMan::DetermineSwing()
 {
-	if (GetWorldTimerManager().IsTimerActive(Clock))
+	if (GetWorldTimerManager().IsTimerActive(BlinkClock))
 	{
 		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 		UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
@@ -367,5 +381,5 @@ void ASwordMan::SwingTimer()
 
 void ASwordMan::consoleLog()
 {
-	UE_LOG(LogTemp, Warning, TEXT("asdf"));
+	UE_LOG(LogTemp, Warning, TEXT("swinging"));
 }
