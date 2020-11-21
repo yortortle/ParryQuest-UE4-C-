@@ -120,6 +120,7 @@ public:
     void Blink();
     void SwingTimer();
     void BlinkTimer();
+    void BlinkCoolDown();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

@@ -250,11 +250,6 @@ void ASwordMan::MovementAnimations()
 	}
 }
 
-void ASwordMan::consoleLog()
-{
-	UE_LOG(LogTemp, Warning, TEXT("log test"));
-}
-
 void ASwordMan::Blink()
 {
 	CurrentLocation = ASwordMan::GetActorLocation();
@@ -262,13 +257,15 @@ void ASwordMan::Blink()
 	//CurrentLocation. = CurrentLocation.X + 15;
 	//CurrentLocation.Z = CurrentLocation.Z + 15;
 
+	//consoleLog();
 	if (Vertical > 0.0f && Horizontal == 0.0f)
 	{
 		//ASwordMan::GetActorLocation();
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.2f, false);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.15f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 		//ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 		UE_LOG(LogTemp, Warning, TEXT("Up"));
+		//return;
 	}
 	else if (Vertical == 0.0f && Horizontal > 0.0f)
 	{
@@ -285,14 +282,23 @@ void ASwordMan::Blink()
 		lastMove = 4;
 		UE_LOG(LogTemp, Warning, TEXT("down"));
 	}
-	consoleLog();
 }
 
 void ASwordMan::BlinkTimer()
 {
 	CurrentLocation.Z = CurrentLocation.Z + 50;
-	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkTimer, 1.f, false);
+	GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 2.f, false);
 	consoleLog();
 	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 	GetSprite()->SetSpriteColor(FColor::White);
+}
+
+void ASwordMan::BlinkCoolDown()
+{
+	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
+}
+
+void ASwordMan::consoleLog()
+{
+	UE_LOG(LogTemp, Warning, TEXT("LOG"));
 }
