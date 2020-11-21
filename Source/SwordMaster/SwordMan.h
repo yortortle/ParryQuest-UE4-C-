@@ -113,6 +113,8 @@ public:
     FName CurrentFlipbook;
     FName LastFlipbook;
     FVector CurrentLocation;
+    FVector NewLocation;
+    float blinkDistance = 50.f;
 
     UFUNCTION(blueprintcallable)
     void MovementAnimations();
@@ -128,7 +130,7 @@ public:
     void ReverseSword();
 
     //void checkBlinkCollision();
-    //void DetermineBlinkVector();
+    FVector DetermineBlinkVector(FVector Location);
     //void ParryTeleport();
 
 

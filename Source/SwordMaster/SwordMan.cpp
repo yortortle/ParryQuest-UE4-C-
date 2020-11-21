@@ -226,13 +226,6 @@ void ASwordMan::Swing()
 
 }
 
-//A simple function to put into my worldtimemanager and record the amount of time before the timer is over. Helps me see how accurate it is with the animation to some degree.
-void ASwordMan::SwingTimer()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Swing Is Complete"));
-	GetSprite()->SetSpriteColor(FColor::White);
-}
-
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
@@ -252,6 +245,7 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 		UE_LOG(LogTemp, Warning, TEXT("collision without attacking"));
 	}
 	
+
 	/* saving this code for later incase i need it
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
@@ -310,84 +304,61 @@ void ASwordMan::MovementAnimations()
 
 void ASwordMan::Blink()
 {
+
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		return;
+	}
+
+	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
+	{
+		//add function call here to determine which value to update 
+		//NewLocation = CurrentLocation.Z = CurrentLocation.Z + 50;
+		//CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+		//NewLocation = DetermineBlinkVector(ASwordMan::GetActorLocation());
+
+		ASwordMan::TeleportTo(DetermineBlinkVector(CurrentLocation), FRotator(0, 0, 0), false, false);
+		BlinkCoolDown();
+		return;
+	}
+
+	//This is how cooldown works, if there's an active cooldown timer it will simply return and not allow you to blink.
 	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
 	{
-		consoleLog();
 		return;
 	}
 
 	CurrentLocation = ASwordMan::GetActorLocation();
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-	//CurrentLocation.X = CurrentLocation.X + 15;
-	//CurrentLocation. = CurrentLocation.X + 15;
-	//CurrentLocation.Z = CurrentLocation.Z + 15;
 
+	//a check if ParryTimer is active and blink has been cast again which will then run the double blink
 
-	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
+	//This is what starts the actual blink animation and functionality
+	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight" || CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown" || CurrentFlipbook == "MoveLeft" || "IdleLeft")
 	{
-
-		//add function call here to determine which value to update 
-		CurrentLocation.Z = CurrentLocation.Z + 50;
-		ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
-		BlinkCoolDown();
-
-		//LastFlipbook = GetSprite()->GetFlipbook()->GetFName;
-		//Swing();
-		//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::ReverseSword, 0.15f, false);
-
-
-		//GetSprite()->SetPlayRate(0.65);
-
-		///
-		//This();
-		//GetSprite()->ReverseFromEnd();
-
-		//GetSprite()->ReverseFromEnd();
-		///
-
-
-		return;
-	}
-
-	if (CurrentFlipbook == "MoveUp")
-	{
-		//ASwordMan::GetActorLocation();
+		//This sets a timer which will execute the BlinkTimer in .15 seconds. This function maintains most of the blink mechanic main functionality.
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.15f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
-		//ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
-		UE_LOG(LogTemp, Warning, TEXT("Up"));
-		//return;
-	}
-	else if (Vertical == 0.0f && Horizontal > 0.0f)
-	{
-		//lastMove = 2;
-		UE_LOG(LogTemp, Warning, TEXT("right"));;
-	}
-	else if (Vertical == 0.0f && Horizontal < 0.0f)
-	{
-		lastMove = 3;
-		UE_LOG(LogTemp, Warning, TEXT("left"));
-	}
-	else if (Vertical < 0.0f && Horizontal == 0.0f)
-	{
-		lastMove = 4;
-		UE_LOG(LogTemp, Warning, TEXT("down"));
 	}
 }
 
+
+//This function provides the main functionality for the double tap sword blink / parry mechanic
 void ASwordMan::BlinkTimer()
 {
-	/////
+	//This function happens if you decide to perform a swing while the charge up animation for blink is happening. This starts up a slower swing animation which will be a parry mechanic, 
+	//you're able to press shift again to cancel and blink out of this dash as well for increased mobility.
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-	if (CurrentFlipbook == "SwingUp")
+	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
 	{
 		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-		//condition for if double press shift
+
+		//*Here we set another timer during which you can press shift again to dash, once this function is called after the timer ends the playrate of your flipbook is reset so the slower attack does not remain.
+		//The timer for this function lasts exactly as long as the animation for your swing, as it has a duration of the length of the flipbook minus the starting time in the flipbook.
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
 		GetSprite()->SetPlayRate(0.7);
-	
-		//GetSprite()->PlayFromStart();
+
 		HitUp1->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
@@ -400,55 +371,64 @@ void ASwordMan::BlinkTimer()
 		UE_LOG(LogTemp, Warning, TEXT("No Swing Regular Blink"));
 	}
 
-	//don't need to make different blink timers, check flipbook for each of them and use that to determine teleport location. refactor into seperate function
-	CurrentLocation.Z = CurrentLocation.Z + 50;
-	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
+	NewLocation = DetermineBlinkVector(CurrentLocation);
 	BlinkCoolDown();
-	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
-
-	//////
-	//UCapsuleComponent* SwordCapsule = 
-	//GetOwner()->FindComponentByClass<UCapsuleComponent>()->SetCollisionProfileName("OverLapOnlyPawn");
-	//GetOwner()->FindComponentByClass<UCapsuleComponent>()->SetCollisionProfileName("NoCollision");
-		
-	//SetCollisionProfileName("OverlapOnlyPawn");
-	//GetSprite()->SetCollisionProfileName("NoCollision");
-
-	/*
-	if (ASwordMan::LastHitBy != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("hit something"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("hit something"));
-	}
-	*/
+	ASwordMan::TeleportTo(NewLocation, FRotator(0, 0, 0), false, false);
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
+
 void ASwordMan::BlinkCoolDown()
 {
-	GetSprite()->SetSpriteColor(FColor::Red);
-	consoleLog();
 	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::ReverseSword, 0.5f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
 }
 
+//This function is what's called after the timer for the parry mechanic ends. Currently this is used to carry the hitbox forward as I blink a second time.
 void ASwordMan::ParryCD()
 {
+	//During the special swing animation, I decrease its speed to give more time to decide and parry - this is the functionality that returns sword swings to their usual speed.
 	GetSprite()->SetPlayRate(1.0);
-	//GetSprite()->Reverse();
 	UE_LOG(LogTemp, Warning, TEXT("PARRY CD"));
 	HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 	HitUp1->SetCollisionProfileName("NoCollision");
 }
 
+//This function is what runs right after the blink cooldown is over, currently only used for changing color and printing a confirmation message
 void ASwordMan::ReverseSword()
 {
-	//this is where functionality for post double teleport goes
-	//GetSprite()->Reverse();
 	UE_LOG(LogTemp, Warning, TEXT("blink is on cd"));
+	GetSprite()->SetSpriteColor(FColor::White);
+}
+
+//function that determines the updated blink vector location after you press shift
+FVector ASwordMan::DetermineBlinkVector(FVector Location)
+{
+
+	//if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || ((CurrentFlipbook == "SwingUp") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
+	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
+	{
+		Location.Z += blinkDistance;
+	}
+	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
+	{
+		Location.X -= blinkDistance;
+	}
+	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
+	{
+		Location.X += blinkDistance;
+	}
+	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
+	{
+		Location.Z -= blinkDistance;
+	}
+	return Location;
+}
+
+//A simple function to put into my worldtimemanager and record the amount of time before the timer is over. Helps me see how accurate it is with the animation to some degree.
+void ASwordMan::SwingTimer()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Swing Is Complete"));
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
