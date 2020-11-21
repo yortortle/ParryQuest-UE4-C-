@@ -114,6 +114,7 @@ public:
     FName LastFlipbook;
     FVector CurrentLocation;
     FVector NewLocation;
+    UBoxComponent* NewBox;
     float blinkDistance = 50.f;
 
     UFUNCTION(blueprintcallable)
@@ -128,7 +129,8 @@ public:
     void BlinkCoolDown();
     void ParryCD();
     void ReverseSword();
-    void DetermineSwing();
+
+    void DetermineSwing(UBoxComponent* Box);
 
 
     //void checkBlinkCollision();

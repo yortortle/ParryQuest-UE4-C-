@@ -138,8 +138,6 @@ void ASwordMan::Swing()
 		return;
 	}
 
-	//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
-
 	consoleLog();
 
 	//Main logic behind attacking with the sword. A series of conditionals which get the FName of the specific flipbook that is currently
@@ -148,24 +146,28 @@ void ASwordMan::Swing()
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
 	{
 		GetSprite()->SetFlipbook(SwingUp);
+		NewBox = HitUp1;
 		//function containing timer logic to determine whether this is a double blink swing accessesed later on or not
-		DetermineSwing();
 	}
 	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
 	{
 		GetSprite()->SetFlipbook(SwingDown);
-		DetermineSwing();
+		NewBox = HitDown1;
+		//DetermineSwing(HitDown1);
 	}
 	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
 	{
 		GetSprite()->SetFlipbook(SwingRight);
-		DetermineSwing();
+		NewBox = HitRight1;
+		//DetermineSwing(HitRight1);
 	}
 	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
 	{
 		GetSprite()->SetFlipbook(SwingLeft);
-		DetermineSwing();
+		NewBox = HitLeft1;
+		//DetermineSwing(HitLeft1);
 	}
+	DetermineSwing(NewBox);
 	//Sets a timer that will return on any other input so that the swing will remain out and not get interrupted by other conflicting flipbooks
 	GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 
@@ -175,6 +177,8 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 {
 	
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+
+	/*
 	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
 	{
 		if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
@@ -188,16 +192,20 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	{
 		UE_LOG(LogTemp, Warning, TEXT("collision without attacking"));
 	}
+	*/
 	
 
-	/* saving this code for later incase i need it
+	// saving this code for later incase i need it
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
 		GetSprite()->SetSpriteColor(FColor::Cyan);
 		OtherActor->Destroy();
 	}
-	*/
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("collision without attacking"));
+	}
 }
 
 void ASwordMan::MovementAnimations()
@@ -290,11 +298,11 @@ void ASwordMan::BlinkTimer()
 	//this conditional determines whether you swing while in your blink charge. If you do, you'll enter a parry stance which will be like a strong delayed attack. You can blink again out of this for increased mobility.
 	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
 	{
-		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+		NewBox->SetCollisionProfileName("OverlapOnlyPawn");
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
 		GetSprite()->SetPlayRate(0.6);
-		HitUp1->SetCollisionProfileName("NoCollision");
+		NewBox->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
 		return;
@@ -321,9 +329,9 @@ void ASwordMan::ParryCD()
 {
 	//During the special swing animation, I decrease its speed to give more time to decide and parry - this is the functionality that returns sword swings to their usual speed.
 	GetSprite()->SetPlayRate(1.0);
-	UE_LOG(LogTemp, Warning, TEXT("PARRY CD"));
-	HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-	HitUp1->SetCollisionProfileName("NoCollision");
+
+	NewBox->SetCollisionProfileName("OverlapOnlyPawn");
+	NewBox->SetCollisionProfileName("NoCollision");
 }
 
 //This function is what runs right after the blink cooldown is over, currently only used for changing color and printing a confirmation message
@@ -333,20 +341,21 @@ void ASwordMan::ReverseSword()
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
-void ASwordMan::DetermineSwing()
+void ASwordMan::DetermineSwing(UBoxComponent* Box)
 {
 	if (GetWorldTimerManager().IsTimerActive(BlinkClock))
 	{
-		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+		consoleLog();
+		Box->SetCollisionProfileName("OverlapOnlyPawn");
 		UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
 
 		BlinkTimer();
-		HitUp1->SetCollisionProfileName("NoCollision");
+		Box->SetCollisionProfileName("NoCollision");
 	}
 	else
 	{
-		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-		HitUp1->SetCollisionProfileName("NoCollision");
+		Box->SetCollisionProfileName("OverlapOnlyPawn");
+		Box->SetCollisionProfileName("NoCollision");
 	}
 }
 
@@ -381,5 +390,5 @@ void ASwordMan::SwingTimer()
 
 void ASwordMan::consoleLog()
 {
-	UE_LOG(LogTemp, Warning, TEXT("swinging"));
+	UE_LOG(LogTemp, Warning, TEXT("determine swing is running!"));
 }
