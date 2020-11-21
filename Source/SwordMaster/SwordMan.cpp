@@ -40,33 +40,6 @@ void ASwordMan::Tick(float DeltaTime)
 	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
-	//DrawDebugSphere(GetWorld(), GetActorLocation(), SphereRadius, 5, FColor::Purple, false, -1, 0, 1);
-
-	/*if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
-	{
-		HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
-	}
-	*/
-
-	/*if (GetWorldTimerManager().IsTimerActive(ParryTimer))
-	{
-		GetSprite()->SetSpriteColor(FColor::Black);
-	}*/
-
-	/*
-	if (!(FHitResult().IsValidBlockingHit()))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("hit something"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("havent hit something"));
-	}
-	*/
-
-	//ASWordMan.FHitResult
-
-	//FHitResult().GetActor();
 
 	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
 	{
@@ -259,8 +232,13 @@ void ASwordMan::MovementAnimations()
 	}
 }
 
+//blink, when you press shift in game teleports you in whatever direction your face with added functionality
 void ASwordMan::Blink()
 {
+	CurrentLocation = ASwordMan::GetActorLocation();
+	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+
+	//if you commit to another shift press while the parry timer is active you will do the 'double blink' mechanic
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
 		ASwordMan::TeleportTo(DetermineBlinkVector(CurrentLocation), FRotator(0, 0, 0), false, false);
@@ -268,21 +246,17 @@ void ASwordMan::Blink()
 		return;
 	}
 
+	//to prevent blink inputs going off while swinging, as clock is always active during a swing.
 	if (GetWorldTimerManager().IsTimerActive(Clock))
 	{
 		return;
 	}
 
-	//This is how cooldown works, if there's an active cooldown timer it will simply return and not allow you to blink.
+	//if there's an active cooldown timer it will simply return and not allow you to blink.
 	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
 	{
 		return;
 	}
-
-	CurrentLocation = ASwordMan::GetActorLocation();
-	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-
-	//a check if ParryTimer is active and blink has been cast again which will then run the double blink
 
 	//This is what starts the actual blink animation and functionality
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight" || CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown" || CurrentFlipbook == "MoveLeft" || "IdleLeft")
@@ -297,24 +271,18 @@ void ASwordMan::Blink()
 //This function provides the main functionality for the double tap sword blink / parry mechanic
 void ASwordMan::BlinkTimer()
 {
-	//This function happens if you decide to perform a swing while the charge up animation for blink is happening. This starts up a slower swing animation which will be a parry mechanic, 
-	//you're able to press shift again to cancel and blink out of this dash as well for increased mobility.
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+	
+	//this conditional determines whether you swing while in your blink charge. If you do, you'll enter a parry stance which will be like a strong delayed attack. You can blink again out of this for increased mobility.
 	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
 	{
 		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-
-		//*Here we set another timer during which you can press shift again to dash, once this function is called after the timer ends the playrate of your flipbook is reset so the slower attack does not remain.
-		//The timer for this function lasts exactly as long as the animation for your swing, as it has a duration of the length of the flipbook minus the starting time in the flipbook.
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
-		GetSprite()->SetPlayRate(0.7);
-
+		GetSprite()->SetPlayRate(0.6);
 		HitUp1->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
-		//PlayerInputComponent->BindAction("Blink", IE_Pressed, this, &ASwordMan::Blink);
-		//LastFlipbook == CurrentFlipbook;
 		return;
 	}
 	else
@@ -322,10 +290,9 @@ void ASwordMan::BlinkTimer()
 		UE_LOG(LogTemp, Warning, TEXT("No Swing Regular Blink"));
 	}
 
-	NewLocation = DetermineBlinkVector(CurrentLocation);
 	BlinkCoolDown();
+	NewLocation = DetermineBlinkVector(CurrentLocation);
 	ASwordMan::TeleportTo(NewLocation, FRotator(0, 0, 0), false, false);
-	GetSprite()->SetSpriteColor(FColor::White);
 }
 
 
