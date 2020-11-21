@@ -304,12 +304,6 @@ void ASwordMan::MovementAnimations()
 
 void ASwordMan::Blink()
 {
-
-	if (GetWorldTimerManager().IsTimerActive(Clock))
-	{
-		return;
-	}
-
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
 		//add function call here to determine which value to update 
@@ -319,6 +313,11 @@ void ASwordMan::Blink()
 
 		ASwordMan::TeleportTo(DetermineBlinkVector(CurrentLocation), FRotator(0, 0, 0), false, false);
 		BlinkCoolDown();
+		return;
+	}
+
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
 		return;
 	}
 
@@ -406,7 +405,10 @@ FVector ASwordMan::DetermineBlinkVector(FVector Location)
 {
 
 	//if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || ((CurrentFlipbook == "SwingUp") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
-	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
+
+	// (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "SwingUp")
+
+	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || ((CurrentFlipbook == "SwingUp") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
 	{
 		Location.Z += blinkDistance;
 	}
