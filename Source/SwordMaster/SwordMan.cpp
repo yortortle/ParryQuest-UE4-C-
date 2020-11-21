@@ -144,11 +144,16 @@ void ASwordMan::Swing()
 			{
 				UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
 				//LastFlipbook = CurrentFlipbook;
+				GetSprite()->SetPlayRate(0.7);
 				BlinkTimer();
+				GetSprite()->SetPlayRate(1.0);
 				//return;
 			}
-			HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-			HitUp1->SetCollisionProfileName("NoCollision");
+			else 
+			{
+				HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+				HitUp1->SetCollisionProfileName("NoCollision");
+			}
 		}
 	
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
@@ -271,8 +276,11 @@ void ASwordMan::Blink()
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
 		consoleLog();
+		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 		CurrentLocation.Z = CurrentLocation.Z + 50;
 		ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
+		HitUp1->SetCollisionProfileName("NoCollision");
+		//GetSprite()->SetPlayRate(1.0);
 		return;
 	}
 
