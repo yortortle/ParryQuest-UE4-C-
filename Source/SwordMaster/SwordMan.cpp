@@ -142,11 +142,13 @@ void ASwordMan::Swing()
 			////
 			if (GetWorldTimerManager().IsTimerActive(Clock))
 			{
+				HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 				UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
 				//LastFlipbook = CurrentFlipbook;
 				GetSprite()->SetPlayRate(0.7);
 				BlinkTimer();
 				GetSprite()->SetPlayRate(1.0);
+				HitUp1->SetCollisionProfileName("NoCollision");
 				//return;
 			}
 			else 
@@ -265,6 +267,12 @@ void ASwordMan::MovementAnimations()
 
 void ASwordMan::Blink()
 {
+	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
+	{
+		consoleLog();
+		return;
+	}
+
 	CurrentLocation = ASwordMan::GetActorLocation();
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	//CurrentLocation.X = CurrentLocation.X + 15;
@@ -276,10 +284,11 @@ void ASwordMan::Blink()
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
 		consoleLog();
-		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+
+		//add function call here to determine which value to update 
 		CurrentLocation.Z = CurrentLocation.Z + 50;
 		ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
-		HitUp1->SetCollisionProfileName("NoCollision");
+		BlinkCoolDown();
 		//GetSprite()->SetPlayRate(1.0);
 		return;
 	}
@@ -316,10 +325,11 @@ void ASwordMan::BlinkTimer()
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	if (CurrentFlipbook == "SwingUp")
 	{
+		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 		//condition for if double press shift
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
-
+		HitUp1->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
 		//PlayerInputComponent->BindAction("Blink", IE_Pressed, this, &ASwordMan::Blink);
@@ -333,7 +343,8 @@ void ASwordMan::BlinkTimer()
 
 	//don't need to make different blink timers, check flipbook for each of them and use that to determine teleport location. refactor into seperate function
 	CurrentLocation.Z = CurrentLocation.Z + 50;
-	GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
+	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
+	BlinkCoolDown();
 	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 	GetSprite()->SetSpriteColor(FColor::White);
 }
@@ -342,16 +353,18 @@ void ASwordMan::BlinkCoolDown()
 {
 	GetSprite()->SetSpriteColor(FColor::Red);
 	consoleLog();
-	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
+	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::consoleLog, 1.0f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
 }
 
 void ASwordMan::ParryCD()
 {
 	UE_LOG(LogTemp, Warning, TEXT("PARRY CD"));
+	HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+	HitUp1->SetCollisionProfileName("NoCollision");
 }
 
 void ASwordMan::consoleLog()
 {
-	UE_LOG(LogTemp, Warning, TEXT("LOG"));
+	UE_LOG(LogTemp, Warning, TEXT("blink is on cd"));
 }
