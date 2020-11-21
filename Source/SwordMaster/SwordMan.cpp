@@ -2,13 +2,13 @@
 
 
 #include "SwordMan.h"
-#include "DrawDebugHelpers.h"
 
 ASwordMan::ASwordMan()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	HitDown1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Down Swing"));
+	//Creating collision box components to use as hitboxes for my sword in game.
+	HitDown1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Down Swing")); 
 	HitDown1->SetCollisionProfileName("Pawn");
 	HitDown1->AttachTo(RootComponent);
 
@@ -29,7 +29,8 @@ void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
 
-	HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+	//This is me replacing the delegate OnComponentBeginOverlap with my custom one for my purposes to either destroy actors or interact with them.
+	HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin); 
 	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 	HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
@@ -158,8 +159,7 @@ void ASwordMan::Swing()
 
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
-
+	
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
 	{
