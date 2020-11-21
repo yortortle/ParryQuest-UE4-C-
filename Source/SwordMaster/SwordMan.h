@@ -108,8 +108,8 @@ public:
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
     int lastMove = 0;
-    FString CurrentSwing = "";
     FName CurrentFlipbook;
+    FVector CurrentLocation;
 
     UFUNCTION(blueprintcallable)
     void MovementAnimations();
@@ -117,13 +117,16 @@ public:
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
+    void Blink();
     void SwingTimer();
+    void BlinkTimer();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
     FTimerHandle Clock;
+    FTimerHandle BlinkFTimer;
 
 	
 };

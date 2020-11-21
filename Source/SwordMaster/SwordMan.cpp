@@ -65,6 +65,7 @@ void ASwordMan::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("UpDown", this, &ASwordMan::UpDown);
 	PlayerInputComponent->BindAxis("LeftRight", this, &ASwordMan::LeftRight);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Pressed, this, &ASwordMan::Swing);
+	PlayerInputComponent->BindAction("Blink", IE_Pressed, this, &ASwordMan::Blink);
 }
 
 //Function used in my PlayerInputComponent for when Up and Down axis values are pressed.
@@ -192,7 +193,6 @@ void ASwordMan::SwingTimer()
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
-
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
@@ -253,4 +253,46 @@ void ASwordMan::MovementAnimations()
 void ASwordMan::consoleLog()
 {
 	UE_LOG(LogTemp, Warning, TEXT("log test"));
+}
+
+void ASwordMan::Blink()
+{
+	CurrentLocation = ASwordMan::GetActorLocation();
+	//CurrentLocation.X = CurrentLocation.X + 15;
+	//CurrentLocation. = CurrentLocation.X + 15;
+	//CurrentLocation.Z = CurrentLocation.Z + 15;
+
+	if (Vertical > 0.0f && Horizontal == 0.0f)
+	{
+		//ASwordMan::GetActorLocation();
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.2f, false);
+		GetSprite()->SetSpriteColor(FColor::Green);
+		//ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
+		UE_LOG(LogTemp, Warning, TEXT("Up"));
+	}
+	else if (Vertical == 0.0f && Horizontal > 0.0f)
+	{
+		//lastMove = 2;
+		UE_LOG(LogTemp, Warning, TEXT("right"));;
+	}
+	else if (Vertical == 0.0f && Horizontal < 0.0f)
+	{
+		lastMove = 3;
+		UE_LOG(LogTemp, Warning, TEXT("left"));
+	}
+	else if (Vertical < 0.0f && Horizontal == 0.0f)
+	{
+		lastMove = 4;
+		UE_LOG(LogTemp, Warning, TEXT("down"));
+	}
+	consoleLog();
+}
+
+void ASwordMan::BlinkTimer()
+{
+	CurrentLocation.Z = CurrentLocation.Z + 50;
+	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkTimer, 1.f, false);
+	consoleLog();
+	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
+	GetSprite()->SetSpriteColor(FColor::White);
 }
