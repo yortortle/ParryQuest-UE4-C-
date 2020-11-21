@@ -53,6 +53,21 @@ void ASwordMan::Tick(float DeltaTime)
 		GetSprite()->SetSpriteColor(FColor::Black);
 	}*/
 
+	/*
+	if (!(FHitResult().IsValidBlockingHit()))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("hit something"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("havent hit something"));
+	}
+	*/
+
+	//ASWordMan.FHitResult
+
+	//FHitResult().GetActor();
+
 	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
 	{
 		GetSprite()->SetSpriteColor(FColor::Black);
@@ -221,12 +236,30 @@ void ASwordMan::SwingTimer()
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("no actor present"));
+
+	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
+	{
+		if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
+			GetSprite()->SetSpriteColor(FColor::Cyan);
+			OtherActor->Destroy();
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("collision without attacking"));
+	}
+	
+	/* saving this code for later incase i need it
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
 		GetSprite()->SetSpriteColor(FColor::Cyan);
 		OtherActor->Destroy();
 	}
+	*/
 }
 
 void ASwordMan::MovementAnimations()
@@ -289,7 +322,6 @@ void ASwordMan::Blink()
 	//CurrentLocation. = CurrentLocation.X + 15;
 	//CurrentLocation.Z = CurrentLocation.Z + 15;
 
-	//consoleLog();
 
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
@@ -373,6 +405,25 @@ void ASwordMan::BlinkTimer()
 	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
 	BlinkCoolDown();
 	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
+
+	//////
+	//UCapsuleComponent* SwordCapsule = 
+	//GetOwner()->FindComponentByClass<UCapsuleComponent>()->SetCollisionProfileName("OverLapOnlyPawn");
+	//GetOwner()->FindComponentByClass<UCapsuleComponent>()->SetCollisionProfileName("NoCollision");
+		
+	//SetCollisionProfileName("OverlapOnlyPawn");
+	//GetSprite()->SetCollisionProfileName("NoCollision");
+
+	/*
+	if (ASwordMan::LastHitBy != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("hit something"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("hit something"));
+	}
+	*/
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
@@ -403,5 +454,5 @@ void ASwordMan::ReverseSword()
 
 void ASwordMan::consoleLog()
 {
-	UE_LOG(LogTemp, Warning, TEXT("blink is on cd"));
+	UE_LOG(LogTemp, Warning, TEXT("asdf"));
 }

@@ -10,6 +10,8 @@
 #include "TimerManager.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SphereComponent.h"
+#include "Components/CapsuleComponent.h"
+
 
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
