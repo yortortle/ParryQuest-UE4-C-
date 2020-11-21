@@ -284,7 +284,7 @@ void ASwordMan::Blink()
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight" || CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown" || CurrentFlipbook == "MoveLeft" || "IdleLeft")
 	{
 		//This sets a timer which will execute the BlinkTimer in .15 seconds. This function maintains most of the blink mechanic main functionality.
-		GetWorldTimerManager().SetTimer(BlinkClock, this, &ASwordMan::BlinkTimer, 0.15f, false);
+		GetWorldTimerManager().SetTimer(BlinkClock, this, &ASwordMan::BlinkTimer, 0.20f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 	}
 }
@@ -301,7 +301,7 @@ void ASwordMan::BlinkTimer()
 		NewBox->SetCollisionProfileName("OverlapOnlyPawn");
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
-		GetSprite()->SetPlayRate(0.6);
+		GetSprite()->SetPlayRate(0.7);
 		NewBox->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
@@ -320,7 +320,7 @@ void ASwordMan::BlinkTimer()
 
 void ASwordMan::BlinkCoolDown()
 {
-	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::ReverseSword, 0.5f, false);
+	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::ReverseSword, 0.3f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
 }
 
