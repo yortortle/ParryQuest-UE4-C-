@@ -123,6 +123,7 @@ public:
     void BlinkTimer();
     void BlinkCoolDown();
     void ParryCD();
+    void ReverseSword();
 
     //void checkBlinkCollision();
     //void DetermineBlinkVector();

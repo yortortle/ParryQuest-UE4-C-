@@ -48,6 +48,16 @@ void ASwordMan::Tick(float DeltaTime)
 	}
 	*/
 
+	/*if (GetWorldTimerManager().IsTimerActive(ParryTimer))
+	{
+		GetSprite()->SetSpriteColor(FColor::Black);
+	}*/
+
+	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
+	{
+		GetSprite()->SetSpriteColor(FColor::Black);
+	}
+
 	//Every tick it checks if FTimerHandle clock is actively on a timer or not. If it active, then it will return before running the setflip function to avoid movement conflicts while attempting to execute swing animation
 	if (GetWorldTimerManager().IsTimerActive(Clock))
 	{
@@ -144,10 +154,10 @@ void ASwordMan::Swing()
 			{
 				HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 				UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
+
 				//LastFlipbook = CurrentFlipbook;
-				GetSprite()->SetPlayRate(0.7);
+				//GetSprite()->SetPlayRate(0.1);
 				BlinkTimer();
-				GetSprite()->SetPlayRate(1.0);
 				HitUp1->SetCollisionProfileName("NoCollision");
 				//return;
 			}
@@ -283,13 +293,27 @@ void ASwordMan::Blink()
 
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
-		consoleLog();
 
 		//add function call here to determine which value to update 
 		CurrentLocation.Z = CurrentLocation.Z + 50;
 		ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 		BlinkCoolDown();
-		//GetSprite()->SetPlayRate(1.0);
+
+		//LastFlipbook = GetSprite()->GetFlipbook()->GetFName;
+		//Swing();
+		//GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::ReverseSword, 0.15f, false);
+
+
+		//GetSprite()->SetPlayRate(0.65);
+
+		///
+		//This();
+		//GetSprite()->ReverseFromEnd();
+
+		//GetSprite()->ReverseFromEnd();
+		///
+
+
 		return;
 	}
 
@@ -329,6 +353,9 @@ void ASwordMan::BlinkTimer()
 		//condition for if double press shift
 		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
+		GetSprite()->SetPlayRate(0.7);
+	
+		//GetSprite()->PlayFromStart();
 		HitUp1->SetCollisionProfileName("NoCollision");
 		//logic for parry goes here
 
@@ -353,15 +380,25 @@ void ASwordMan::BlinkCoolDown()
 {
 	GetSprite()->SetSpriteColor(FColor::Red);
 	consoleLog();
-	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::consoleLog, 1.0f, false);
+	GetWorldTimerManager().SetTimer(BlinkCDFTimer, this, &ASwordMan::ReverseSword, 0.5f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
 }
 
 void ASwordMan::ParryCD()
 {
+	GetSprite()->SetPlayRate(1.0);
+	//GetSprite()->Reverse();
 	UE_LOG(LogTemp, Warning, TEXT("PARRY CD"));
 	HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 	HitUp1->SetCollisionProfileName("NoCollision");
+}
+
+void ASwordMan::ReverseSword()
+{
+	//this is where functionality for post double teleport goes
+	//GetSprite()->Reverse();
+	UE_LOG(LogTemp, Warning, TEXT("blink is on cd"));
+	GetSprite()->SetSpriteColor(FColor::White);
 }
 
 void ASwordMan::consoleLog()
