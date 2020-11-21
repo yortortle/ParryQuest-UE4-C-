@@ -128,6 +128,8 @@ public:
     void BlinkCoolDown();
     void ParryCD();
     void ReverseSword();
+    void DetermineSwing();
+
 
     //void checkBlinkCollision();
     FVector DetermineBlinkVector(FVector Location);

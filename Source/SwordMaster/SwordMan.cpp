@@ -161,69 +161,26 @@ void ASwordMan::Swing()
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp")
 	{
 		GetSprite()->SetFlipbook(SwingUp);
-
-		if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
-		{
-			////
-			if (GetWorldTimerManager().IsTimerActive(Clock))
-			{
-				HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-				UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
-
-				//LastFlipbook = CurrentFlipbook;
-				//GetSprite()->SetPlayRate(0.1);
-				BlinkTimer();
-				HitUp1->SetCollisionProfileName("NoCollision");
-				//return;
-			}
-			else 
-			{
-				HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
-				HitUp1->SetCollisionProfileName("NoCollision");
-			}
-		}
-	
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+		//function containing timer logic to determine whether this is a double blink swing accessesed later on or not
+		DetermineSwing();
 	}
 	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
 	{
 		GetSprite()->SetFlipbook(SwingDown);
-
-		if (GetSprite()->GetFlipbook()->GetFName() == "SwingDown")
-		{
-			HitDown1->SetCollisionProfileName("OverlapOnlyPawn");
-			HitDown1->SetCollisionProfileName("NoCollision");
-		}
-		
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+		DetermineSwing();
 	}
 	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
 	{
 		GetSprite()->SetFlipbook(SwingRight);
-
-		if (GetSprite()->GetFlipbook()->GetFName() == "SwingRight")
-		{
-			HitLeft1->SetCollisionProfileName("OverlapOnlyPawn");
-			consoleLog();
-			HitLeft1->SetCollisionProfileName("NoCollision");
-		}
-		
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+		DetermineSwing();
 	}
 	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
 	{
 		GetSprite()->SetFlipbook(SwingLeft);
-
-		if (GetSprite()->GetFlipbook()->GetFName() == "SwingLeft")
-		{
-			HitRight1->SetCollisionProfileName("OverlapOnlyPawn");
-			HitRight1->SetCollisionProfileName("NoCollision");
-		}
-
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
+		DetermineSwing();
 	}
-	//CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-
+	//Sets a timer that will return on any other input so that the swing will remain out and not get interrupted by other conflicting flipbooks
+	GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 }
 
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -306,11 +263,6 @@ void ASwordMan::Blink()
 {
 	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
 	{
-		//add function call here to determine which value to update 
-		//NewLocation = CurrentLocation.Z = CurrentLocation.Z + 50;
-		//CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-		//NewLocation = DetermineBlinkVector(ASwordMan::GetActorLocation());
-
 		ASwordMan::TeleportTo(DetermineBlinkVector(CurrentLocation), FRotator(0, 0, 0), false, false);
 		BlinkCoolDown();
 		return;
@@ -400,27 +352,39 @@ void ASwordMan::ReverseSword()
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
+void ASwordMan::DetermineSwing()
+{
+	if (GetWorldTimerManager().IsTimerActive(Clock))
+	{
+		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+		UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
+
+		BlinkTimer();
+		HitUp1->SetCollisionProfileName("NoCollision");
+	}
+	else
+	{
+		HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
+		HitUp1->SetCollisionProfileName("NoCollision");
+	}
+}
+
 //function that determines the updated blink vector location after you press shift
 FVector ASwordMan::DetermineBlinkVector(FVector Location)
 {
-
-	//if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || ((CurrentFlipbook == "SwingUp") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
-
-	// (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "SwingUp")
-
 	if (CurrentFlipbook == "MoveUp" || CurrentFlipbook == "IdleUp" || ((CurrentFlipbook == "SwingUp") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
 	{
 		Location.Z += blinkDistance;
 	}
-	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
+	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft" || ((CurrentFlipbook == "SwingLeft") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
 	{
 		Location.X -= blinkDistance;
 	}
-	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
+	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight" || ((CurrentFlipbook == "SwingRight") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
 	{
 		Location.X += blinkDistance;
 	}
-	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
+	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown" || ((CurrentFlipbook == "SwingDown") && (GetWorldTimerManager().IsTimerActive(ParryTimer))))
 	{
 		Location.Z -= blinkDistance;
 	}
