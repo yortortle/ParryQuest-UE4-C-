@@ -139,10 +139,18 @@ void ASwordMan::Swing()
 
 		if (GetSprite()->GetFlipbook()->GetFName() == "SwingUp")
 		{
+			////
+			if (GetWorldTimerManager().IsTimerActive(Clock))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("swing up world timer"));
+				//LastFlipbook = CurrentFlipbook;
+				BlinkTimer();
+				//return;
+			}
 			HitUp1->SetCollisionProfileName("OverlapOnlyPawn");
 			HitUp1->SetCollisionProfileName("NoCollision");
 		}
-
+	
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveDown" || CurrentFlipbook == "IdleDown")
@@ -154,7 +162,7 @@ void ASwordMan::Swing()
 			HitDown1->SetCollisionProfileName("OverlapOnlyPawn");
 			HitDown1->SetCollisionProfileName("NoCollision");
 		}
-
+		
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveRight" || CurrentFlipbook == "IdleRight")
@@ -167,7 +175,7 @@ void ASwordMan::Swing()
 			consoleLog();
 			HitLeft1->SetCollisionProfileName("NoCollision");
 		}
-
+		
 		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::SwingTimer, GetSprite()->GetFlipbookLength(), false);
 	}
 	else if (CurrentFlipbook == "MoveLeft" || CurrentFlipbook == "IdleLeft")
@@ -253,15 +261,16 @@ void ASwordMan::MovementAnimations()
 void ASwordMan::Blink()
 {
 	CurrentLocation = ASwordMan::GetActorLocation();
+	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	//CurrentLocation.X = CurrentLocation.X + 15;
 	//CurrentLocation. = CurrentLocation.X + 15;
 	//CurrentLocation.Z = CurrentLocation.Z + 15;
 
 	//consoleLog();
-	if (Vertical > 0.0f && Horizontal == 0.0f)
+	if (CurrentFlipbook == "MoveUp")
 	{
 		//ASwordMan::GetActorLocation();
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.15f, false);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.2f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 		//ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 		UE_LOG(LogTemp, Warning, TEXT("Up"));
@@ -286,15 +295,30 @@ void ASwordMan::Blink()
 
 void ASwordMan::BlinkTimer()
 {
+	/////
+	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
+	if (CurrentFlipbook == "SwingUp")
+	{
+		GetSprite()->SetSpriteColor(FColor::Blue);
+		//LastFlipbook == CurrentFlipbook;
+		return;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No Swing Regular Blink"));
+	}
+
 	CurrentLocation.Z = CurrentLocation.Z + 50;
-	GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 2.f, false);
-	consoleLog();
+	GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
 	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 	GetSprite()->SetSpriteColor(FColor::White);
 }
 
 void ASwordMan::BlinkCoolDown()
 {
+	GetSprite()->SetSpriteColor(FColor::Red);
+	consoleLog();
+	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
 }
 

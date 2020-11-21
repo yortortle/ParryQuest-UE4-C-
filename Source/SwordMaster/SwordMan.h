@@ -109,6 +109,7 @@ public:
     float Horizontal = 0.0f;
     int lastMove = 0;
     FName CurrentFlipbook;
+    FName LastFlipbook;
     FVector CurrentLocation;
 
     UFUNCTION(blueprintcallable)
