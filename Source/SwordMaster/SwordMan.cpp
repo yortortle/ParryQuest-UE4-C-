@@ -267,10 +267,19 @@ void ASwordMan::Blink()
 	//CurrentLocation.Z = CurrentLocation.Z + 15;
 
 	//consoleLog();
+
+	if (GetWorldTimerManager().IsTimerActive(ParryTimer))
+	{
+		consoleLog();
+		CurrentLocation.Z = CurrentLocation.Z + 50;
+		ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
+		return;
+	}
+
 	if (CurrentFlipbook == "MoveUp")
 	{
 		//ASwordMan::GetActorLocation();
-		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.2f, false);
+		GetWorldTimerManager().SetTimer(Clock, this, &ASwordMan::BlinkTimer, 0.15f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 		//ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
 		UE_LOG(LogTemp, Warning, TEXT("Up"));
@@ -299,7 +308,13 @@ void ASwordMan::BlinkTimer()
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
 	if (CurrentFlipbook == "SwingUp")
 	{
+		//condition for if double press shift
+		GetWorldTimerManager().SetTimer(ParryTimer, this, &ASwordMan::ParryCD, GetSprite()->GetFlipbookLength() - GetSprite()->GetPlaybackPosition(), false);
 		GetSprite()->SetSpriteColor(FColor::Blue);
+
+		//logic for parry goes here
+
+		//PlayerInputComponent->BindAction("Blink", IE_Pressed, this, &ASwordMan::Blink);
 		//LastFlipbook == CurrentFlipbook;
 		return;
 	}
@@ -308,6 +323,7 @@ void ASwordMan::BlinkTimer()
 		UE_LOG(LogTemp, Warning, TEXT("No Swing Regular Blink"));
 	}
 
+	//don't need to make different blink timers, check flipbook for each of them and use that to determine teleport location. refactor into seperate function
 	CurrentLocation.Z = CurrentLocation.Z + 50;
 	GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
 	ASwordMan::TeleportTo(CurrentLocation, FRotator(0, 0, 0), false, false);
@@ -320,6 +336,11 @@ void ASwordMan::BlinkCoolDown()
 	consoleLog();
 	//GetWorldTimerManager().SetTimer(BlinkFTimer, this, &ASwordMan::BlinkCoolDown, 0.2f, false);
 	UE_LOG(LogTemp, Warning, TEXT("BLINK CD"));
+}
+
+void ASwordMan::ParryCD()
+{
+	UE_LOG(LogTemp, Warning, TEXT("PARRY CD"));
 }
 
 void ASwordMan::consoleLog()

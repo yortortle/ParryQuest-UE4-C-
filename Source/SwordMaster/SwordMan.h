@@ -122,6 +122,7 @@ public:
     void SwingTimer();
     void BlinkTimer();
     void BlinkCoolDown();
+    void ParryCD();
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -129,6 +130,7 @@ public:
 private:
     FTimerHandle Clock;
     FTimerHandle BlinkFTimer;
+    FTimerHandle ParryTimer;
 
 	
 };
