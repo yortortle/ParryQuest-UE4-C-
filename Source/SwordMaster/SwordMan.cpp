@@ -25,7 +25,7 @@ ASwordMan::ASwordMan()
 	HitLeft1->AttachTo(RootComponent);
 
 	InteractBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Interact"));
-	InteractBox->SetCollisionProfileName("Pawn");
+	InteractBox->SetCollisionProfileName("NoCollision");
 	InteractBox->AttachTo(RootComponent);
 
 }
