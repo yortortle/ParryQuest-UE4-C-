@@ -40,7 +40,7 @@ void ASwordMan::BeginPlay()
 	HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 
-	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapNPC);
+	InteractBox->OnComponentEndOverlap.AddDynamic(this, &ASwordMan::OnOverLapNPC);
 }
 
 void ASwordMan::Tick(float DeltaTime)
@@ -48,6 +48,7 @@ void ASwordMan::Tick(float DeltaTime)
 	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));
 	Horizontal = InputComponent->GetAxisValue(TEXT("LeftRight"));
+
 
 	if (GetWorldTimerManager().IsTimerActive(BlinkCDFTimer))
 	{
@@ -216,8 +217,9 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	}
 }
 
-void ASwordMan::OnOverLapNPC(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ASwordMan::OnOverLapNPC(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	InteractBox->SetCollisionProfileName("NoCollision");
 	consoleLog();
 }
 void ASwordMan::MovementAnimations()
@@ -303,6 +305,18 @@ void ASwordMan::Blink()
 
 void ASwordMan::Interact()
 {
+	if (boolInteract == false)
+	{
+		InteractBox->SetCollisionProfileName("Pawn");
+		boolInteract = false;
+	}
+	else if (boolInteract == true)
+	{
+		InteractBox->SetCollisionProfileName("NoCollision");
+		boolInteract = true;
+	}
+
+	//InteractBox->SetCollisionProfileName("Pawn");
 	consoleLog();
 }
 

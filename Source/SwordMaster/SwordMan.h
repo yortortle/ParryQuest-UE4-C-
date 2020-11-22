@@ -112,10 +112,12 @@ public:
     FVector CurrentLocation;
     FVector NewLocation;
     UBoxComponent* NewBox;
+    bool boolInteract;
+
     float blinkDistance = 50.f;
 
     UFUNCTION(blueprintcallable)
-    void OnOverLapNPC(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+    void OnOverLapNPC(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     void MovementAnimations();
 
     void setFlip(float f1, float f2);
