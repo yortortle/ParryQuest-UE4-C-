@@ -23,6 +23,11 @@ ASwordMan::ASwordMan()
 	HitLeft1 = CreateDefaultSubobject<UBoxComponent>(TEXT("Left Swing"));
 	HitLeft1->SetCollisionProfileName("Pawn");
 	HitLeft1->AttachTo(RootComponent);
+
+	InteractBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Interact"));
+	InteractBox->SetCollisionProfileName("Pawn");
+	InteractBox->AttachTo(RootComponent);
+
 }
 
 void ASwordMan::BeginPlay()
@@ -34,6 +39,8 @@ void ASwordMan::BeginPlay()
 	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 	HitRight1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
 	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);
+
+	HitLeft1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapNPC);
 }
 
 void ASwordMan::Tick(float DeltaTime)
@@ -71,12 +78,13 @@ void ASwordMan::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("LeftRight", this, &ASwordMan::LeftRight);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Pressed, this, &ASwordMan::Swing);
 	PlayerInputComponent->BindAction("Blink", IE_Pressed, this, &ASwordMan::Blink);
+	PlayerInputComponent->BindAction("Interact", IE_Pressed, this, &ASwordMan::Interact);
 }
 
 //Function used in my PlayerInputComponent for when Up and Down axis values are pressed.
 void ASwordMan::UpDown(float Axis)
 {
-	//Checks to see if the Clock timer is active, if it is it returns to avoid movement conflicts with the swing.
+	//Checks to see if the Clock and Blinktimer are active, if it is it returns to avoid movement conflicts with the swing.
 	if ((GetWorldTimerManager().IsTimerActive(Clock)) || (GetWorldTimerManager().IsTimerActive(BlinkClock)))
 	{
 		return;
@@ -208,6 +216,10 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	}
 }
 
+void ASwordMan::OnOverLapNPC(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	consoleLog();
+}
 void ASwordMan::MovementAnimations()
 {
 	//condition to determine if we're at a standstill or moving
@@ -287,6 +299,11 @@ void ASwordMan::Blink()
 		GetWorldTimerManager().SetTimer(BlinkClock, this, &ASwordMan::BlinkTimer, 0.20f, false);
 		GetSprite()->SetSpriteColor(FColor::Green);
 	}
+}
+
+void ASwordMan::Interact()
+{
+	consoleLog();
 }
 
 

@@ -86,6 +86,10 @@ public:
     UPROPERTY(VisibleAnywhere)
         UBoxComponent* HitRight1;
 
+    UPROPERTY(VisibleAnywhere)
+        UBoxComponent* InteractBox;
+
+
 
     UPROPERTY(EditAnywhere)
         UStaticMeshComponent* MeshComp;
@@ -110,12 +114,14 @@ public:
     float blinkDistance = 50.f;
 
     UFUNCTION(blueprintcallable)
+    void OnOverLapNPC(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     void MovementAnimations();
 
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
     void Blink();
+    void Interact();
     void SwingTimer();
     void BlinkTimer();
     void BlinkCoolDown();
