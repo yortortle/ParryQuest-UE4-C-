@@ -36,7 +36,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		UPaperFlipbook* MoveLeft;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FTimerHandle WalkTimer;
+
 	float speed;
 	void FWalk();
 	FVector CurrentLocation;
