@@ -562,7 +562,9 @@
     <NMakeOutput>..\..\Binaries\HTML5\SwordMaster-HTML5-Shipping.js</NMakeOutput>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SwordMaster\MageNPC.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\TreeNPC.cpp" />
+    <ClInclude Include="..\..\Source\SwordMaster\MageNPC.h" />
     <ClInclude Include="..\..\Source\SwordMaster\TreeNPC.h" />
     <None Include="..\..\SwordMaster.uproject" />
     <None Include="..\..\Source\SwordMaster.Target.cs" />
