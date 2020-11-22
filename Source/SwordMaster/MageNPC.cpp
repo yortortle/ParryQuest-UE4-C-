@@ -8,7 +8,7 @@ void AMageNPC::BeginPlay()
 	Super::BeginPlay();
 
 	UE_LOG(LogTemp, Warning, TEXT("StartMage"));
-	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageNPC::FWalk, 2.f, true);
+	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageNPC::FWalk, 1.f, true);
 }
 
 void AMageNPC::Tick(float DeltaTime)
@@ -53,19 +53,19 @@ void AMageNPC::FWalk()
 	switch (MoveDirection)
 		{
 		case 0: 
-		{GetSprite()->SetFlipbook(MoveUp); }
+		{GetSprite()->SetFlipbook(MoveLeft); }
 		MoveDirection = 2;
 			  break;
 		case 1:
-		{GetSprite()->SetFlipbook(MoveDown); }
+		{GetSprite()->SetFlipbook(MoveRight); }
 		MoveDirection = 3;
 			break;
 		case 2:
-		{GetSprite()->SetFlipbook(MoveLeft); }
+		{GetSprite()->SetFlipbook(MoveDown); }
 		MoveDirection = 1;
 			break;
 		case 3:
-		{GetSprite()->SetFlipbook(MoveRight);
+		{GetSprite()->SetFlipbook(MoveUp);
 		MoveDirection = 0; }
 			break;
 		}
