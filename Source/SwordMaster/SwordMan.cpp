@@ -308,12 +308,12 @@ void ASwordMan::Interact()
 	if (boolInteract == false)
 	{
 		InteractBox->SetCollisionProfileName("Pawn");
-		boolInteract = false;
+		boolInteract = true;
 	}
 	else if (boolInteract == true)
 	{
 		InteractBox->SetCollisionProfileName("NoCollision");
-		boolInteract = true;
+		boolInteract = false;
 	}
 
 	//InteractBox->SetCollisionProfileName("Pawn");
