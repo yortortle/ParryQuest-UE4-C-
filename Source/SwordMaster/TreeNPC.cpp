@@ -6,7 +6,7 @@
 void ATreeNPC::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("Start"));
+	UE_LOG(LogTemp, Warning, TEXT("StartTree"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &ATreeNPC::WalkF, 3.f, true);
 }
 
@@ -41,14 +41,6 @@ void ATreeNPC::WalkF()
 
 	if (IsMoving == false)
 	{
-		//GetWorldTimerManager().SetTimer(MovementTimer, this, &ATreeNPC::FMove, 3.f, true);
-
-		//CurrentLocation = this->GetActorLocation();
-		//speed = 20;
-
-		//CurrentLocation.Z += speed * DeltaTime;
-		//SetActorLocation(CurrentLocation);
-
 		GetSprite()->SetFlipbook(MoveUp);
 		GetSprite()->SetPlayRate(0.5);
 		UE_LOG(LogTemp, Warning, TEXT("false"));

@@ -43,17 +43,9 @@ public:
 
     //UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
     enum MoveDirection { Up, Down, Left, Righ };
-    //consider diagonal angles
-
-   
-    //redundent code for now, use later for new minions
-    //UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-       // UPaperFlipbookComponent* PC;
-
 
     //Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.
-    //First set is for movement animations
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite) //movement animations
         UPaperFlipbook* MoveLeft;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* MoveRight;

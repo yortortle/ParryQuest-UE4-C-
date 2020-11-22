@@ -19,9 +19,8 @@ class SWORDMASTER_API ATreeNPC : public APaperCharacter
 	GENERATED_BODY()
 	
 public:
-
-protected:
 	virtual void BeginPlay() override;
+protected:
 	virtual void Tick(float DeltaTime) override;
 
 public:
