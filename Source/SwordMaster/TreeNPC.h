@@ -22,14 +22,21 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 public:
 	FTimerHandle WalkTimer;
+	FTimerHandle MovementTimer;
+
 	void WalkF();
+	void FMove();
 	bool IsMoving = false;
+	FVector CurrentLocation;
+	float speed;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		UPaperFlipbook* MoveUp;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		UPaperFlipbook* MoveDown;
 
