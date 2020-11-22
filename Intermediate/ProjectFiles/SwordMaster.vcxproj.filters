@@ -55,9 +55,15 @@
     <ClInclude Include="..\..\Source\SwordMaster\Bunny.h">
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\SwordMaster\TreeNPC.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SwordMaster\TreeNPC.cpp">
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
   </ItemGroup>
