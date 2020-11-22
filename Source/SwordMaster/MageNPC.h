@@ -43,6 +43,9 @@ public:
 	void FWalk();
 	FVector CurrentLocation;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FString SpeechBubble = "SPEECH";
+
 	enum MoveDirection { U, D, L, R };
 	int MoveDirection = 3;
 
