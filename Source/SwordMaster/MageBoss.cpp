@@ -3,34 +3,41 @@
 
 #include "MageBoss.h"
 
+
+AMageBoss::AMageBoss()
+{
+	//PrimaryActorTick.bCanEverTick = true;
+}
+
 void AMageBoss::BeginPlay()
 {
 	Super::BeginPlay();
-
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1.5, true);
 }
 
 void AMageBoss::Tick(float DeltaTime)
 {
+	UE_LOG(LogTemp, Warning, TEXT("false"));
+
 	if (GetWorldTimerManager().IsTimerActive(WalkTimer))
 	{
 		switch (MoveDirection)
 		{
 			case 0: 
 			{
-				CurrentLocation = this->GetActorLocation();
+				CurrentLocationTwo = this->GetActorLocation();
 				speed = 200;
-				CurrentLocation.X -= speed * DeltaTime;
-				SetActorLocation(CurrentLocation);
+				CurrentLocationTwo.X -= speed * DeltaTime;
+				SetActorLocation(CurrentLocationTwo);
 			}
 			break;
 			case 1:
 			{
-				CurrentLocation = this->GetActorLocation();
+				CurrentLocationTwo = this->GetActorLocation();
 				speed = 200;
-				CurrentLocation.X -= speed * DeltaTime;
-				SetActorLocation(CurrentLocation);
+				CurrentLocationTwo.X += speed * DeltaTime;
+				SetActorLocation(CurrentLocationTwo);
 			}
 			break;
 		}
@@ -45,13 +52,13 @@ void AMageBoss::BossWalk()
 	{
 		case 0:
 		{
-			GetSprite()->SetFlipbook(MoveLeft);
+			GetSprite()->SetFlipbook(MoveRight);
 			MoveDirection = 1;
 		}
 		break;
 		case 1:
 		{
-			GetSprite()->SetFlipbook(MoveRight);
+			GetSprite()->SetFlipbook(MoveLeft);
 			MoveDirection = 0;
 		}
 		break;

@@ -9,9 +9,6 @@
 
 #include "MageBoss.generated.h"
 
-/**
- *
- */
 UCLASS()
 class SWORDMASTER_API AMageBoss : public APaperCharacter
 {
@@ -19,6 +16,7 @@ class SWORDMASTER_API AMageBoss : public APaperCharacter
 
 public:
 	virtual void BeginPlay() override;
+	AMageBoss();
 
 protected:
 	virtual void Tick(float DeltaTime) override;
@@ -36,12 +34,10 @@ public:
 
 	float speed;
 	void BossWalk();
-	FVector CurrentLocation;
+	FVector CurrentLocationTwo;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FString SpeechBubble = "MAGE BOSS";
 
 	int MoveDirection = 0;
-
-	bool IsMoving = false;
 };

@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SWORDMASTER_MageBoss_generated_h
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_RPC_WRAPPERS
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_RPC_WRAPPERS_NO_PURE_DECLS
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_INCLASS_NO_PURE_DECLS \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_RPC_WRAPPERS
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMageBoss(); \
 	friend struct Z_Construct_UClass_AMageBoss_Statics; \
@@ -24,7 +24,7 @@ public: \
 	DECLARE_SERIALIZER(AMageBoss)
 
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_INCLASS \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_INCLASS \
 private: \
 	static void StaticRegisterNativesAMageBoss(); \
 	friend struct Z_Construct_UClass_AMageBoss_Statics; \
@@ -33,9 +33,9 @@ public: \
 	DECLARE_SERIALIZER(AMageBoss)
 
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_STANDARD_CONSTRUCTORS \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AMageBoss(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	NO_API AMageBoss(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMageBoss) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AMageBoss); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMageBoss); \
@@ -46,9 +46,7 @@ private: \
 public:
 
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AMageBoss(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AMageBoss(AMageBoss&&); \
@@ -56,29 +54,29 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AMageBoss); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMageBoss); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMageBoss)
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AMageBoss)
 
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_PRIVATE_PROPERTY_OFFSET
-#define SwordMaster_Source_SwordMaster_MageBoss_h_15_PROLOG
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_GENERATED_BODY_LEGACY \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_PRIVATE_PROPERTY_OFFSET
+#define SwordMaster_Source_SwordMaster_MageBoss_h_12_PROLOG
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_RPC_WRAPPERS \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_INCLASS \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_STANDARD_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_RPC_WRAPPERS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_INCLASS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SwordMaster_Source_SwordMaster_MageBoss_h_18_GENERATED_BODY \
+#define SwordMaster_Source_SwordMaster_MageBoss_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_INCLASS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_MageBoss_h_18_ENHANCED_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_INCLASS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_MageBoss_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
