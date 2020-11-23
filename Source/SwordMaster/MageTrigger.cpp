@@ -36,7 +36,6 @@ void AMageTrigger::Tick(float DeltaTime)
     }
 }
 
-
 void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
     // check if Actors do not equal nullptr and that 
@@ -60,5 +59,20 @@ void AMageTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* Oth
 
 void AMageTrigger::TriggerTimer()
 {
-    
+    for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
+    {
+        // skip if this object is not associated with our current game world
+        if (ObjectItr->GetWorld() != GetWorld())
+        {
+            continue;
+        }
+
+        debugPrint("test");
+
+        AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
+        foundActor->Destroy();
+
+        //UObject* Object = *ObjectItr;
+        // ...
+    }
 }

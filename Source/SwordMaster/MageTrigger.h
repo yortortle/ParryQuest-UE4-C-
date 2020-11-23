@@ -4,6 +4,7 @@
 #include "Engine/TriggerBox.h"
 #include "Engine/EngineTypes.h"
 #include "TimerManager.h"
+#include "MageNPC.h"
 
 #include "MageTrigger.generated.h"
  
@@ -22,6 +23,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isLevelComplete = false;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	AActor* targetActor;
 
 	FTimerHandle GameTime;
 
