@@ -45,13 +45,12 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
     }
 
     if (OtherActor && (OtherActor != this)) {
-        // print to screen using above defined method when actor enters trigger box
-        
         GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 5.f, false);
         //this->Destroy();
         debugPrint("Overlap Begin");
         debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
 
+        //iterator to delete mage actor
         for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
         {
             // skip if this object is not associated with our current game world
@@ -69,6 +68,7 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
             UObject* Object = *ObjectItr;
             // ...
         }
+
         FVector SpawnLocation = this->GetActorLocation();
         SpawnLocation.Z += 150;
         FActorSpawnParameters SpawnParams;
@@ -96,8 +96,6 @@ void AMageTrigger::TriggerTimer()
     debugPrint("TriggerTimer");
     UE_LOG(LogTemp, Warning, TEXT("My Name: %s"), *LevelToLoad.ToString());
 
-
-  
     GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
     GI->test = 2.0;
 

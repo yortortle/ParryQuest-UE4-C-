@@ -149,7 +149,6 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData[] = {
 		{ "Category", "MageTrigger" },
 		{ "ModuleRelativePath", "MageTrigger.h" },
-		{ "ToolTip", "UPROPERTY(EditAnywhere, BlueprintReadWrite)\nAActor swordMan;" },
 	};
 #endif
 	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad = { "LevelToLoad", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AMageTrigger, LevelToLoad), METADATA_PARAMS(Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData)) };
@@ -203,7 +202,7 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMageTrigger, 1074645716);
+	IMPLEMENT_CLASS(AMageTrigger, 1979761435);
 	template<> SWORDMASTER_API UClass* StaticClass<AMageTrigger>()
 	{
 		return AMageTrigger::StaticClass();

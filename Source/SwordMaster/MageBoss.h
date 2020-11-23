@@ -30,11 +30,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		UPaperFlipbook* MoveLeft;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-		FTimerHandle WalkTimer;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<AActor> targetActor;
+
+	FTimerHandle WalkTimer;
+	FTimerHandle ProjectileTimer;
+	FVector SpawnLocation;
 
 	float speed;
 	void BossWalk();
+	void shootProjectile();
+
 	FVector CurrentLocationTwo;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)

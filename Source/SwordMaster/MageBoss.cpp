@@ -14,6 +14,7 @@ void AMageBoss::BeginPlay()
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1.5, true);
+	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .3, true);
 }
 
 void AMageBoss::Tick(float DeltaTime)
@@ -61,4 +62,14 @@ void AMageBoss::BossWalk()
 		}
 		break;
 	}
+}
+
+void AMageBoss::shootProjectile()
+{
+	UE_LOG(LogTemp, Warning, TEXT("shooting projectile"));
+
+	SpawnLocation = this->GetActorLocation();
+	SpawnLocation.Z = 25;
+	FActorSpawnParameters SpawnParams;
+	GetWorld()->SpawnActor<AActor>(targetActor, SpawnLocation, this->GetActorRotation(), SpawnParams);
 }

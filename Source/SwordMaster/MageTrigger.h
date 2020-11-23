@@ -30,9 +30,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> targetActor;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//AActor swordMan;
-
 	UPROPERTY(EditAnywhere)
 	FName LevelToLoad;
 

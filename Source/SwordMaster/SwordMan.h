@@ -96,8 +96,6 @@ public:
     UPROPERTY(VisibleAnywhere)
         UBoxComponent* InteractBox;
 
-
-
     UPROPERTY(EditAnywhere)
         UStaticMeshComponent* MeshComp;
 
@@ -107,6 +105,7 @@ public:
     UFUNCTION()
         void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+    UMyGameInstance* GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
