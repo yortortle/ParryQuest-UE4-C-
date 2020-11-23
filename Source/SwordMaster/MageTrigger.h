@@ -24,8 +24,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isLevelComplete = false;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	AActor* targetActor;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> targetActor;
 
 	FTimerHandle GameTime;
 

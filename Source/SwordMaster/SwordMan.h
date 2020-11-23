@@ -76,6 +76,10 @@ public:
         UPaperFlipbook* SwingDown;
 
 
+    //delete this later if not used
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+        AActor* targetActor;
+
 
    // Collision box components for swing animation collisions.
     UPROPERTY(VisibleAnywhere)

@@ -69,8 +69,9 @@ void AMageTrigger::TriggerTimer()
 
         debugPrint("test");
 
+        Cast<AMageNPC>(*ObjectItr)->Destroy();
         AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
-        foundActor->Destroy();
+        //foundActor->Destroy();
 
         //UObject* Object = *ObjectItr;
         // ...
