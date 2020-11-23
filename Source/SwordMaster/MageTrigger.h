@@ -3,6 +3,8 @@
 #include "CoreMinimal.h"
 #include "Engine/TriggerBox.h"
 #include "Engine/EngineTypes.h"
+#include "TimerManager.h"
+
 #include "MageTrigger.generated.h"
  
 UCLASS()
@@ -21,9 +23,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isLevelComplete = false;
 
+	FTimerHandle GameTime;
+
+	virtual void Tick(float DeltaTime) override;
+
 	UFUNCTION()
 	void OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor);
 
 	UFUNCTION()
 	void OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor);
+	void TriggerTimer();
 };

@@ -6,6 +6,8 @@
 
 AMageTrigger::AMageTrigger()
 {
+    PrimaryActorTick.bCanEverTick = true;
+
     //Register Events
     OnActorBeginOverlap.AddDynamic(this, &AMageTrigger::OnOverlapBegin);
     OnActorEndOverlap.AddDynamic(this, &AMageTrigger::OnOverlapEnd);
@@ -22,11 +24,26 @@ void AMageTrigger::BeginPlay()
 
 }
 
+void AMageTrigger::Tick(float DeltaTime)
+{
+    if (GetWorldTimerManager().IsTimerActive(GameTime))
+    {
+        
+    }
+    else
+    {
+        
+    }
+}
+
+
 void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
     // check if Actors do not equal nullptr and that 
     if (OtherActor && (OtherActor != this)) {
         // print to screen using above defined method when actor enters trigger box
+        
+        GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 1.f, false);
         debugPrint("Overlap Begin");
         debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
     }
@@ -39,4 +56,9 @@ void AMageTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* Oth
         debugPrint("Overlap Ended");
         debugPrintFString("%s has left the Trigger Box", *OtherActor->GetName());
     }
+}
+
+void AMageTrigger::TriggerTimer()
+{
+    
 }
