@@ -97,7 +97,5 @@ void AMageTrigger::TriggerTimer()
     UE_LOG(LogTemp, Warning, TEXT("My Name: %s"), *LevelToLoad.ToString());
     //debugPrintFString(LevelToLoad);
     FLatentActionInfo LatentInfo;
-    UGameplayStatics::LoadStreamLevel(this, LevelToLoad, true, true, LatentInfo);
-    //GetWorld()->SpawnActor();
-
+    UGameplayStatics::OpenLevel(GetWorld(), "HubWorld");
 }
