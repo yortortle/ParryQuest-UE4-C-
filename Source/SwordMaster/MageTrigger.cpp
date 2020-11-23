@@ -39,41 +39,63 @@ void AMageTrigger::Tick(float DeltaTime)
 void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
     // check if Actors do not equal nullptr and that 
+        
+    if (GetWorldTimerManager().IsTimerActive(GameTime))
+    {
+        return;
+    }
+
     if (OtherActor && (OtherActor != this)) {
         // print to screen using above defined method when actor enters trigger box
         
-        GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 1.f, false);
+        GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 5.f, false);
+        //this->Destroy();
         debugPrint("Overlap Begin");
         debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
+
+        for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
+        {
+            // skip if this object is not associated with our current game world
+            if (ObjectItr->GetWorld() != GetWorld())
+            {
+                continue;
+            }
+
+            debugPrint("test");
+
+            Cast<AMageNPC>(*ObjectItr)->Destroy();
+            AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
+            //foundActor->Destroy();
+
+            UObject* Object = *ObjectItr;
+            // ...
+        }
+        FVector SpawnLocation = this->GetActorLocation();
+        SpawnLocation.Z += 150;
+        FActorSpawnParameters SpawnParams;
+        GetWorld()->SpawnActor<AActor>(targetActor, SpawnLocation, this->GetActorRotation(), SpawnParams);
+
+
     }
 }
 
 void AMageTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor)
 {
+    if (GetWorldTimerManager().IsTimerActive(GameTime))
+    {
+        return;
+    }
+
     if (OtherActor && (OtherActor != this)) {
         // print to screen using above defined method when actor leaves trigger box
         debugPrint("Overlap Ended");
         debugPrintFString("%s has left the Trigger Box", *OtherActor->GetName());
+        //this->Destroy();
     }
 }
 
 void AMageTrigger::TriggerTimer()
 {
-    for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
-    {
-        // skip if this object is not associated with our current game world
-        if (ObjectItr->GetWorld() != GetWorld())
-        {
-            continue;
-        }
+    //GetWorld()->SpawnActor();
 
-        debugPrint("test");
-
-        Cast<AMageNPC>(*ObjectItr)->Destroy();
-        AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
-        //foundActor->Destroy();
-
-        //UObject* Object = *ObjectItr;
-        // ...
-    }
 }
