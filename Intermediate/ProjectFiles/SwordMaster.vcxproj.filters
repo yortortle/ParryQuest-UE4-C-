@@ -61,6 +61,9 @@
     <ClInclude Include="..\..\Source\SwordMaster\MageNPC.h">
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\SwordMaster\MageTrigger.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
@@ -70,6 +73,9 @@
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SwordMaster\MageNPC.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SwordMaster\MageTrigger.cpp">
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
   </ItemGroup>
