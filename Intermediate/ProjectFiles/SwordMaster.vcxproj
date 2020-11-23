@@ -562,11 +562,13 @@
     <NMakeOutput>..\..\Binaries\HTML5\SwordMaster-HTML5-Shipping.js</NMakeOutput>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SwordMaster\IceBall.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\MageBoss.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\MageNPC.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\MageTrigger.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\MyGameInstance.cpp" />
     <ClCompile Include="..\..\Source\SwordMaster\TreeNPC.cpp" />
+    <ClInclude Include="..\..\Source\SwordMaster\IceBall.h" />
     <ClInclude Include="..\..\Source\SwordMaster\MageBoss.h" />
     <ClInclude Include="..\..\Source\SwordMaster\MageNPC.h" />
     <ClInclude Include="..\..\Source\SwordMaster\MageTrigger.h" />
