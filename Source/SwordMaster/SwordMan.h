@@ -12,6 +12,8 @@
 #include "Components/SphereComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/PrimitiveComponent.h"
+#include "MyGameInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 
 #include "PaperFlipbook.h"

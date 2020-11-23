@@ -6,6 +6,8 @@
 #include "TimerManager.h"
 #include "MageNPC.h"
 #include "Kismet/GameplayStatics.h"
+#include "SwordMan.h"
+#include "MyGameInstance.h"
 
 #include "MageTrigger.generated.h"
  
@@ -28,8 +30,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> targetActor;
 
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//AActor swordMan;
+
 	UPROPERTY(EditAnywhere)
-		FName LevelToLoad;
+	FName LevelToLoad;
+
+	UMyGameInstance* GI;
 
 	FTimerHandle GameTime;
 
