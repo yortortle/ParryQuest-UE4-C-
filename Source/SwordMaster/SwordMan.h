@@ -42,7 +42,7 @@ protected:
 
 public:
 
-    //UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    //UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)//
     enum MoveDirection { Up, Down, Left, Righ };
 
     //Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.
