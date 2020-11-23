@@ -18,8 +18,6 @@ void AMageBoss::BeginPlay()
 
 void AMageBoss::Tick(float DeltaTime)
 {
-	UE_LOG(LogTemp, Warning, TEXT("false"));
-
 	if (GetWorldTimerManager().IsTimerActive(WalkTimer))
 	{
 		switch (MoveDirection)

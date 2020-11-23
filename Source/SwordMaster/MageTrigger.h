@@ -5,6 +5,7 @@
 #include "Engine/EngineTypes.h"
 #include "TimerManager.h"
 #include "MageNPC.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "MageTrigger.generated.h"
  

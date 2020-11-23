@@ -7,6 +7,7 @@
 #include "TimerManager.h"
 #include "PaperFlipbookComponent.h"
 
+
 #include "MageBoss.generated.h"
 
 UCLASS()
