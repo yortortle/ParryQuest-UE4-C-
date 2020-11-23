@@ -4,22 +4,21 @@
 
 AIceBall::AIceBall()
 {
-	OnActorBeginOverlap.AddDynamic(this, &AIceBall::OnOverlapBegin);
-	OnActorEndOverlap.AddDynamic(this, &AIceBall::OnOverlapEnd);
+	PrimaryActorTick.bCanEverTick = true;
+	BoxTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
+	BoxTrigger->AttachTo(RootComponent);
 }
 
 void AIceBall::BeginPlay()
 {
 	Super::BeginPlay();
+	BoxTrigger->OnComponentBeginOverlap.AddDynamic(this, &AIceBall::OnOverLapBegin);
 	UE_LOG(LogTemp, Warning, TEXT("StartIceBall"));
 }
 
-void AIceBall::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
+void AIceBall::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	debugPrint("overlap fireball");
+	UE_LOG(LogTemp, Warning, TEXT("overlapiceball"));
+	debugPrint("asdfasdf");
 }
 
-void AIceBall::OnOverlapEnd(AActor* OverlappedActor, AActor* OtherActor)
-{
-	debugPrint("overlap ends");
-}

@@ -19,20 +19,11 @@ void AMageTrigger::BeginPlay()
     Super::BeginPlay();
 
     DrawDebugBox(GetWorld(), GetActorLocation(), GetComponentsBoundingBox().GetExtent(), FColor::Black, true, -1, 0, 3);
-    //AMageTrigger().GroupActor();
-   // GetActorLocation()
 }
 
 void AMageTrigger::Tick(float DeltaTime)
 {
-    if (GetWorldTimerManager().IsTimerActive(GameTime))
-    {
-        
-    }
-    else
-    {
-        
-    }
+
 }
 
 void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)

@@ -2,7 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/TriggerBox.h"
 #include "PaperCharacter.h"
+#include "Components/BoxComponent.h"
+
 #include "IceBall.generated.h"
 
 /**
@@ -17,9 +20,10 @@ public:
 	AIceBall();
 
 	UFUNCTION()
-	void OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor);
+	void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-	UFUNCTION()
-	void OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor);
+
+	UPROPERTY(EditAnywhere)
+	UBoxComponent* BoxTrigger;
 
 };
