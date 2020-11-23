@@ -189,6 +189,11 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MageLevel_MetaData[];
+#endif
+		static void NewProp_MageLevel_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_MageLevel;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MyCollisionSphere_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MyCollisionSphere;
@@ -287,6 +292,17 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		{ "ModuleRelativePath", "SwordMan.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel_MetaData[] = {
+		{ "Category", "SwordMan" },
+		{ "ModuleRelativePath", "SwordMan.h" },
+	};
+#endif
+	void Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel_SetBit(void* Obj)
+	{
+		((ASwordMan*)Obj)->MageLevel = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel = { "MageLevel", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ASwordMan), &Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel_SetBit, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_MyCollisionSphere_MetaData[] = {
 		{ "Category", "SwordMan" },
@@ -440,6 +456,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft = { "MoveLeft", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, MoveLeft), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASwordMan_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MageLevel,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MyCollisionSphere,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_MeshComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASwordMan_Statics::NewProp_InteractBox,
@@ -488,7 +505,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASwordMan, 156970374);
+	IMPLEMENT_CLASS(ASwordMan, 3640752368);
 	template<> SWORDMASTER_API UClass* StaticClass<ASwordMan>()
 	{
 		return ASwordMan::StaticClass();

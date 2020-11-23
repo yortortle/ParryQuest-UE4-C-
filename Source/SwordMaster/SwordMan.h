@@ -105,8 +105,6 @@ public:
     UFUNCTION()
         void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
-    float SphereRadius;
-
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
@@ -117,6 +115,9 @@ public:
     FVector NewLocation;
     UBoxComponent* NewBox;
     bool boolInteract;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    bool MageLevel = false;
 
     float blinkDistance = 50.f;
 
@@ -152,6 +153,4 @@ private:
     FTimerHandle ParryTimer;
     FTimerHandle BlinkCDFTimer;
     FTimerHandle BlinkClock;
-
-	
 };

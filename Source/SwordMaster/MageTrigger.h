@@ -27,6 +27,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> targetActor;
 
+	UPROPERTY(EditAnywhere)
+		FName LevelToLoad;
+
 	FTimerHandle GameTime;
 
 	virtual void Tick(float DeltaTime) override;

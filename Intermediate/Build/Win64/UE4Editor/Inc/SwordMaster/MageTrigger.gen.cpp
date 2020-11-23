@@ -115,6 +115,10 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LevelToLoad_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FNamePropertyParams NewProp_LevelToLoad;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_targetActor_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FClassPropertyParams NewProp_targetActor;
@@ -142,6 +146,13 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData[] = {
+		{ "Category", "MageTrigger" },
+		{ "ModuleRelativePath", "MageTrigger.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad = { "LevelToLoad", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AMageTrigger, LevelToLoad), METADATA_PARAMS(Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMageTrigger_Statics::NewProp_targetActor_MetaData[] = {
 		{ "Category", "MageTrigger" },
 		{ "ModuleRelativePath", "MageTrigger.h" },
@@ -160,6 +171,7 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMageTrigger_Statics::NewProp_isLevelComplete = { "isLevelComplete", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AMageTrigger), &Z_Construct_UClass_AMageTrigger_Statics::NewProp_isLevelComplete_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMageTrigger_Statics::NewProp_isLevelComplete_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMageTrigger_Statics::NewProp_isLevelComplete_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMageTrigger_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageTrigger_Statics::NewProp_LevelToLoad,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageTrigger_Statics::NewProp_targetActor,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageTrigger_Statics::NewProp_isLevelComplete,
 	};
@@ -190,7 +202,7 @@ void EmptyLinkFunctionForGeneratedCodeMageTrigger() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMageTrigger, 812181426);
+	IMPLEMENT_CLASS(AMageTrigger, 1979761435);
 	template<> SWORDMASTER_API UClass* StaticClass<AMageTrigger>()
 	{
 		return AMageTrigger::StaticClass();
