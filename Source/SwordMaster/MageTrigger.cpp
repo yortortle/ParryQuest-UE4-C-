@@ -37,7 +37,7 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 
     //check if other actor is valid and if they're identical to themselves
     if (OtherActor && (OtherActor != this)) {
-        GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 5.f, false);
+        GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 15.f, false);
         //this->Destroy();
         debugPrint("Overlap Begin");
         debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
@@ -70,22 +70,10 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 
 void AMageTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor)
 {
-    if (GetWorldTimerManager().IsTimerActive(GameTime))
-    {
-        return;
-    }
-
-    if (OtherActor && (OtherActor != this)) {
-        // print to screen using above defined method when actor leaves trigger box
-        debugPrint("Overlap Ended");
-        debugPrintFString("%s has left the Trigger Box", *OtherActor->GetName());
-        //this->Destroy();
-    }
 }
 
 void AMageTrigger::TriggerTimer()
 {
-    debugPrint("TriggerTimer");
     UE_LOG(LogTemp, Warning, TEXT("My Name: %s"), *LevelToLoad.ToString());
 
     GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
