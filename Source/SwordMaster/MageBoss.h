@@ -31,7 +31,7 @@ public:
 		UPaperFlipbook* MoveLeft;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TSubclassOf<AActor> targetActor;
+		TSubclassOf<AActor> ActorSpawn;
 
 	FTimerHandle WalkTimer;
 	FTimerHandle ProjectileTimer;
