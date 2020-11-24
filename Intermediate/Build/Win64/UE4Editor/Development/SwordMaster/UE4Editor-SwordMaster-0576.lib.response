@@ -3,7 +3,7 @@
 /MACHINE:x64
 /SUBSYSTEM:WINDOWS
 /DEF
-/NAME:"UE4Editor-SwordMaster-0311.dll"
+/NAME:"UE4Editor-SwordMaster-0576.dll"
 /IGNORE:4221
 /NODEFAULTLIB
 "C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\SwordMasterEditor\Development\Engine\SharedPCH.Engine.h.obj"
@@ -28,5 +28,5 @@
 "C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\SwordMasterGameModeBase.gen.cpp.obj"
 "C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\TreeNPC.gen.cpp.obj"
 "C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\Default.rc2.res"
-/OUT:"C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\UE4Editor-SwordMaster-0311.lib"
+/OUT:"C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\UE4Editor-SwordMaster-0576.lib"
 /INCLUDE:IMPLEMENT_MODULE_SwordMaster

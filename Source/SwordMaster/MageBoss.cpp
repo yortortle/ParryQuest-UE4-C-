@@ -14,7 +14,7 @@ void AMageBoss::BeginPlay()
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1.5, true);
-	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .2, true);
+	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .3, true);
 }
 
 void AMageBoss::Tick(float DeltaTime)
@@ -69,9 +69,9 @@ void AMageBoss::shootProjectile()
 	UE_LOG(LogTemp, Warning, TEXT("shooting projectile"));
 
 	SpawnLocation = this->GetActorLocation();
-	SpawnLocation.X -= 100;
+	SpawnLocation.Z -= 25;
 	FActorSpawnParameters SpawnParams;
 	
-	//GetWorld()->SpawnActor<AActor>(ActorSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
+	GetWorld()->SpawnActor<AActor>(ActorSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
 	UE_LOG(LogTemp, Warning, TEXT("ice should be shooting"));
 }
