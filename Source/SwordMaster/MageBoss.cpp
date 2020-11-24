@@ -12,6 +12,7 @@ AMageBoss::AMageBoss()
 void AMageBoss::BeginPlay()
 {
 	Super::BeginPlay();
+	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1, true);
 	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, 0.15, true);
@@ -99,4 +100,5 @@ void AMageBoss::endFight()
 
 void AMageBoss::Cutscene()
 {
+	GameInstance->mageCompleted = true;
 }

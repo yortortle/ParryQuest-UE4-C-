@@ -14,6 +14,8 @@ class SWORDMASTER_API USwordGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
+public:
+
 		bool mageCompleted;
 		bool treeCompleted;
 		bool bunnyCompleted;

@@ -6,7 +6,9 @@
 #include "PaperCharacter.h"
 #include "TimerManager.h"
 #include "PaperFlipbookComponent.h"
-
+#include "SwordGameInstance.h"
+#include "MyGameInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "MageBoss.generated.h"
 
@@ -44,6 +46,10 @@ public:
 	void shootProjectile();
 	void endFight();
 	void Cutscene();
+
+
+	USwordGameInstance* GameInstance;
+
 
 	FVector CurrentLocationTwo;
 
