@@ -38,8 +38,11 @@ void AIceBall::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Other
 	//AActor testactor = PaperMan;
 	//APaperCharacter* test = OtherActor;
 	FString name = "BP_SwordMan_C_0";
+
 	if (OtherActor && (OtherActor != this) && *OtherActor->GetName() == name)
 	{
+		
+		UGameplayStatics::OpenLevel(GetWorld(), "StartingArea");
 		debugPrintFString("Overlapped Actor = %s", *OtherActor->GetName());
 	}
 }

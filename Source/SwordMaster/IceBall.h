@@ -5,6 +5,8 @@
 #include "Engine/TriggerBox.h"
 #include "PaperCharacter.h"
 #include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "SwordMan.h"
 
 #include "IceBall.generated.h"
 
