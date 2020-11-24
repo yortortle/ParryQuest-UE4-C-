@@ -40,6 +40,10 @@ void EmptyLinkFunctionForGeneratedCodeTreeNPC() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveUp_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveUp;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpeechBubble_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_SpeechBubble;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -69,9 +73,17 @@ void EmptyLinkFunctionForGeneratedCodeTreeNPC() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATreeNPC_Statics::NewProp_MoveUp = { "MoveUp", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATreeNPC, MoveUp), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATreeNPC_Statics::NewProp_MoveUp_MetaData, ARRAY_COUNT(Z_Construct_UClass_ATreeNPC_Statics::NewProp_MoveUp_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATreeNPC_Statics::NewProp_SpeechBubble_MetaData[] = {
+		{ "Category", "TreeNPC" },
+		{ "ModuleRelativePath", "TreeNPC.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UClass_ATreeNPC_Statics::NewProp_SpeechBubble = { "SpeechBubble", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATreeNPC, SpeechBubble), METADATA_PARAMS(Z_Construct_UClass_ATreeNPC_Statics::NewProp_SpeechBubble_MetaData, ARRAY_COUNT(Z_Construct_UClass_ATreeNPC_Statics::NewProp_SpeechBubble_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ATreeNPC_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATreeNPC_Statics::NewProp_MoveDown,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATreeNPC_Statics::NewProp_MoveUp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATreeNPC_Statics::NewProp_SpeechBubble,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ATreeNPC_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ATreeNPC>::IsAbstract,
@@ -100,7 +112,7 @@ void EmptyLinkFunctionForGeneratedCodeTreeNPC() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ATreeNPC, 607630413);
+	IMPLEMENT_CLASS(ATreeNPC, 1964562716);
 	template<> SWORDMASTER_API UClass* StaticClass<ATreeNPC>()
 	{
 		return ATreeNPC::StaticClass();

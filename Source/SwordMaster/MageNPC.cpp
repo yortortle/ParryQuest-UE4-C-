@@ -5,21 +5,17 @@
 
 void AMageNPC::BeginPlay()
 {
-	//GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-	//if (GI->mageCompleted == true)
-//	{
-//		MageTalk = "Updated";
-	//}
 
 	Super::BeginPlay();
 
 	UE_LOG(LogTemp, Warning, TEXT("StartMage"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageNPC::FWalk, 1.f, true);
+
+	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 }
 
 void AMageNPC::Tick(float DeltaTime)
 {
-
 	if (GetWorldTimerManager().IsTimerActive(WalkTimer))
 	{
 		switch (MoveDirection)

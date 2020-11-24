@@ -33,6 +33,9 @@ public:
 	FVector CurrentLocation;
 	float speed;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString SpeechBubble = "Hey! I was wondering if you could head into my house over there to your right to let my friends know that i'm alright? Much appreciated.";
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		UPaperFlipbook* MoveUp;
 

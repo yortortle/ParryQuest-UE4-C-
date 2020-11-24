@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SWORDMASTER_MageNPC_generated_h
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_RPC_WRAPPERS
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_RPC_WRAPPERS_NO_PURE_DECLS
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_INCLASS_NO_PURE_DECLS \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_RPC_WRAPPERS
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_RPC_WRAPPERS_NO_PURE_DECLS
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMageNPC(); \
 	friend struct Z_Construct_UClass_AMageNPC_Statics; \
@@ -24,7 +24,7 @@ public: \
 	DECLARE_SERIALIZER(AMageNPC)
 
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_INCLASS \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_INCLASS \
 private: \
 	static void StaticRegisterNativesAMageNPC(); \
 	friend struct Z_Construct_UClass_AMageNPC_Statics; \
@@ -33,7 +33,7 @@ public: \
 	DECLARE_SERIALIZER(AMageNPC)
 
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_STANDARD_CONSTRUCTORS \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AMageNPC(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMageNPC) \
@@ -46,7 +46,7 @@ private: \
 public:
 
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_ENHANCED_CONSTRUCTORS \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AMageNPC(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -59,26 +59,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AMageNPC); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AMageNPC)
 
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_PRIVATE_PROPERTY_OFFSET
-#define SwordMaster_Source_SwordMaster_MageNPC_h_16_PROLOG
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_GENERATED_BODY_LEGACY \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_PRIVATE_PROPERTY_OFFSET
+#define SwordMaster_Source_SwordMaster_MageNPC_h_17_PROLOG
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_RPC_WRAPPERS \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_INCLASS \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_STANDARD_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_RPC_WRAPPERS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_INCLASS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SwordMaster_Source_SwordMaster_MageNPC_h_19_GENERATED_BODY \
+#define SwordMaster_Source_SwordMaster_MageNPC_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_PRIVATE_PROPERTY_OFFSET \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_INCLASS_NO_PURE_DECLS \
-	SwordMaster_Source_SwordMaster_MageNPC_h_19_ENHANCED_CONSTRUCTORS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_PRIVATE_PROPERTY_OFFSET \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_INCLASS_NO_PURE_DECLS \
+	SwordMaster_Source_SwordMaster_MageNPC_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

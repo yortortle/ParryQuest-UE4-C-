@@ -16,6 +16,7 @@ class SWORDMASTER_API USwordGameInstance : public UGameInstance
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool mageCompleted;
 		bool treeCompleted;
 		bool bunnyCompleted;

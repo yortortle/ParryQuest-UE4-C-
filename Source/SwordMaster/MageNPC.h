@@ -7,6 +7,7 @@
 #include "TimerManager.h"
 #include "PaperFlipbookComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "SwordGameInstance.h"
 
 #include "MageNPC.generated.h"
 
@@ -47,11 +48,13 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FString MageTalk = "TESTchange";
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	FString Speech2 = "Speech2";
+
 	enum MoveDirection { U, D, L, R };
 	int MoveDirection = 3;
 
-	//UMyGameInstance* GI;
-
+	USwordGameInstance* GameInstance;
 
 	bool IsMoving = false;
 };
