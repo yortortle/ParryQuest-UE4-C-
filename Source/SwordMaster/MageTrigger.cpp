@@ -83,6 +83,7 @@ void AMageTrigger::TriggerTimer()
 
     GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
     GI->test = 2.0;
+    GI->mageCompleted = true;
 
     FLatentActionInfo LatentInfo;
     UGameplayStatics::OpenLevel(GetWorld(), "HubWorld");

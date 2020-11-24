@@ -6,6 +6,8 @@
 #include "PaperCharacter.h"
 #include "TimerManager.h"
 #include "PaperFlipbookComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "MyGameInstance.h"
 
 #include "MageNPC.generated.h"
 
@@ -44,10 +46,13 @@ public:
 	FVector CurrentLocation;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	FString SpeechBubble = "SPEECH";
+	FString SpeechBubble = "Hey there, my older brother is really not okay and needs someone to calm him down. Will you go into that dungeon to by us and help him out? I'll be there waiting.";
 
 	enum MoveDirection { U, D, L, R };
 	int MoveDirection = 3;
+
+	UMyGameInstance* GI;
+
 
 	bool IsMoving = false;
 };

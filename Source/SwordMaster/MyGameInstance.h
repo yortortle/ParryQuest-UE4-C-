@@ -19,5 +19,7 @@ public:
 
 	float test = 0.0f;
 
+	bool mageCompleted = false;
+
 	
 };
