@@ -1,0 +1,5 @@
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\Definitions.SwordMaster.h
+C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster/SwordGameInstance.h
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Inc\SwordMaster\SwordGameInstance.generated.h

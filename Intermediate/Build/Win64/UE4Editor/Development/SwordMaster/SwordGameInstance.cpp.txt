@@ -1,0 +1,3 @@
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Development\SwordMaster\Definitions.SwordMaster.h
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster\SwordGameInstance.h
+C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Inc\SwordMaster\SwordGameInstance.generated.h
