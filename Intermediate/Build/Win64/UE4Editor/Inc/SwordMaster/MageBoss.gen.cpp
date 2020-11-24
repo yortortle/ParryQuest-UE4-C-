@@ -35,10 +35,6 @@ void EmptyLinkFunctionForGeneratedCodeMageBoss() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpeechBubble_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FStrPropertyParams NewProp_SpeechBubble;
-#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ActorSpawn_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FClassPropertyParams NewProp_ActorSpawn;
@@ -66,13 +62,6 @@ void EmptyLinkFunctionForGeneratedCodeMageBoss() {}
 	};
 #endif
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMageBoss_Statics::NewProp_SpeechBubble_MetaData[] = {
-		{ "Category", "MageBoss" },
-		{ "ModuleRelativePath", "MageBoss.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UClass_AMageBoss_Statics::NewProp_SpeechBubble = { "SpeechBubble", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AMageBoss, SpeechBubble), METADATA_PARAMS(Z_Construct_UClass_AMageBoss_Statics::NewProp_SpeechBubble_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMageBoss_Statics::NewProp_SpeechBubble_MetaData)) };
-#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMageBoss_Statics::NewProp_ActorSpawn_MetaData[] = {
 		{ "Category", "MageBoss" },
 		{ "ModuleRelativePath", "MageBoss.h" },
@@ -94,7 +83,6 @@ void EmptyLinkFunctionForGeneratedCodeMageBoss() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMageBoss_Statics::NewProp_MoveRight = { "MoveRight", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AMageBoss, MoveRight), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMageBoss_Statics::NewProp_MoveRight_MetaData, ARRAY_COUNT(Z_Construct_UClass_AMageBoss_Statics::NewProp_MoveRight_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMageBoss_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageBoss_Statics::NewProp_SpeechBubble,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageBoss_Statics::NewProp_ActorSpawn,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageBoss_Statics::NewProp_MoveLeft,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMageBoss_Statics::NewProp_MoveRight,
@@ -126,7 +114,7 @@ void EmptyLinkFunctionForGeneratedCodeMageBoss() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMageBoss, 3314631586);
+	IMPLEMENT_CLASS(AMageBoss, 2512342724);
 	template<> SWORDMASTER_API UClass* StaticClass<AMageBoss>()
 	{
 		return AMageBoss::StaticClass();

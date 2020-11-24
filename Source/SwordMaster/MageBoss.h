@@ -47,8 +47,5 @@ public:
 
 	FVector CurrentLocationTwo;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	FString SpeechBubble = "MAGE BOSS";
-
 	int MoveDirection = 0;
 };

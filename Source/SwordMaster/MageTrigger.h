@@ -7,7 +7,7 @@
 #include "MageNPC.h"
 #include "Kismet/GameplayStatics.h"
 #include "SwordMan.h"
-#include "MyGameInstance.h"
+//#include "MyGameInstance.h"
 
 #include "MageTrigger.generated.h"
  
@@ -33,7 +33,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	FName LevelToLoad;
 
-	UMyGameInstance* GI;
+	//UMyGameInstance* GI;
 
 	FTimerHandle GameTime;
 
