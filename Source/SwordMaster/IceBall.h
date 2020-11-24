@@ -26,4 +26,11 @@ public:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxTrigger;
 
+	FVector CurrentLocation;
+	FVector NewLocation;
+
+	float Speed;
+protected:
+	virtual void Tick(float DeltaTime) override;
+
 };

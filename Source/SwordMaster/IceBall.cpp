@@ -16,9 +16,19 @@ void AIceBall::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("StartIceBall"));
 }
 
+void AIceBall::Tick(float DeltaTime)
+{
+	Speed = 200;
+	
+	CurrentLocation = this->GetActorLocation();
+	CurrentLocation.Z -= Speed * DeltaTime;
+	//CurrentLocationTwo.X -= speed * DeltaTime;
+	//SetActorLocation(CurrentLocation);
+}
+
+
 void AIceBall::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("overlapiceball"));
-	debugPrint("asdfasdf");
+	debugPrint("iceball killed you");
 }
 
