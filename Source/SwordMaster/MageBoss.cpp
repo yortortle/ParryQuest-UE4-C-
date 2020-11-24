@@ -13,8 +13,8 @@ void AMageBoss::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
-	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1.5, true);
-	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .3, true);
+	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1, true);
+	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .15, true);
 }
 
 void AMageBoss::Tick(float DeltaTime)
@@ -26,7 +26,7 @@ void AMageBoss::Tick(float DeltaTime)
 			case 0: 
 			{
 				CurrentLocationTwo = this->GetActorLocation();
-				speed = 200;
+				speed = 300;
 				CurrentLocationTwo.X -= speed * DeltaTime;
 				SetActorLocation(CurrentLocationTwo);
 			}
@@ -34,7 +34,7 @@ void AMageBoss::Tick(float DeltaTime)
 			case 1:
 			{
 				CurrentLocationTwo = this->GetActorLocation();
-				speed = 200;
+				speed = 300;
 				CurrentLocationTwo.X += speed * DeltaTime;
 				SetActorLocation(CurrentLocationTwo);
 			}

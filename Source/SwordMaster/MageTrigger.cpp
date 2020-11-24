@@ -18,7 +18,7 @@ void AMageTrigger::BeginPlay()
 {
     Super::BeginPlay();
 
-    DrawDebugBox(GetWorld(), GetActorLocation(), GetComponentsBoundingBox().GetExtent(), FColor::Black, true, -1, 0, 3);
+    //DrawDebugBox(GetWorld(), GetActorLocation(), GetComponentsBoundingBox().GetExtent(), FColor::Black, true, -1, 0, 3);
 }
 
 void AMageTrigger::Tick(float DeltaTime)
@@ -63,6 +63,7 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
 
         FVector SpawnLocation = this->GetActorLocation();
         SpawnLocation.Z += 150;
+        SpawnLocation.X += 100;
         FActorSpawnParameters SpawnParams;
         GetWorld()->SpawnActor<AActor>(targetActor, SpawnLocation, this->GetActorRotation(), SpawnParams);
     }
