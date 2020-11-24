@@ -18,7 +18,7 @@ void AIceBall::BeginPlay()
 
 void AIceBall::Tick(float DeltaTime)
 {
-	Speed = 175;
+	Speed = 150;
 	
 	CurrentLocation = this->GetActorLocation();
 	CurrentLocation.Z -= Speed * DeltaTime;

@@ -39,33 +39,37 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
     if (OtherActor && (OtherActor != this)) {
         GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 15.f, false);
         //this->Destroy();
-        debugPrint("Overlap Begin");
-        debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
-
-        //iterator to delete mage actor
-        for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
+        if (GetWorldTimerManager().IsTimerActive(GameTime))
         {
-            // skip if this object is not associated with our current game world
-            if (ObjectItr->GetWorld() != GetWorld())
+            debugPrint("Overlap Begin");
+            debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
+
+            //iterator to delete mage actor
+            for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
             {
-                continue;
+                // skip if this object is not associated with our current game world
+                if (ObjectItr->GetWorld() != GetWorld())
+                {
+                    continue;
+                }
+
+                debugPrint("test");
+
+                Cast<AMageNPC>(*ObjectItr)->Destroy();
+                AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
+                //foundActor->Destroy();
+
+                UObject* Object = *ObjectItr;
+                // ...
             }
 
-            debugPrint("test");
-
-            Cast<AMageNPC>(*ObjectItr)->Destroy();
-            AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
-            //foundActor->Destroy();
-
-            UObject* Object = *ObjectItr;
-            // ...
+            FVector SpawnLocation = this->GetActorLocation();
+            SpawnLocation.Z += 150;
+            SpawnLocation.X += 100;
+            FActorSpawnParameters SpawnParams;
+            GetWorld()->SpawnActor<AActor>(targetActor, SpawnLocation, this->GetActorRotation(), SpawnParams);
         }
 
-        FVector SpawnLocation = this->GetActorLocation();
-        SpawnLocation.Z += 150;
-        SpawnLocation.X += 100;
-        FActorSpawnParameters SpawnParams;
-        GetWorld()->SpawnActor<AActor>(targetActor, SpawnLocation, this->GetActorRotation(), SpawnParams);
     }
 }
 

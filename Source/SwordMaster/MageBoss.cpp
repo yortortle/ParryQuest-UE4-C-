@@ -14,7 +14,8 @@ void AMageBoss::BeginPlay()
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("StartMageBoss"));
 	GetWorldTimerManager().SetTimer(WalkTimer, this, &AMageBoss::BossWalk, 1, true);
-	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, .15, true);
+	GetWorldTimerManager().SetTimer(ProjectileTimer, this, &AMageBoss::shootProjectile, 0.15, true);
+	GetWorldTimerManager().SetTimer(EndTimer, this, &AMageBoss::endFight, 10, true);
 }
 
 void AMageBoss::Tick(float DeltaTime)
@@ -26,7 +27,14 @@ void AMageBoss::Tick(float DeltaTime)
 			case 0: 
 			{
 				CurrentLocationTwo = this->GetActorLocation();
-				speed = 300;
+				if (GetWorldTimerManager().IsTimerActive(CutsceneTimer))
+				{
+					speed = 120;
+				}
+				else
+				{
+					speed = 350;
+				}
 				CurrentLocationTwo.X -= speed * DeltaTime;
 				SetActorLocation(CurrentLocationTwo);
 			}
@@ -34,7 +42,14 @@ void AMageBoss::Tick(float DeltaTime)
 			case 1:
 			{
 				CurrentLocationTwo = this->GetActorLocation();
-				speed = 300;
+				if (GetWorldTimerManager().IsTimerActive(CutsceneTimer))
+				{
+					speed = 120;
+				}
+				else
+				{
+					speed = 350;
+				}
 				CurrentLocationTwo.X += speed * DeltaTime;
 				SetActorLocation(CurrentLocationTwo);
 			}
@@ -74,4 +89,14 @@ void AMageBoss::shootProjectile()
 	
 	GetWorld()->SpawnActor<AActor>(ActorSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
 	UE_LOG(LogTemp, Warning, TEXT("ice should be shooting"));
+}
+
+void AMageBoss::endFight()
+{
+	GetWorldTimerManager().SetTimer(CutsceneTimer, this, &AMageBoss::Cutscene, 5, true);
+	GetWorldTimerManager().ClearTimer(ProjectileTimer);
+}
+
+void AMageBoss::Cutscene()
+{
 }

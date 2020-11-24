@@ -35,11 +35,15 @@ public:
 
 	FTimerHandle WalkTimer;
 	FTimerHandle ProjectileTimer;
+	FTimerHandle EndTimer;
+	FTimerHandle CutsceneTimer;
 	FVector SpawnLocation;
 
 	float speed;
 	void BossWalk();
 	void shootProjectile();
+	void endFight();
+	void Cutscene();
 
 	FVector CurrentLocationTwo;
 
