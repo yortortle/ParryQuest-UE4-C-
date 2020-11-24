@@ -21,6 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeIceBall() {}
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	PAPER2D_API UClass* Z_Construct_UClass_APaperCharacter_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 // End Cross Module References
 	void AIceBall::StaticRegisterNativesAIceBall()
@@ -124,6 +126,10 @@ void EmptyLinkFunctionForGeneratedCodeIceBall() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PaperMan_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_PaperMan;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BoxTrigger_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BoxTrigger;
@@ -146,6 +152,13 @@ void EmptyLinkFunctionForGeneratedCodeIceBall() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBall_Statics::NewProp_PaperMan_MetaData[] = {
+		{ "Category", "IceBall" },
+		{ "ModuleRelativePath", "IceBall.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_AIceBall_Statics::NewProp_PaperMan = { "PaperMan", nullptr, (EPropertyFlags)0x0014000000000001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AIceBall, PaperMan), Z_Construct_UClass_APaperCharacter_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AIceBall_Statics::NewProp_PaperMan_MetaData, ARRAY_COUNT(Z_Construct_UClass_AIceBall_Statics::NewProp_PaperMan_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AIceBall_Statics::NewProp_BoxTrigger_MetaData[] = {
 		{ "Category", "IceBall" },
 		{ "EditInline", "true" },
@@ -154,6 +167,7 @@ void EmptyLinkFunctionForGeneratedCodeIceBall() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AIceBall_Statics::NewProp_BoxTrigger = { "BoxTrigger", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AIceBall, BoxTrigger), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AIceBall_Statics::NewProp_BoxTrigger_MetaData, ARRAY_COUNT(Z_Construct_UClass_AIceBall_Statics::NewProp_BoxTrigger_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AIceBall_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBall_Statics::NewProp_PaperMan,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIceBall_Statics::NewProp_BoxTrigger,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AIceBall_Statics::StaticCppClassTypeInfo = {
@@ -183,7 +197,7 @@ void EmptyLinkFunctionForGeneratedCodeIceBall() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AIceBall, 3470913072);
+	IMPLEMENT_CLASS(AIceBall, 4268571995);
 	template<> SWORDMASTER_API UClass* StaticClass<AIceBall>()
 	{
 		return AIceBall::StaticClass();

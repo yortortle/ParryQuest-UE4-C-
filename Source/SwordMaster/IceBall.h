@@ -26,6 +26,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxTrigger;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<APaperCharacter> PaperMan;
+
 	FVector CurrentLocation;
 	FVector NewLocation;
 

@@ -1,5 +1,5 @@
 #define debugPrint(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Green,text)
-
+#define debugPrintFString(text, fstring) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT(text), fstring))
 #include "IceBall.h"
 
 AIceBall::AIceBall()
@@ -18,17 +18,29 @@ void AIceBall::BeginPlay()
 
 void AIceBall::Tick(float DeltaTime)
 {
-	Speed = 200;
+	Speed = 175;
 	
 	CurrentLocation = this->GetActorLocation();
 	CurrentLocation.Z -= Speed * DeltaTime;
-	//CurrentLocationTwo.X -= speed * DeltaTime;
-	//SetActorLocation(CurrentLocation);
+	SetActorLocation(CurrentLocation);
 }
 
 
 void AIceBall::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	debugPrint("iceball killed you");
+	//debugPrint("iceball killed you");
+	
+	//ActorCollide->Get
+	//ActorCollide->GetDefaultObject
+
+	//OtherActor->
+	//ActorCollide.
+	//AActor testactor = PaperMan;
+	//APaperCharacter* test = OtherActor;
+	FString name = "BP_SwordMan_C_0";
+	if (OtherActor && (OtherActor != this) && *OtherActor->GetName() == name)
+	{
+		debugPrintFString("Overlapped Actor = %s", *OtherActor->GetName());
+	}
 }
 

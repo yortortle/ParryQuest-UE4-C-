@@ -35,6 +35,7 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
         return;
     }
 
+    //check if other actor is valid and if they're identical to themselves
     if (OtherActor && (OtherActor != this)) {
         GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 5.f, false);
         //this->Destroy();
