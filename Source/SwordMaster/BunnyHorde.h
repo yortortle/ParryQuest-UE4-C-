@@ -37,5 +37,7 @@ public:
 
 	float speed = 0.0f;
 
+	FVector CurrentLocation;
+	FVector NextLocation;
 	virtual void Tick(float DeltaTime) override;
 };

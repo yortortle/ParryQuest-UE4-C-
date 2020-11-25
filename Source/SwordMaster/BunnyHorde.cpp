@@ -15,16 +15,26 @@ ABunnyHorde::ABunnyHorde(float s1)
 	speed = s1;
 }
 
-
 void ABunnyHorde::BeginPlay()
 {
 	Super::BeginPlay();
 	//GetSprite()->Set
 	debugPrint("BunnyHorde");
+
+	//CurrentLocation.X -= speed * DeltaTime;
+	//SetActorLocation(CurrentLocation);
+
 }
 
 void ABunnyHorde::Tick(float DeltaTime)
 {
+	//debugPrint("TICK");
+	CurrentLocation = this->GetActorLocation();
+	CurrentLocation.X += 50 * DeltaTime;
+
+	SetActorLocation(CurrentLocation);
+
+
 	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
 	{
 		//debugPrint("Bunny Trigger Time Is Active");
