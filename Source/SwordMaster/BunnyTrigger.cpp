@@ -39,7 +39,7 @@ void ABunnyTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* 
    // &ABunnySpawner::SpawnBunny;
 
     GetWorldTimerManager().SetTimer(GameInstance->BunnySpawner, this, &ABunnyTrigger::BunnyTimer, 5.f, false);
-
+    //GetWorldTimerManager().PauseTimer(GameInstance->BunnySpawner);
     if (OtherActor && (OtherActor != this)) {
         debugPrint("Actor overlap");
     }

@@ -32,6 +32,7 @@ public:
 
 	USwordGameInstance* GameInstance;
 
+	bool HasSpawnerRan = false;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABunnyHorde> ToSpawn;
 
