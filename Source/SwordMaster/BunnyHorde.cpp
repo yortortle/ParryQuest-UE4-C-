@@ -55,7 +55,7 @@ void ABunnyHorde::Tick(float DeltaTime)
 
 	if (CurrentLocation.X < NewLocation.X)
 	{
-		CurrentLocation.X += 20 * DeltaTime;
+		CurrentLocation.X += 40 * DeltaTime;
 
 		//assigns A to whichever if statementi s ran, used to determine flipbook priority later.
 		A = NewLocation.X - CurrentLocation.X;
@@ -63,20 +63,18 @@ void ABunnyHorde::Tick(float DeltaTime)
 	if (CurrentLocation.X > NewLocation.X)
 	{
 		//debugPrint("X is different");
-		CurrentLocation.X -= 20 * DeltaTime;
+		CurrentLocation.X -= 40 * DeltaTime;
 		A = CurrentLocation.X - NewLocation.X;
 	}
 	if (CurrentLocation.Z < NewLocation.Z)
 	{
 		//debugPrint("Z is different");
-		CurrentLocation.Z += 20 * DeltaTime;
+		CurrentLocation.Z += 40 * DeltaTime;
 		B = NewLocation.Z - CurrentLocation.Z;
-
-		B = three;
 	}
 	if (CurrentLocation.Z > NewLocation.Z)
 	{
-		CurrentLocation.Z -= 20 * DeltaTime;
+		CurrentLocation.Z -= 40 * DeltaTime;
 		B = CurrentLocation.Z - NewLocation.Z;
 	}
 
@@ -89,5 +87,6 @@ void ABunnyHorde::Tick(float DeltaTime)
 		debugPrint("Z is larger than X");
 	}
 	
+	SetActorLocation(CurrentLocation);
 }
 
