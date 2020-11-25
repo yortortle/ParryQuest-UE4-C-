@@ -46,23 +46,26 @@ void ABunnyHorde::BeginPlay()
 
 void ABunnyHorde::Tick(float DeltaTime)
 {
-	//PrimaryActorTick.bCanEverTick = true;
-
-
-	//debugPrint("Tick");
-	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
-	//debugPrint("TICK");
+	//this is an insane of the always updated FVector location that swordman puts out when he moves around.
 	FVector NewLocation = GameInstance->SwordManLocation;
 	CurrentLocation = this->GetActorLocation();
-	//CurrentLocation.X -= (NewLocation.X - CurrentLocation.X) * DeltaTime;
-	//CurrentLocation.Y -= (NewLocation.Y - CurrentLocation.Y) * DeltaTime;
 
-	//CurrentLocation.X -= (CurrentLocation.X - NewLocation.X) * DeltaTime;
-	//CurrentLocation.Y -= (CurrentLocation.Y - NewLocation.Y) * DeltaTime;
-
+	//how to determine the bunnies movement being tracked to the play.
 	if (CurrentLocation.X < NewLocation.X)
 	{
-		CurrentLocation.X += 50 * DeltaTime;
+		CurrentLocation.X += 20 * DeltaTime;
+	}
+	else if (CurrentLocation.X > NewLocation.X)
+	{
+		CurrentLocation.X -= 20 * DeltaTime;
+	}
+	else if (CurrentLocation.Y < NewLocation.Y)
+	{
+		CurrentLocation.Y += 20 * DeltaTime;
+	}
+	else if (CurrentLocation.Y > NewLocation.Y)
+	{
+		CurrentLocation.X += 20 * DeltaTime;
 	}
 
 
