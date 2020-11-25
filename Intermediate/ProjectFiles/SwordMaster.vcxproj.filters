@@ -119,4 +119,26 @@
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\SwordMaster\RewardSpawner.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SwordMaster\SpawnMages.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SwordMaster\SpawnBunnies.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\SwordMaster\RewardSpawner.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SwordMaster\SpawnMages.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SwordMaster\SpawnBunnies.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

@@ -47,8 +47,8 @@ void ASwordMan::BeginPlay()
 void ASwordMan::Tick(float DeltaTime)
 {
 
+	//This is to constantly record sword mans FVector location in the game instance for further use in bunny level.
 	GameInstance->SwordManLocation = this->GetActorLocation();
-	//UE_LOG(LogTemp, Warning, TEXT("%f"), GI->test);
 
 	//Setting Vertical and Horizontal float values to the current Axis Values every tick. This is used in later logic to determine when to stop moving and which animations to run.
 	Vertical = InputComponent->GetAxisValue(TEXT("UpDown"));

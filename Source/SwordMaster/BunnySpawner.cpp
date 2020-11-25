@@ -20,7 +20,7 @@ void ABunnySpawner::BeginPlay()
 
 {
 	Super::BeginPlay();
-	debugPrint("bunny begin play");
+	//debugPrint("bunny begin play");
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 }
 
@@ -43,7 +43,7 @@ void ABunnySpawner::Tick(float DeltaTime)
 
 void ABunnySpawner::SpawnBunny()
 {
-	debugPrint("Actor should be spawning lol");
+	//debugPrint("Actor should be spawning");
 	FVector SpawnLocation = this->GetActorLocation();
 	FActorSpawnParameters SpawnParams;
 	GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
