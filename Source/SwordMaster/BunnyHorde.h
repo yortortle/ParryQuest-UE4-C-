@@ -41,6 +41,11 @@ public:
 	USwordGameInstance* GameInstance;
 	FTimerHandle GameTime;
 
+	float one;
+	float two;
+	float three;
+	float four;
+
 	float speed = 0.0f;
 	bool test;
 	FVector CurrentLocation;

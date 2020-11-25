@@ -51,23 +51,29 @@ void ABunnyHorde::Tick(float DeltaTime)
 	CurrentLocation = this->GetActorLocation();
 
 	//how to determine the bunnies movement being tracked to the play.
+
+
 	if (CurrentLocation.X < NewLocation.X)
 	{
 		CurrentLocation.X += 20 * DeltaTime;
+		one = NewLocation.X - CurrentLocation.X;
 	}
 	if (CurrentLocation.X > NewLocation.X)
 	{
 		//debugPrint("X is different");
 		CurrentLocation.X -= 20 * DeltaTime;
+		two = NewLocation.X + CurrentLocation.X;
 	}
 	if (CurrentLocation.Z < NewLocation.Z)
 	{
 		//debugPrint("Z is different");
 		CurrentLocation.Z += 20 * DeltaTime;
+		three = NewLocation.Z - CurrentLocation.Z;
 	}
 	if (CurrentLocation.Z > NewLocation.Z)
 	{
 		CurrentLocation.Z -= 20 * DeltaTime;
+		three = NewLocation.Z + CurrentLocation.Z;
 	}
 
 
