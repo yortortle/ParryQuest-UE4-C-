@@ -76,6 +76,9 @@
     <ClInclude Include="..\..\Source\SwordMaster\SwordGameInstance.h">
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\SwordMaster\BunnyTrigger.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
@@ -100,6 +103,9 @@
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SwordMaster\SwordGameInstance.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SwordMaster\BunnyTrigger.cpp">
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
   </ItemGroup>

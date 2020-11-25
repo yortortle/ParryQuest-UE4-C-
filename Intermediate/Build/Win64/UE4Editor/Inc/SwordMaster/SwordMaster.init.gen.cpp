@@ -21,8 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeSwordMaster_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xF4425053,
-				0x1838D14C,
+				0xBB8D6084,
+				0xB1A70197,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

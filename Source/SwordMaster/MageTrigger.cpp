@@ -81,10 +81,6 @@ void AMageTrigger::TriggerTimer()
 {
     UE_LOG(LogTemp, Warning, TEXT("My Name: %s"), *LevelToLoad.ToString());
 
-  //  GI = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-   // GI->test = 2.0;
-   // GI->mageCompleted = true;
-
     FLatentActionInfo LatentInfo;
     UGameplayStatics::OpenLevel(GetWorld(), "HubWorld");
 }
