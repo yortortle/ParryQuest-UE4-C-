@@ -60,6 +60,8 @@ C:\Program Files\Epic Games\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\Inc\AIModule\AIController.generated.h
 C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster\SwordGameInstance.h
 C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Inc\SwordMaster\SwordGameInstance.generated.h
+C:\Program Files\Epic Games\UE_4.22\Engine\Plugins\2D\Paper2D\Source\Paper2D\Classes\PaperFlipbookComponent.h
+C:\Program Files\Epic Games\UE_4.22\Engine\Plugins\2D\Paper2D\Intermediate\Build\Win64\UE4Editor\Inc\Paper2D\PaperFlipbookComponent.generated.h
 C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Intermediate\Build\Win64\UE4Editor\Inc\SwordMaster\BunnyHorde.generated.h
 C:\Users\tnobl\Documents\Unreal Projects\SwordMaster\Source\SwordMaster\BunnyTrigger.h
 C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine/TriggerBox.h

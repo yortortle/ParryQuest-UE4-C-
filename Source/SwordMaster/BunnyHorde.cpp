@@ -26,9 +26,9 @@ void ABunnyHorde::BeginPlay()
 	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
 	//GetWorld();
 	//if (ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-	{
+	//{
 		//debugPrint("CHARACTER FOUND I GUESS");
-	}
+	//}
 	//FLatentActionInfo LatentInfo;
 	//ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 
@@ -58,12 +58,15 @@ void ABunnyHorde::Tick(float DeltaTime)
 		CurrentLocation.X += 40 * DeltaTime;
 
 		//assigns A to whichever if statementi s ran, used to determine flipbook priority later.
+		one = true;
 		A = NewLocation.X - CurrentLocation.X;
 	}
 	if (CurrentLocation.X > NewLocation.X)
 	{
 		//debugPrint("X is different");
 		CurrentLocation.X -= 40 * DeltaTime;
+
+		two = true;
 		A = CurrentLocation.X - NewLocation.X;
 	}
 	if (CurrentLocation.Z < NewLocation.Z)
@@ -71,22 +74,40 @@ void ABunnyHorde::Tick(float DeltaTime)
 		//debugPrint("Z is different");
 		CurrentLocation.Z += 40 * DeltaTime;
 		B = NewLocation.Z - CurrentLocation.Z;
+
+		three = true;
 	}
 	if (CurrentLocation.Z > NewLocation.Z)
 	{
 		CurrentLocation.Z -= 40 * DeltaTime;
 		B = CurrentLocation.Z - NewLocation.Z;
+
+		four = true;
 	}
 
-	if (A > B)
+	if (A > B && one == true)
 	{
-		debugPrint("X is larger than Z");
+		//debugPrint("X is larger than Z");
+		GetSprite()->SetFlipbook(MoveRight);
 	}
-	else
+	else if (A > B && two == true)
 	{
-		debugPrint("Z is larger than X");
+		//debugPrint("Z is larger than X");
+		GetSprite()->SetFlipbook(MoveLeft);
 	}
-	
+	else if (B > A&& three == true)
+	{
+		GetSprite()->SetFlipbook(MoveUp);
+	}
+	else if (B > A&& four == true)
+	{
+		GetSprite()->SetFlipbook(MoveDown);
+	}
+
+	one = false;
+	two = false;
+	three = false;
+	four = false;
 	SetActorLocation(CurrentLocation);
 }
 

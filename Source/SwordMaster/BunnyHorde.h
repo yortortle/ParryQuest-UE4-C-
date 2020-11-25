@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "AIController.h"
 #include "SwordGameInstance.h"
+#include "PaperFlipbookComponent.h"
 //#include "BunnyTrigger.h"
 
 #include "BunnyHorde.generated.h"
@@ -35,6 +36,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<AActor> spawnActor;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite) //movement animations
+		UPaperFlipbook* MoveLeft;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		UPaperFlipbook* MoveRight;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		UPaperFlipbook* MoveDown;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		UPaperFlipbook* MoveUp;
+
+
+
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = "true"))
 		//APaperCharacter* BunnyTrigger;
 
@@ -43,6 +55,12 @@ public:
 
 	float A;
 	float B;
+
+	bool one;
+	bool two;
+	bool three;
+	bool four;
+
 	float speed = 0.0f;
 	bool test;
 	FVector CurrentLocation;
