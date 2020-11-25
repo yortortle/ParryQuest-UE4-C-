@@ -32,13 +32,13 @@ public:
 	//declaring bunny object to spawn
 	//ABunnyHorde* bunny = NewObject<ABunnyHorde>();
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName LevelToLoad;
 
 	//UMyGameInstance* GI;
 
-	UPROPERTY(EditAnywhere)
-	FTimerHandle GameTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FTimerHandle BunnyTimerSpawn;
 
 	FTimerHandle GetTimer();
 

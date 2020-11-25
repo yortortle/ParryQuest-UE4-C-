@@ -16,7 +16,7 @@ void ABunnyTrigger::BeginPlay()
 {
     Super::BeginPlay();
     debugPrint("Trigger is here");
-    GetWorldTimerManager().SetTimer(GameTime, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
+    //GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
 
     DrawDebugBox(GetWorld(), GetActorLocation(), GetComponentsBoundingBox().GetExtent(), FColor::Black, true, -1, 0, 3);
 }
@@ -29,6 +29,8 @@ void ABunnyTrigger::Tick(float DeltaTime)
 void ABunnyTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
     debugPrint("Actor overlap");
+
+    GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
 
     if (OtherActor && (OtherActor != this)) {
         debugPrint("Actor overlap");
@@ -46,5 +48,5 @@ void ABunnyTrigger::BunnyTimer()
 
 FTimerHandle ABunnyTrigger::GetTimer()
 {
-    return GameTime;
+    return BunnyTimerSpawn;
 }

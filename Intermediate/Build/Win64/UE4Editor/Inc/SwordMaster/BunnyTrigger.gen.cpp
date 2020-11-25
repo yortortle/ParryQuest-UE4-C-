@@ -116,9 +116,9 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GameTime_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BunnyTimerSpawn_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FStructPropertyParams NewProp_GameTime;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_BunnyTimerSpawn;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LevelToLoad_MetaData[];
 #endif
@@ -146,13 +146,13 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 	};
 #endif
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_GameTime_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_BunnyTimerSpawn_MetaData[] = {
 		{ "Category", "BunnyTrigger" },
 		{ "ModuleRelativePath", "BunnyTrigger.h" },
 		{ "ToolTip", "UMyGameInstance* GI;" },
 	};
 #endif
-	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_GameTime = { "GameTime", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, GameTime), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_GameTime_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_GameTime_MetaData)) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_BunnyTimerSpawn = { "BunnyTimerSpawn", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, BunnyTimerSpawn), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_BunnyTimerSpawn_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_BunnyTimerSpawn_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData[] = {
 		{ "Category", "BunnyTrigger" },
@@ -160,7 +160,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 		{ "ToolTip", "declaring bunny object to spawn\nABunnyHorde* bunny = NewObject<ABunnyHorde>();" },
 	};
 #endif
-	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad = { "LevelToLoad", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, LevelToLoad), METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData)) };
+	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad = { "LevelToLoad", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, LevelToLoad), METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_spawnActor_MetaData[] = {
 		{ "Category", "BunnyTrigger" },
@@ -169,7 +169,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 #endif
 	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_spawnActor = { "spawnActor", nullptr, (EPropertyFlags)0x0014000000000005, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, spawnActor), Z_Construct_UClass_AActor_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_spawnActor_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_spawnActor_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABunnyTrigger_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_GameTime,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_BunnyTimerSpawn,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_spawnActor,
 	};
@@ -200,7 +200,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABunnyTrigger, 579655055);
+	IMPLEMENT_CLASS(ABunnyTrigger, 2571720023);
 	template<> SWORDMASTER_API UClass* StaticClass<ABunnyTrigger>()
 	{
 		return ABunnyTrigger::StaticClass();
