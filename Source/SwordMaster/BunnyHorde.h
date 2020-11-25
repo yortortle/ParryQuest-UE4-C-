@@ -30,6 +30,8 @@ protected:
 
 public:
 
+	virtual void Tick(float DeltaTime) override;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<AActor> spawnActor;
 
@@ -43,5 +45,5 @@ public:
 	bool test;
 	FVector CurrentLocation;
 	FVector NextLocation;
-	virtual void Tick(float DeltaTime) override;
+	//virtual void Tick(float DeltaTime) override;
 };

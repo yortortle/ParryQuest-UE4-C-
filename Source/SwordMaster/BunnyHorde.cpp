@@ -52,9 +52,23 @@ void ABunnyHorde::Tick(float DeltaTime)
 	//debugPrint("Tick");
 	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
 	//debugPrint("TICK");
-	//FVector NewLocation = GameInstance->SwordManLocation;
+	FVector NewLocation = GameInstance->SwordManLocation;
 	CurrentLocation = this->GetActorLocation();
+	//CurrentLocation.X -= (NewLocation.X - CurrentLocation.X) * DeltaTime;
+	//CurrentLocation.Y -= (NewLocation.Y - CurrentLocation.Y) * DeltaTime;
+
+	//CurrentLocation.X -= (CurrentLocation.X - NewLocation.X) * DeltaTime;
+	//CurrentLocation.Y -= (CurrentLocation.Y - NewLocation.Y) * DeltaTime;
+
+	if (CurrentLocation.X < NewLocation.X)
+	{
+		CurrentLocation.X += 50 * DeltaTime;
+	}
+
+
 	//CurrentLocation.X += 50 * DeltaTime;
+	SetActorLocation(CurrentLocation);
+
 	//CurrentLocation.X = (NewLocation.X * DeltaTime);
 	//CurrentLocation.Z
 	//FVector MovementVector = (NewLocation - CurrentLocation) * DeltaTime;
