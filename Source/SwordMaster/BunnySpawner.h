@@ -7,7 +7,9 @@
 #include "Engine/EngineTypes.h"
 #include "Engine/World.h"
 #include "BunnyHorde.h"
+#include "BunnyTrigger.h"
 #include "Kismet/GameplayStatics.h"
+#include "SwordGameInstance.h"
 
 #include "BunnySpawner.generated.h"
 
@@ -27,6 +29,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	USwordGameInstance* GameInstance;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABunnyHorde> ToSpawn;

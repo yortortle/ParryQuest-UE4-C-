@@ -15,6 +15,8 @@ ABunnyTrigger::ABunnyTrigger()
 void ABunnyTrigger::BeginPlay()
 {
     Super::BeginPlay();
+    GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
     debugPrint("Trigger is here");
     //GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
 
@@ -36,7 +38,7 @@ void ABunnyTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* 
     debugPrint("Actor overlap");
    // &ABunnySpawner::SpawnBunny;
 
-    GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 5.f, false);
+    GetWorldTimerManager().SetTimer(GameInstance->BunnySpawner, this, &ABunnyTrigger::BunnyTimer, 5.f, false);
 
     if (OtherActor && (OtherActor != this)) {
         debugPrint("Actor overlap");

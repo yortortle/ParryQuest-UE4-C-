@@ -7,6 +7,8 @@
 #include "TimerManager.h"
 //#include "BunnyHorde.h"
 //#include "BunnySpawner.h"
+#include "SwordGameInstance.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "BunnyTrigger.generated.h"
 
@@ -41,8 +43,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTimerHandle BunnyTimerSpawn;
 
-	FTimerHandle GetTimer();
+	USwordGameInstance* GameInstance;
 
+	FTimerHandle GetTimer();
 
 	virtual void Tick(float DeltaTime) override;
 

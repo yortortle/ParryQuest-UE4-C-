@@ -17,21 +17,41 @@ ABunnySpawner::ABunnySpawner()
 
 // Called when the game starts or when spawned
 void ABunnySpawner::BeginPlay()
+
 {
 	Super::BeginPlay();
+	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
 	//GetWorld()->SpawnActor()
 	//FVector SpawnLocation = this->GetActorLocation();
 	//FActorSpawnParameters SpawnParams;
 
 	//GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
 	//debugPrint("Actor should be spawning lol");
-
+	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
+	{
+		//debugPrint("Timer valid");
+	}
 }
 
 // Called every frame
 void ABunnySpawner::Tick(float DeltaTime)
 {
+	if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
+	{
+		debugPrint("Active");
+	}
+	else
+	{
+		debugPrint("False");
+	}
 	Super::Tick(DeltaTime);
+	//debugPrint("SpawnerTick");
+	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
+	{
+		//debugPrint("Bunny Trigger Time Is Active");
+	}
+
 }
 
 void ABunnySpawner::SpawnBunny()

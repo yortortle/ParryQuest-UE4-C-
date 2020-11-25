@@ -20,4 +20,6 @@ public:
 		bool mageCompleted;
 		bool treeCompleted;
 		bool bunnyCompleted;
+
+		FTimerHandle BunnySpawner;
 };
