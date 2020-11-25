@@ -1,7 +1,11 @@
+#define debugPrint(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::Green,text)
+#define debugPrintFString(text, fstring) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT(text), fstring))
+
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "BunnySpawner.h"
+#include "BunnyHorde.h"
 
 // Sets default values
 ABunnySpawner::ABunnySpawner()
@@ -15,7 +19,17 @@ ABunnySpawner::ABunnySpawner()
 void ABunnySpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//GetWorld()->SpawnActor()
+	FVector SpawnLocation = this->GetActorLocation();
+	FActorSpawnParameters SpawnParams;
+	if (ToSpawn)
+	{
+		debugPrint("tospawn is a thing");
+	}
+
+	GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
+	debugPrint("Actor should be spawning lol");
+
 }
 
 // Called every frame

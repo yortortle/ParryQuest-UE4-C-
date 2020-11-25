@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/World.h"
 #include "BunnyHorde.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -27,8 +28,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//declaring bunny object to spawn
-	//ABunnyHorde* bunny = NewObject<ABunnyHorde>();
-
-
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ABunnyHorde> ToSpawn;
 };

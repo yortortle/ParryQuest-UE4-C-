@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMaster_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xB3FDBF6E,
+				0x5DE2A552,
 				0xD41947AE,
 				METADATA_PARAMS(nullptr, 0)
 			};

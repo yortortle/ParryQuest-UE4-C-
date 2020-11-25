@@ -19,6 +19,7 @@ ABunnyHorde::ABunnyHorde(float s1)
 void ABunnyHorde::BeginPlay()
 {
 	Super::BeginPlay();
+	//GetSprite()->Set
 	debugPrint("BunnyHorde");
 }
 
