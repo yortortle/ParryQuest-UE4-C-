@@ -18,6 +18,7 @@ ABunnyHorde::ABunnyHorde(float s1)
 void ABunnyHorde::BeginPlay()
 {
 	Super::BeginPlay();
+	PrimaryActorTick.bCanEverTick = true;
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
 	
@@ -45,6 +46,10 @@ void ABunnyHorde::BeginPlay()
 
 void ABunnyHorde::Tick(float DeltaTime)
 {
+	//PrimaryActorTick.bCanEverTick = true;
+
+
+	//debugPrint("Tick");
 	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
 	//debugPrint("TICK");
 	//FVector NewLocation = GameInstance->SwordManLocation;
@@ -55,7 +60,7 @@ void ABunnyHorde::Tick(float DeltaTime)
 	//FVector MovementVector = (NewLocation - CurrentLocation) * DeltaTime;
 	//CurrentLocation.X = NewLocation.X * DeltaTime;
 	//bool test = false;
-	FString test1 = GameInstance->SwordManLocation.ToString();
+	//FString test1 = GameInstance->SwordManLocation.ToString();
 	//debugPrintFString("",test1);
 
 	//UE_LOG(LogTemp, Warning, TEXT("%s"), test1)
