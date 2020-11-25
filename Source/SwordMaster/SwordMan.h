@@ -106,7 +106,7 @@ public:
         void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 
-    USwordGameInstance* GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+    USwordGameInstance* GameInstance;
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;

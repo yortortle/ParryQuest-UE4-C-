@@ -18,6 +18,11 @@ ABunnyHorde::ABunnyHorde(float s1)
 void ABunnyHorde::BeginPlay()
 {
 	Super::BeginPlay();
+	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
+	
+	//AAIController::MoveToLocation
+	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
 	//GetWorld();
 	//if (ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 	{
@@ -31,19 +36,39 @@ void ABunnyHorde::BeginPlay()
 	//ASwordMan* mySwordMan =
 	//UGameplayStatics::Actor
 	debugPrint("BunnyHorde");
+	
 
 	//CurrentLocation.X -= speed * DeltaTime;
 	//SetActorLocation(CurrentLocation);
-
+	
 }
 
 void ABunnyHorde::Tick(float DeltaTime)
 {
+	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
 	//debugPrint("TICK");
+	//FVector NewLocation = GameInstance->SwordManLocation;
 	CurrentLocation = this->GetActorLocation();
-	CurrentLocation.X += 50 * DeltaTime;
+	//CurrentLocation.X += 50 * DeltaTime;
+	//CurrentLocation.X = (NewLocation.X * DeltaTime);
+	//CurrentLocation.Z
+	//FVector MovementVector = (NewLocation - CurrentLocation) * DeltaTime;
+	//CurrentLocation.X = NewLocation.X * DeltaTime;
+	//bool test = false;
+	FString test1 = GameInstance->SwordManLocation.ToString();
+	//debugPrintFString("",test1);
 
-	SetActorLocation(CurrentLocation);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), test1)
+	bool test = false;
+	//if (test == false)
+	{
+		//debugPrint("False");
+		//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
+		//ConsumeMovementInputVector();
+	}
+	test = true;
+	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
+
 
 
 	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))

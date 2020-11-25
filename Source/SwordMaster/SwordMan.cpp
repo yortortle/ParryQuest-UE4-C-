@@ -33,6 +33,8 @@ void ASwordMan::BeginPlay()
 {
 	Super::BeginPlay();
 
+	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+
 	//This is me replacing the delegate OnComponentBeginOverlap with my custom one for my purposes to either destroy actors or interact with them.
 	HitUp1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin); 
 	HitDown1->OnComponentBeginOverlap.AddDynamic(this, &ASwordMan::OnOverLapBegin);

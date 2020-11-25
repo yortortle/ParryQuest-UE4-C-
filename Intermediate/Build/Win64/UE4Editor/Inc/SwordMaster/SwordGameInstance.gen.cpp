@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordGameInstance() {}
 	SWORDMASTER_API UClass* Z_Construct_UClass_USwordGameInstance();
 	ENGINE_API UClass* Z_Construct_UClass_UGameInstance();
 	UPackage* Z_Construct_UPackage__Script_SwordMaster();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void USwordGameInstance::StaticRegisterNativesUSwordGameInstance()
 	{
@@ -31,6 +32,20 @@ void EmptyLinkFunctionForGeneratedCodeSwordGameInstance() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SwordManLocation_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SwordManLocation;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bunnyCompleted_MetaData[];
+#endif
+		static void NewProp_bunnyCompleted_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bunnyCompleted;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_treeCompleted_MetaData[];
+#endif
+		static void NewProp_treeCompleted_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_treeCompleted;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mageCompleted_MetaData[];
 #endif
@@ -51,6 +66,35 @@ void EmptyLinkFunctionForGeneratedCodeSwordGameInstance() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USwordGameInstance_Statics::NewProp_SwordManLocation_MetaData[] = {
+		{ "Category", "SwordGameInstance" },
+		{ "ModuleRelativePath", "SwordGameInstance.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_USwordGameInstance_Statics::NewProp_SwordManLocation = { "SwordManLocation", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(USwordGameInstance, SwordManLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_SwordManLocation_MetaData, ARRAY_COUNT(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_SwordManLocation_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted_MetaData[] = {
+		{ "Category", "SwordGameInstance" },
+		{ "ModuleRelativePath", "SwordGameInstance.h" },
+	};
+#endif
+	void Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted_SetBit(void* Obj)
+	{
+		((USwordGameInstance*)Obj)->bunnyCompleted = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted = { "bunnyCompleted", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(USwordGameInstance), &Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted_SetBit, METADATA_PARAMS(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted_MetaData, ARRAY_COUNT(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted_MetaData[] = {
+		{ "Category", "SwordGameInstance" },
+		{ "ModuleRelativePath", "SwordGameInstance.h" },
+	};
+#endif
+	void Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted_SetBit(void* Obj)
+	{
+		((USwordGameInstance*)Obj)->treeCompleted = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted = { "treeCompleted", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(USwordGameInstance), &Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted_SetBit, METADATA_PARAMS(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted_MetaData, ARRAY_COUNT(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted_MetaData[] = {
 		{ "Category", "SwordGameInstance" },
 		{ "ModuleRelativePath", "SwordGameInstance.h" },
@@ -62,6 +106,9 @@ void EmptyLinkFunctionForGeneratedCodeSwordGameInstance() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted = { "mageCompleted", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(USwordGameInstance), &Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted_SetBit, METADATA_PARAMS(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted_MetaData, ARRAY_COUNT(Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USwordGameInstance_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USwordGameInstance_Statics::NewProp_SwordManLocation,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USwordGameInstance_Statics::NewProp_bunnyCompleted,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USwordGameInstance_Statics::NewProp_treeCompleted,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USwordGameInstance_Statics::NewProp_mageCompleted,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_USwordGameInstance_Statics::StaticCppClassTypeInfo = {
@@ -91,7 +138,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordGameInstance() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USwordGameInstance, 2380115170);
+	IMPLEMENT_CLASS(USwordGameInstance, 3197363622);
 	template<> SWORDMASTER_API UClass* StaticClass<USwordGameInstance>()
 	{
 		return USwordGameInstance::StaticClass();

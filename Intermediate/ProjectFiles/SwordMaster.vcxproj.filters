@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\SwordMaster.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{C8FDCDDF-BD9A-4108-8CC5-078590B44504}</UniqueIdentifier>
+      <UniqueIdentifier>{8BADC427-2CBD-4286-9D00-4C8374E90F26}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\SwordMaster.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\SwordMasterEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitignore" />
+    <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{F594F5FC-A9BC-41E7-98FE-FC7DB5551857}</UniqueIdentifier>
+      <UniqueIdentifier>{D50F7E67-E3D5-43A1-B900-5C552D51B0BA}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,8 +29,68 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\SwordMaster">
-      <UniqueIdentifier>{81B78A6B-E2D4-4EB5-95E8-B5A691E7E3AF}</UniqueIdentifier>
+      <UniqueIdentifier>{13975E12-0CC1-4B22-A28A-1D5ADD61449D}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\Bunny.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\BunnyHorde.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\BunnyHorde.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\BunnySpawner.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\BunnySpawner.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\BunnyTrigger.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\BunnyTrigger.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\IceBall.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\IceBall.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\MageBoss.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\MageBoss.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\MageNPC.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\MageNPC.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\MageTrigger.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\MageTrigger.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\MyGameInstance.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\MyGameInstance.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SwordMaster\SwordGameInstance.cpp">
+      <Filter>Source\SwordMaster</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SwordMaster\SwordGameInstance.h">
+      <Filter>Source\SwordMaster</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\SwordMaster\SwordMan.cpp">
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
@@ -50,75 +112,11 @@
     <ClInclude Include="..\..\Source\SwordMaster\SwordMasterGameModeBase.h">
       <Filter>Source\SwordMaster</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\SwordMaster\Bunny.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\TreeNPC.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\MageNPC.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\MageTrigger.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\MageBoss.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\MyGameInstance.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\IceBall.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\SwordGameInstance.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\BunnyTrigger.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\BunnyHorde.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SwordMaster\BunnySpawner.h">
-      <Filter>Source\SwordMaster</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\SwordMaster\Bunny.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\SwordMaster\TreeNPC.cpp">
       <Filter>Source\SwordMaster</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\MageNPC.cpp">
+    <ClInclude Include="..\..\Source\SwordMaster\TreeNPC.h">
       <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\MageTrigger.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\MageBoss.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\MyGameInstance.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\IceBall.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\SwordGameInstance.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\BunnyTrigger.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\BunnyHorde.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SwordMaster\BunnySpawner.cpp">
-      <Filter>Source\SwordMaster</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,8 @@
 #include "PaperCharacter.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "AIController.h"
+#include "SwordGameInstance.h"
 //#include "BunnyTrigger.h"
 
 #include "BunnyHorde.generated.h"
@@ -34,10 +36,11 @@ public:
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = "true"))
 		//APaperCharacter* BunnyTrigger;
 
+	USwordGameInstance* GameInstance;
 	FTimerHandle GameTime;
 
 	float speed = 0.0f;
-
+	bool test;
 	FVector CurrentLocation;
 	FVector NextLocation;
 	virtual void Tick(float DeltaTime) override;

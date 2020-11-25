@@ -18,9 +18,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool mageCompleted;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool treeCompleted;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bunnyCompleted;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FVector SwordManLocation;
 		FTimerHandle BunnySpawner;
 };
