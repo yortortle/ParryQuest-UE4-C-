@@ -55,17 +55,19 @@ void ABunnyHorde::Tick(float DeltaTime)
 	{
 		CurrentLocation.X += 20 * DeltaTime;
 	}
-	else if (CurrentLocation.X > NewLocation.X)
+	if (CurrentLocation.X > NewLocation.X)
 	{
+		//debugPrint("X is different");
 		CurrentLocation.X -= 20 * DeltaTime;
 	}
-	else if (CurrentLocation.Y < NewLocation.Y)
+	if (CurrentLocation.Z < NewLocation.Z)
 	{
-		CurrentLocation.Y += 20 * DeltaTime;
+		//debugPrint("Z is different");
+		CurrentLocation.Z += 20 * DeltaTime;
 	}
-	else if (CurrentLocation.Y > NewLocation.Y)
+	if (CurrentLocation.Z > NewLocation.Z)
 	{
-		CurrentLocation.X += 20 * DeltaTime;
+		CurrentLocation.Z -= 20 * DeltaTime;
 	}
 
 
