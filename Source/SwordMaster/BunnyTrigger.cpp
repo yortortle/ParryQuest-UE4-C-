@@ -23,14 +23,20 @@ void ABunnyTrigger::BeginPlay()
 
 void ABunnyTrigger::Tick(float DeltaTime)
 {
-
+    Super::Tick(DeltaTime);
+    debugPrint("yes");
+    if (GetWorldTimerManager().IsTimerActive(BunnyTimerSpawn))
+    {
+        debugPrint("yes");
+    }
 }
 
 void ABunnyTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
     debugPrint("Actor overlap");
+   // &ABunnySpawner::SpawnBunny;
 
-    GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
+    GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 5.f, false);
 
     if (OtherActor && (OtherActor != this)) {
         debugPrint("Actor overlap");

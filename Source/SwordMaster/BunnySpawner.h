@@ -31,7 +31,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ABunnyHorde> ToSpawn;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UFUNCTION(BlueprintCallable)
 	void SpawnBunny();
 
 };

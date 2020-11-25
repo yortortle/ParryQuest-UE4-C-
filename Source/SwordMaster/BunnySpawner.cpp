@@ -24,7 +24,7 @@ void ABunnySpawner::BeginPlay()
 	//FActorSpawnParameters SpawnParams;
 
 	//GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
-	debugPrint("Actor should be spawning lol");
+	//debugPrint("Actor should be spawning lol");
 
 }
 
@@ -36,6 +36,7 @@ void ABunnySpawner::Tick(float DeltaTime)
 
 void ABunnySpawner::SpawnBunny()
 {
+	debugPrint("Actor should be spawning lol");
 	FVector SpawnLocation = this->GetActorLocation();
 	FActorSpawnParameters SpawnParams;
 	GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);

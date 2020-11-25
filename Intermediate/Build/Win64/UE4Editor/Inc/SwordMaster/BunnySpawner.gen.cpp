@@ -17,11 +17,39 @@ void EmptyLinkFunctionForGeneratedCodeBunnySpawner() {}
 	SWORDMASTER_API UClass* Z_Construct_UClass_ABunnySpawner();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_SwordMaster();
+	SWORDMASTER_API UFunction* Z_Construct_UFunction_ABunnySpawner_SpawnBunny();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	SWORDMASTER_API UClass* Z_Construct_UClass_ABunnyHorde_NoRegister();
 // End Cross Module References
 	void ABunnySpawner::StaticRegisterNativesABunnySpawner()
 	{
+		UClass* Class = ABunnySpawner::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "SpawnBunny", &ABunnySpawner::execSpawnBunny },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BunnySpawner.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABunnySpawner, nullptr, "SpawnBunny", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABunnySpawner_SpawnBunny()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ABunnySpawner_SpawnBunny_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_ABunnySpawner_NoRegister()
 	{
@@ -30,6 +58,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnySpawner() {}
 	struct Z_Construct_UClass_ABunnySpawner_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -44,6 +73,9 @@ void EmptyLinkFunctionForGeneratedCodeBunnySpawner() {}
 	UObject* (*const Z_Construct_UClass_ABunnySpawner_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_AActor,
 		(UObject* (*)())Z_Construct_UPackage__Script_SwordMaster,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_ABunnySpawner_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ABunnySpawner_SpawnBunny, "SpawnBunny" }, // 1040764669
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnySpawner_Statics::Class_MetaDataParams[] = {
@@ -69,11 +101,11 @@ void EmptyLinkFunctionForGeneratedCodeBunnySpawner() {}
 		nullptr,
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_ABunnySpawner_Statics::PropPointers,
 		nullptr,
 		ARRAY_COUNT(DependentSingletons),
-		0,
+		ARRAY_COUNT(FuncInfo),
 		ARRAY_COUNT(Z_Construct_UClass_ABunnySpawner_Statics::PropPointers),
 		0,
 		0x009000A0u,
@@ -88,7 +120,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnySpawner() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABunnySpawner, 1708152156);
+	IMPLEMENT_CLASS(ABunnySpawner, 1642940707);
 	template<> SWORDMASTER_API UClass* StaticClass<ABunnySpawner>()
 	{
 		return ABunnySpawner::StaticClass();

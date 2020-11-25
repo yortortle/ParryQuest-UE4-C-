@@ -5,7 +5,8 @@
 #include "CoreMinimal.h"
 #include "Engine/TriggerBox.h"
 #include "TimerManager.h"
-#include "BunnyHorde.h"
+//#include "BunnyHorde.h"
+//#include "BunnySpawner.h"
 
 #include "BunnyTrigger.generated.h"
 
