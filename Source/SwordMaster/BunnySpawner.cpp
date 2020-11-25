@@ -22,61 +22,23 @@ void ABunnySpawner::BeginPlay()
 	Super::BeginPlay();
 	debugPrint("bunny begin play");
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-
-	if (GetWorldTimerManager().IsTimerPaused(GameInstance->BunnySpawner))
-	{
-		//debugPrint("Paused");
-	}
-	else
-	{
-		debugPrint("Paused");
-	}
-
-
-
-	//GetWorld()->SpawnActor()
-	//FVector SpawnLocation = this->GetActorLocation();
-	//FActorSpawnParameters SpawnParams;
-
-	//GetWorld()->SpawnActor<AActor>(ToSpawn, SpawnLocation, this->GetActorRotation(), SpawnParams);
-	//debugPrint("Actor should be spawning lol");
-	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
-	{
-		//debugPrint("Timer valid");
-	}
 }
 
 // Called every frame
 void ABunnySpawner::Tick(float DeltaTime)
 {
-
-	if (GetWorldTimerManager().IsTimerPaused(GameInstance->BunnySpawner))
-	{
-		debugPrint("Paused");
-	}
-
 	if (!(HasSpawnerRan))
 	{
 		if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
 		{
-			//debugPrint("Active");
-			//z`SpawnBunny();
 			SpawnBunny();
 			HasSpawnerRan = true;
-			//return;
-			//GetWorldTimerManager().PauseTimer(GameInstance->BunnySpawner);
 		}
 	}
 	{
 		//debugPrint("False");
 	}
 	Super::Tick(DeltaTime);
-	//debugPrint("SpawnerTick");
-	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
-	{
-		//debugPrint("Bunny Trigger Time Is Active");
-	}
-
 }
 
 void ABunnySpawner::SpawnBunny()
