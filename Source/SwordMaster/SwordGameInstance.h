@@ -21,5 +21,6 @@ public:
 		bool treeCompleted;
 		bool bunnyCompleted;
 
+		FVector SwordManLocation;
 		FTimerHandle BunnySpawner;
 };

@@ -18,7 +18,18 @@ ABunnyHorde::ABunnyHorde(float s1)
 void ABunnyHorde::BeginPlay()
 {
 	Super::BeginPlay();
+	//GetWorld();
+	//if (ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+	{
+		//debugPrint("CHARACTER FOUND I GUESS");
+	}
+	//FLatentActionInfo LatentInfo;
+	//ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+
 	//GetSprite()->Set
+
+	//ASwordMan* mySwordMan =
+	//UGameplayStatics::Actor
 	debugPrint("BunnyHorde");
 
 	//CurrentLocation.X -= speed * DeltaTime;

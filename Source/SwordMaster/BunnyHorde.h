@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "TimerManager.h"
+#include "Kismet/GameplayStatics.h"
 //#include "BunnyTrigger.h"
 
 #include "BunnyHorde.generated.h"
