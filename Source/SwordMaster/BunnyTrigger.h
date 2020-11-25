@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Engine/TriggerBox.h"
+#include "TimerManager.h"
+
 #include "BunnyTrigger.generated.h"
 
 /**
@@ -21,6 +23,7 @@ protected:
 public:
 
 	ABunnyTrigger();
+	void BunnyTimer();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<AActor> spawnActor;
