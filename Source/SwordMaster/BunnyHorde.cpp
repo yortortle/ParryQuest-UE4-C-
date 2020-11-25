@@ -56,53 +56,38 @@ void ABunnyHorde::Tick(float DeltaTime)
 	if (CurrentLocation.X < NewLocation.X)
 	{
 		CurrentLocation.X += 20 * DeltaTime;
-		one = NewLocation.X - CurrentLocation.X;
+
+		//assigns A to whichever if statementi s ran, used to determine flipbook priority later.
+		A = NewLocation.X - CurrentLocation.X;
 	}
 	if (CurrentLocation.X > NewLocation.X)
 	{
 		//debugPrint("X is different");
 		CurrentLocation.X -= 20 * DeltaTime;
-		two = CurrentLocation.X - NewLocation.X;
+		A = CurrentLocation.X - NewLocation.X;
 	}
 	if (CurrentLocation.Z < NewLocation.Z)
 	{
 		//debugPrint("Z is different");
 		CurrentLocation.Z += 20 * DeltaTime;
-		three = NewLocation.Z - CurrentLocation.Z;
+		B = NewLocation.Z - CurrentLocation.Z;
+
+		B = three;
 	}
 	if (CurrentLocation.Z > NewLocation.Z)
 	{
 		CurrentLocation.Z -= 20 * DeltaTime;
-		four = CurrentLocation.Z - NewLocation.Z;
+		B = CurrentLocation.Z - NewLocation.Z;
 	}
 
-
-	//CurrentLocation.X += 50 * DeltaTime;
-	SetActorLocation(CurrentLocation);
-
-	//CurrentLocation.X = (NewLocation.X * DeltaTime);
-	//CurrentLocation.Z
-	//FVector MovementVector = (NewLocation - CurrentLocation) * DeltaTime;
-	//CurrentLocation.X = NewLocation.X * DeltaTime;
-	//bool test = false;
-	//FString test1 = GameInstance->SwordManLocation.ToString();
-	//debugPrintFString("",test1);
-
-	//UE_LOG(LogTemp, Warning, TEXT("%s"), test1)
-	bool test = false;
-	//if (test == false)
+	if (A > B)
 	{
-		//debugPrint("False");
-		//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
-		//ConsumeMovementInputVector();
+		debugPrint("X is larger than Z");
 	}
-	test = true;
-	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
-
-
-
-	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
+	else
 	{
-		//debugPrint("Bunny Trigger Time Is Active");
+		debugPrint("Z is larger than X");
 	}
+	
 }
+
