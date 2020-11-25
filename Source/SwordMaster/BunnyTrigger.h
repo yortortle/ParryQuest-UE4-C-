@@ -33,7 +33,11 @@ public:
 
 	//UMyGameInstance* GI;
 
+	UPROPERTY(EditAnywhere)
 	FTimerHandle GameTime;
+
+	FTimerHandle GetTimer();
+
 
 	virtual void Tick(float DeltaTime) override;
 

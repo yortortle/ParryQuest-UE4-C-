@@ -5,12 +5,27 @@
 
 #include "BunnyHorde.h"
 
+ABunnyHorde::ABunnyHorde()
+{
+
+}
+
+ABunnyHorde::ABunnyHorde(float s1)
+{
+	speed = s1;
+}
+
+
 void ABunnyHorde::BeginPlay()
 {
+	Super::BeginPlay();
 	debugPrint("BunnyHorde");
 }
 
 void ABunnyHorde::Tick(float DeltaTime)
 {
-
+	//if (GetWorldTimerManager().IsTimerActive(ABunnyTrigger().GetTimer()))
+	{
+		//debugPrint("Bunny Trigger Time Is Active");
+	}
 }

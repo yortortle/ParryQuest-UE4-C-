@@ -43,3 +43,8 @@ void ABunnyTrigger::BunnyTimer()
 {
     debugPrint("Bunny timer end");
 }
+
+FTimerHandle ABunnyTrigger::GetTimer()
+{
+    return GameTime;
+}
