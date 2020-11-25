@@ -40,6 +40,8 @@ void ABunnySpawner::Tick(float DeltaTime)
 	if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
 	{
 		debugPrint("Active");
+		SpawnBunny();
+		GetWorldTimerManager().PauseTimer(GameInstance->BunnySpawner);
 	}
 	else
 	{
