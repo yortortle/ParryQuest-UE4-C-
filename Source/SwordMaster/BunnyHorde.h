@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
 #include "TimerManager.h"
-#include "BunnyTrigger.h"
+//#include "BunnyTrigger.h"
 
 #include "BunnyHorde.generated.h"
 
@@ -30,8 +30,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<AActor> spawnActor;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		APaperCharacter* BunnyTrigger;
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ExposeOnSpawn = "true"))
+		//APaperCharacter* BunnyTrigger;
 
 	FTimerHandle GameTime;
 

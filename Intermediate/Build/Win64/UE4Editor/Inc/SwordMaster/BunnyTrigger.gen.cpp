@@ -157,6 +157,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData[] = {
 		{ "Category", "BunnyTrigger" },
 		{ "ModuleRelativePath", "BunnyTrigger.h" },
+		{ "ToolTip", "declaring bunny object to spawn\nABunnyHorde* bunny = NewObject<ABunnyHorde>();" },
 	};
 #endif
 	const UE4CodeGen_Private::FNamePropertyParams Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad = { "LevelToLoad", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABunnyTrigger, LevelToLoad), METADATA_PARAMS(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData, ARRAY_COUNT(Z_Construct_UClass_ABunnyTrigger_Statics::NewProp_LevelToLoad_MetaData)) };
@@ -199,7 +200,7 @@ void EmptyLinkFunctionForGeneratedCodeBunnyTrigger() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABunnyTrigger, 2677372292);
+	IMPLEMENT_CLASS(ABunnyTrigger, 579655055);
 	template<> SWORDMASTER_API UClass* StaticClass<ABunnyTrigger>()
 	{
 		return ABunnyTrigger::StaticClass();

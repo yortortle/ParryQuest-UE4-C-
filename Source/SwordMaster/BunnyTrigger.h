@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/TriggerBox.h"
 #include "TimerManager.h"
+#include "BunnyHorde.h"
 
 #include "BunnyTrigger.generated.h"
 
@@ -27,6 +28,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<AActor> spawnActor;
+
+	//declaring bunny object to spawn
+	//ABunnyHorde* bunny = NewObject<ABunnyHorde>();
 
 	UPROPERTY(EditAnywhere)
 		FName LevelToLoad;
