@@ -20,6 +20,7 @@ void ABunnySpawner::BeginPlay()
 
 {
 	Super::BeginPlay();
+	debugPrint("bunny begin play");
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
 	//GetWorld()->SpawnActor()
@@ -39,13 +40,14 @@ void ABunnySpawner::Tick(float DeltaTime)
 {
 	if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
 	{
-		debugPrint("Active");
+		//debugPrint("Active");
+		SpawnBunny();
 		SpawnBunny();
 		GetWorldTimerManager().PauseTimer(GameInstance->BunnySpawner);
 	}
 	else
 	{
-		debugPrint("False");
+		//debugPrint("False");
 	}
 	Super::Tick(DeltaTime);
 	//debugPrint("SpawnerTick");
