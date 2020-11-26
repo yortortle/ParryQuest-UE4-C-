@@ -113,7 +113,7 @@ void ASwordMan::UpDown(float Axis)
 
 void ASwordMan::LeftRight(float Axis)
 {
-	
+	//return if clock timer is active
 	if ((GetWorldTimerManager().IsTimerActive(Clock)) || (GetWorldTimerManager().IsTimerActive(BlinkClock)))
 	{
 		return;
@@ -187,29 +187,11 @@ void ASwordMan::Swing()
 
 }
 
+//overlap begin override function for attacks
 void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	
 	CurrentFlipbook = GetSprite()->GetFlipbook()->GetFName();
-
-	/*
-	if (CurrentFlipbook == "SwingUp" || CurrentFlipbook == "SwingDown" || CurrentFlipbook == "SwingRight" || CurrentFlipbook == "SwingLeft")
-	{
-		if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
-		{
-			UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
-			GetSprite()->SetSpriteColor(FColor::Cyan);
-			OtherActor->Destroy();
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("collision without attacking"));
-	}
-	*/
-	
-
-	// saving this code for later incase i need it
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("destroying actor"));
@@ -222,11 +204,12 @@ void ASwordMan::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	}
 }
 
+//overlap dialogue
 void ASwordMan::OnOverLapNPC(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	InteractBox->SetCollisionProfileName("NoCollision");
-	consoleLog();
 }
+
 void ASwordMan::MovementAnimations()
 {
 	//condition to determine if we're at a standstill or moving

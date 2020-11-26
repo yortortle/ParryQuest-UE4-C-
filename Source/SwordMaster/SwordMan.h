@@ -48,7 +48,7 @@ public:
     enum MoveDirection { Up, Down, Left, Righ };
 
     //Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite) //movement animations
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite) 
         UPaperFlipbook* MoveLeft;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         UPaperFlipbook* MoveRight;
@@ -105,28 +105,31 @@ public:
     UFUNCTION()
         void OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+    UFUNCTION(blueprintcallable)
+        void OnOverLapNPC(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        bool MageLevel = false;
+
+
+
 
     USwordGameInstance* GameInstance;
 
     float Vertical = 0.0f;
     float Horizontal = 0.0f;
+    float blinkDistance = 50.f;
     int lastMove = 0;
+    bool boolInteract;
+
     FName CurrentFlipbook;
     FName LastFlipbook;
     FVector CurrentLocation;
     FVector NewLocation;
+    FVector DetermineBlinkVector(FVector Location);
     UBoxComponent* NewBox;
-    bool boolInteract;
 
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-    bool MageLevel = false;
-
-    float blinkDistance = 50.f;
-
-    UFUNCTION(blueprintcallable)
-    void OnOverLapNPC(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     void MovementAnimations();
-
     void setFlip(float f1, float f2);
     void consoleLog();
     void Swing();
@@ -137,21 +140,13 @@ public:
     void BlinkCoolDown();
     void ParryCD();
     void ReverseSword();
-
     void DetermineSwing(UBoxComponent* Box);
-
-
-    //void checkBlinkCollision();
-    FVector DetermineBlinkVector(FVector Location);
-    //void ParryTeleport();
-
 
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
     FTimerHandle Clock;
-    FTimerHandle BlinkFTimer;
     FTimerHandle ParryTimer;
     FTimerHandle BlinkCDFTimer;
     FTimerHandle BlinkClock;

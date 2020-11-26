@@ -451,7 +451,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData[] = {
 		{ "Category", "SwordMan" },
 		{ "ModuleRelativePath", "SwordMan.h" },
-		{ "ToolTip", "Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function.\nmovement animations" },
+		{ "ToolTip", "Creating Blueprint editable UPaperFlipBooks to store the various flipbooks for different action states, to be later used with the getSprite()->SetFlipbook() function." },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft = { "MoveLeft", nullptr, (EPropertyFlags)0x0010000000010005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ASwordMan, MoveLeft), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData, ARRAY_COUNT(Z_Construct_UClass_ASwordMan_Statics::NewProp_MoveLeft_MetaData)) };
@@ -505,7 +505,7 @@ void EmptyLinkFunctionForGeneratedCodeSwordMan() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ASwordMan, 3640752368);
+	IMPLEMENT_CLASS(ASwordMan, 3579819077);
 	template<> SWORDMASTER_API UClass* StaticClass<ASwordMan>()
 	{
 		return ASwordMan::StaticClass();

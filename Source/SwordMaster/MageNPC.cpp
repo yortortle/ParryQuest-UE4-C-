@@ -16,11 +16,13 @@ void AMageNPC::BeginPlay()
 
 void AMageNPC::Tick(float DeltaTime)
 {
+	//if walk timer is active it'll run a switch statement to determine direction
 	if (GetWorldTimerManager().IsTimerActive(WalkTimer))
 	{
 		switch (MoveDirection)
 		{
 		case 0: {
+				//moves you with a certain value for speed
 				CurrentLocation = this->GetActorLocation();
 				speed = 60;
 				CurrentLocation.Z += speed * DeltaTime;
