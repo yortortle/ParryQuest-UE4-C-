@@ -29,14 +29,12 @@ void ABunnySpawner::Tick(float DeltaTime)
 {
 	if (!(HasSpawnerRan))
 	{
+		//if global timer is active spawns horde
 		if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
 		{
 			SpawnBunny();
 			HasSpawnerRan = true;
 		}
-	}
-	{
-		//debugPrint("False");
 	}
 	Super::Tick(DeltaTime);
 }

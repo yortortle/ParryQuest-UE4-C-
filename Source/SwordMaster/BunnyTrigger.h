@@ -5,8 +5,6 @@
 #include "CoreMinimal.h"
 #include "Engine/TriggerBox.h"
 #include "TimerManager.h"
-//#include "BunnyHorde.h"
-//#include "BunnySpawner.h"
 #include "SwordGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -33,19 +31,15 @@ public:
 		TSubclassOf<AActor> spawnActor;
 
 	//declaring bunny object to spawn
-	//ABunnyHorde* bunny = NewObject<ABunnyHorde>();
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName LevelToLoad;
-
-	//UMyGameInstance* GI;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTimerHandle BunnyTimerSpawn;
 
-	USwordGameInstance* GameInstance;
-
 	FTimerHandle GetTimer();
+
+	USwordGameInstance* GameInstance;
 
 	virtual void Tick(float DeltaTime) override;
 
@@ -54,8 +48,4 @@ public:
 
 	UFUNCTION()
 		void OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor);
-
-	//void TriggerTimer();
-
-	
 };

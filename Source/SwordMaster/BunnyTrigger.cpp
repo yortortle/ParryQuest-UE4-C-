@@ -8,6 +8,7 @@
 
 ABunnyTrigger::ABunnyTrigger()
 {
+    //delegate functions for overlap
     OnActorBeginOverlap.AddDynamic(this, &ABunnyTrigger::OnOverlapBegin);
     OnActorEndOverlap.AddDynamic(this, &ABunnyTrigger::OnOverlapEnd);
 }
@@ -15,39 +16,26 @@ ABunnyTrigger::ABunnyTrigger()
 void ABunnyTrigger::BeginPlay()
 {
     Super::BeginPlay();
+
+    //getting game instance
     GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-
-   // debugPrint("Trigger is here");
-    //GetWorldTimerManager().SetTimer(BunnyTimerSpawn, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
-
-   // DrawDebugBox(GetWorld(), GetActorLocation(), GetComponentsBoundingBox().GetExtent(), FColor::Black, true, -1, 0, 3);
 }
 
 void ABunnyTrigger::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-    debugPrint("yes");
-    if (GetWorldTimerManager().IsTimerActive(BunnyTimerSpawn))
-    {
-        debugPrint("yes");
-    }
 }
 
 void ABunnyTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
+
+    //stops trigger from being re-activated
     if (GetWorldTimerManager().IsTimerActive(GameInstance->BunnySpawner))
     {
         return;
     }
 
-   //  debugPrint("Actor overlap");
-   // &ABunnySpawner::SpawnBunny;
-
     GetWorldTimerManager().SetTimer(GameInstance->BunnySpawner, this, &ABunnyTrigger::BunnyTimer, 15.f, false);
-    //GetWorldTimerManager().PauseTimer(GameInstance->BunnySpawner);
-    if (OtherActor && (OtherActor != this)) {
-        //debugPrint("Actor overlap");
-    }
 }
 
 void ABunnyTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* OtherActor)
@@ -56,7 +44,7 @@ void ABunnyTrigger::OnOverlapEnd(class AActor* OverlappedActor, class AActor* Ot
 
 void ABunnyTrigger::BunnyTimer()
 {
-    debugPrint("Bunny timer end");
+    //debugPrint("Bunny timer end");
     GameInstance->bunnyCompleted = true;
     UGameplayStatics::OpenLevel(GetWorld(), "HubWorld");
 }

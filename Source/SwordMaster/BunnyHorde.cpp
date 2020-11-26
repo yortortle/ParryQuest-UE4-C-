@@ -20,28 +20,6 @@ void ABunnyHorde::BeginPlay()
 	Super::BeginPlay();
 	PrimaryActorTick.bCanEverTick = true;
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
-
-	
-	//AAIController::MoveToLocation
-	//AddMovementInput(GameInstance->SwordManLocation, 3.0f);
-	//GetWorld();
-	//if (ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-	//{
-		//debugPrint("CHARACTER FOUND I GUESS");
-	//}
-	//FLatentActionInfo LatentInfo;
-	//ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
-
-	//GetSprite()->Set
-
-	//ASwordMan* mySwordMan =
-	//UGameplayStatics::Actor
-	//debugPrint("BunnyHorde");
-	
-
-	//CurrentLocation.X -= speed * DeltaTime;
-	//SetActorLocation(CurrentLocation);
-	
 }
 
 void ABunnyHorde::Tick(float DeltaTime)
@@ -51,8 +29,6 @@ void ABunnyHorde::Tick(float DeltaTime)
 	CurrentLocation = this->GetActorLocation();
 
 	//how to determine the bunnies movement being tracked to the play.
-
-
 	if (CurrentLocation.X < NewLocation.X)
 	{
 		CurrentLocation.X += 40 * DeltaTime;
@@ -63,7 +39,6 @@ void ABunnyHorde::Tick(float DeltaTime)
 	}
 	if (CurrentLocation.X > NewLocation.X)
 	{
-		//debugPrint("X is different");
 		CurrentLocation.X -= 40 * DeltaTime;
 
 		two = true;
@@ -92,7 +67,6 @@ void ABunnyHorde::Tick(float DeltaTime)
 	}
 	else if (A > B && two == true)
 	{
-		//debugPrint("Z is larger than X");
 		GetSprite()->SetFlipbook(MoveLeft);
 	}
 	else if (B > A&& three == true)
