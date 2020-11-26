@@ -5,6 +5,8 @@
 AIceBall::AIceBall()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	//creating the collision box for this iceball
 	BoxTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
 	BoxTrigger->AttachTo(RootComponent);
 }
@@ -12,8 +14,9 @@ AIceBall::AIceBall()
 void AIceBall::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//delegate for overlap
 	BoxTrigger->OnComponentBeginOverlap.AddDynamic(this, &AIceBall::OnOverLapBegin);
-	UE_LOG(LogTemp, Warning, TEXT("StartIceBall"));
 }
 
 void AIceBall::Tick(float DeltaTime)
@@ -28,22 +31,14 @@ void AIceBall::Tick(float DeltaTime)
 
 void AIceBall::OnOverLapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	//debugPrint("iceball killed you");
-	
-	//ActorCollide->Get
-	//ActorCollide->GetDefaultObject
-
-	//OtherActor->
-	//ActorCollide.
-	//AActor testactor = PaperMan;
-	//APaperCharacter* test = OtherActor;
+	//determined name of swordman actor
 	FString name = "BP_SwordMan_C_0";
 
+	//check to see if actor is self or a specific name
 	if (OtherActor && (OtherActor != this) && *OtherActor->GetName() == name)
 	{
-		
 		UGameplayStatics::OpenLevel(GetWorld(), "StartingArea");
-		debugPrintFString("Overlapped Actor = %s", *OtherActor->GetName());
+		//debugPrintFString("Overlapped Actor = %s", *OtherActor->GetName());
 	}
 }
 

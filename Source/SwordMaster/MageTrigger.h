@@ -33,8 +33,6 @@ public:
 	UPROPERTY(EditAnywhere)
 	FName LevelToLoad;
 
-	//UMyGameInstance* GI;
-
 	FTimerHandle GameTime;
 
 	virtual void Tick(float DeltaTime) override;

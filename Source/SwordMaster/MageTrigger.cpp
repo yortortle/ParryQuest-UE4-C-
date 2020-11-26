@@ -38,12 +38,8 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
     //check if other actor is valid and if they're identical to themselves
     if (OtherActor && (OtherActor != this)) {
         GetWorldTimerManager().SetTimer(GameTime, this, &AMageTrigger::TriggerTimer, 15.f, false);
-        //this->Destroy();
         if (GetWorldTimerManager().IsTimerActive(GameTime))
         {
-            debugPrint("Overlap Begin");
-            debugPrintFString("Overlapped Actor = %s", *OverlappedActor->GetName());
-
             //iterator to delete mage actor
             for (TObjectIterator<AMageNPC> ObjectItr; ObjectItr; ++ObjectItr)
             {
@@ -56,10 +52,6 @@ void AMageTrigger::OnOverlapBegin(class AActor* OverlappedActor, class AActor* O
                 debugPrint("test");
 
                 Cast<AMageNPC>(*ObjectItr)->Destroy();
-                AActor* foundActor = Cast<AMageNPC>(*ObjectItr);
-                //foundActor->Destroy();
-
-                UObject* Object = *ObjectItr;
                 // ...
             }
 
