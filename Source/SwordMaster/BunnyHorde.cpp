@@ -36,7 +36,7 @@ void ABunnyHorde::BeginPlay()
 
 	//ASwordMan* mySwordMan =
 	//UGameplayStatics::Actor
-	debugPrint("BunnyHorde");
+	//debugPrint("BunnyHorde");
 	
 
 	//CurrentLocation.X -= speed * DeltaTime;

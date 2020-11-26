@@ -19,7 +19,7 @@ ASpawnBunnies::ASpawnBunnies()
 void ASpawnBunnies::BeginPlay()
 {
 	Super::BeginPlay();
-	debugPrint("REWARD");
+	//debugPrint("REWARD");
 
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 

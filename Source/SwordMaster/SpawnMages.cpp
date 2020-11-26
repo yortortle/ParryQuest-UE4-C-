@@ -19,7 +19,7 @@ ASpawnMages::ASpawnMages()
 void ASpawnMages::BeginPlay()
 {
 	Super::BeginPlay();
-	debugPrint("REWARD");
+	//debugPrint("REWARD");
 
 	GameInstance = Cast<USwordGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 
