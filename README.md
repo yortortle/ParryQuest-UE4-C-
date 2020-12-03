@@ -18,5 +18,7 @@
 1. SwordMan.CPP
 2. MageBoss.CPP
 3. BunnyHorde.CPP
-4. MageTrigger.cpp
+4. MageTrigger.CPP
+5. BunnyTrigger.CPP
+6. SwordGameInstance.CPP
 
