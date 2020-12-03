@@ -1,6 +1,4 @@
 ﻿# Sword-Master-UE4-C-++
- 
- # Unit3Project
 
 ### Authors: Troy Hancock
 
